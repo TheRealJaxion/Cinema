@@ -24,7 +24,7 @@ public class CinemaManager {
     File fileM = new File(fileNameM);
     File fileF = new File(fileNameF);    
     
-    public boolean setMovies(String nameM, int duration, String restriction){
+    public void setMovies(String nameM, int duration, String restriction){
         Movie movie = new Movie(nameM, duration, restriction);
         String content = movie.toCSV();
         
@@ -35,14 +35,12 @@ public class CinemaManager {
             FileWriter fw = new FileWriter(fileM.getAbsoluteFile(), true); 
             fw.write(content);
             fw.close(); 
-            return true;
         }catch(IOException e){
             e.printStackTrace(); 
-            return false; 
         } 
     }
     
-    public boolean setFunction(Movie movieD, String schedule, char hall, int nHall){
+    public void setFunction(Movie movieD, String schedule, char hall, int nHall){
         Function func = new Function(movieD, schedule, hall, nHall);
         String content = func.toCSV(); 
         try{
@@ -52,10 +50,8 @@ public class CinemaManager {
             FileWriter fw = new FileWriter(fileF.getAbsoluteFile(), true); 
             fw.write(content);
             fw.close(); 
-            return true;
         }catch(IOException e){
             e.printStackTrace(); 
-            return false; 
         }         
     }
     

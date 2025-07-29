@@ -13,7 +13,7 @@ public class Client extends Person {
     private String email;
     private int id;
 
-    public Client(String username, String namesP, String lastnamesP, String password, String email, int id) {
+    public Client(String username, String namesP, String lastnamesP, String password, int id, String email) {
         super(username, namesP, lastnamesP, password);
         this.email = email;
         this.id = id;

@@ -6,9 +6,12 @@ package fis.poo.cinemalayout.model.services;
 
 import fis.poo.cinemalayout.model.entities.Cashier;
 import fis.poo.cinemalayout.model.entities.Client;
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
@@ -16,10 +19,12 @@ import javax.swing.JOptionPane;
  * @author jordy
  */
 public class PersonManager {
+    String fileNameCl = "clientReg.txt";
+    String fileNameCs = "cahsierReg.txt";    
+    
     public void registerClient(String username, String namesP, String lastnamesP, String password, String email, int age){
-        String fileName = "clientReg.txt";
-        File file = new File(fileName);   
-        Client client = new Client(username, namesP, lastnamesP, password, email, age); 
+        File file = new File(fileNameCl);   
+        Client client = new Client(username, namesP, lastnamesP, password, age, email); 
         String content = client.toCSV();        
             try{
             //if the file doesn't exist, it will be generated. 
@@ -37,8 +42,7 @@ public class PersonManager {
     }
     
     public void registerCashier(String username, String namesP, String lastnamesP, String password){
-        String fileName = "cahsierReg.txt";
-        File file = new File(fileName);
+        File file = new File(fileNameCs);
         Cashier cashier = new Cashier(username, namesP, lastnamesP, password);
         String content = cashier.toCSV();        
             try{
@@ -55,4 +59,48 @@ public class PersonManager {
             JOptionPane.showConfirmDialog(null, "FATAL ERROR", "Alert!", JOptionPane.ERROR_MESSAGE);
         }       
     }
+    public ArrayList<Client> clients(){
+        String line; 
+        String csvSeparator = ","; 
+        ArrayList<Client> clients = new ArrayList<>();
+        
+        try(BufferedReader br = new BufferedReader(new FileReader(fileNameCl))){
+            
+            br.readLine();
+            
+            while((line = br.readLine()) != null){
+                String[] data = line.split(csvSeparator);
+                Client client = new Client(data[0], data[1], data[2], data[3], Integer.parseInt(data[4]), data[5]);
+                clients.add(client); 
+            }
+            
+        }catch(IOException e){
+            JOptionPane.showConfirmDialog(null,"There was an exception at FileReader.", "WARNING!", JOptionPane.ERROR_MESSAGE);
+            clients.clear(); 
+        }
+        
+        return clients; 
+    }
+    
+    public ArrayList<Cashier> cashiers(){
+        String line; 
+        String csvSeparator = ","; 
+        ArrayList<Cashier> cashiers = new ArrayList<>();
+        
+        try(BufferedReader br = new BufferedReader(new FileReader(fileNameCs))){
+            
+            br.readLine();
+            
+            while((line = br.readLine()) != null){
+                String[] data = line.split(csvSeparator);
+                Cashier cashier = new Cashier(data[0], data[1], data[2], data[3]);
+                cashiers.add(cashier); 
+            }
+            
+        }catch(IOException e){
+            JOptionPane.showConfirmDialog(null,"There was an exception at FileReader.", "WARNING!", JOptionPane.ERROR_MESSAGE);
+            cashiers.clear(); 
+        }       
+        return cashiers;         
+    }    
 }

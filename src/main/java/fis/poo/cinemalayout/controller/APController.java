@@ -9,14 +9,24 @@ import fis.poo.cinemalayout.model.entities.Function;
 import fis.poo.cinemalayout.model.entities.Movie;
 import fis.poo.cinemalayout.model.entities.Reservation;
 import fis.poo.cinemalayout.model.services.CinemaManager;
+import fis.poo.cinemalayout.model.services.ImageManager;
 import fis.poo.cinemalayout.model.services.PersonManager;
 import fis.poo.cinemalayout.model.services.PricePolicy;
 import fis.poo.cinemalayout.model.services.Recipe;
+import fis.poo.cinemalayout.model.services.Verificator;
 import fis.poo.cinemalayout.view.AdminPanel;
+import fis.poo.cinemalayout.view.CashierPanel;
 import fis.poo.cinemalayout.view.HiddenView;
+import fis.poo.cinemalayout.view.MainLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
+
 
 /**
  *
@@ -26,17 +36,25 @@ public class APController implements ActionListener{
     
     private AdminPanel adm;
     private HiddenView hdn;
+    private MainLayout mnl;
+    private CashierPanel csh;
     private Movie movie;
     private Cashier cshr;
     private PricePolicy prp;
     private Recipe rp;
+    private ImageManager img;
     private Function fn;
     private PersonManager pm;
     private CinemaManager cn;
+    private Verificator vf;
     
 
-    public APController(AdminPanel adm, HiddenView hdn, PricePolicy prp, PersonManager pm) {
+    public APController(MainLayout mnl, AdminPanel adm, CashierPanel csh, HiddenView hdn, PricePolicy prp, PersonManager pm, Movie movie, Verificator vf) {
+        this.mnl = mnl;
         this.adm = adm;
+        this.vf = vf;
+        this.csh = csh;
+        this.movie = movie;
         this.prp = prp;
         this.pm = pm;
         this.hdn = hdn; 
@@ -54,50 +72,221 @@ public class APController implements ActionListener{
     
     @Override
     public void actionPerformed(ActionEvent ev) {
-        if(ev.getSource() == adm.logout){
-            if(adm.confirmLogOut()){
-                hdn.setVisible(true);
+        if(adm.isAct(adm)){
+            if(ev.getSource() == adm.showInfo){
+                for(int i=0; i<cn.movies().size(); i++){
+                    Movie movie = cn.movies().get(i);
+                    Object ob = movie; 
+                    adm.model.addRow((Object[]) ob);
+                }
+                adm.setV(adm.info, adm);
+            } else if(ev.getSource() == adm.setMovies){
+                adm.setV(adm.movieSet, adm);
+            } else if(ev.getSource() == adm.nCashier){
+                adm.setV(adm.newCashier, adm);
+            } else if(ev.getSource() == adm.setPr){
+                adm.promN1.setText(prp.getProm1());
+                adm.promN2.setText(prp.getProm2());
+                adm.promN3.setText(prp.getProm3());
+                adm.promN4.setText(prp.getProm4());
+                
+                adm.pprom1.setText(Double.toString(prp.getPprom1()));
+                adm.pprom2.setText(Double.toString(prp.getPprom2()));
+                adm.pprom3.setText(Double.toString(prp.getPprom3()));
+                adm.pprom4.setText(Double.toString(prp.getPprom4()));
+                
+                adm.priceSH.setText(Double.toString(prp.getSeatPriceH()));
+                adm.priceSI.setText(Double.toString(prp.getSeatPriceI()));
+                adm.taxT.setText(Double.toString(prp.getTaxPer()));
+                
+                adm.setV(adm.setPrices, adm);
+            } else if(ev.getSource() == adm.logout){
                 adm.setVisible(false);
+                hdn.setVisible(true);
             }
-        } else if(ev.getSource() == adm.showInfo){
-            ArrayList<Movie> movies = cn.movies();
-            for(Movie movie : movies){
-                Object data = movie;
-                adm.model.addRow((Object[]) data);
+        }
+        
+        if(hdn.isActive()){
+            if(ev.getSource() == hdn.hiddenAdm){
+                adm.setVisible(true);
+                hdn.setVisible(false);
+            } else if(ev.getSource() == hdn.hiddenCash){
+                hdn.loginCs.setVisible(true);
             }
-            
-            adm.info.setVisible(true);
-            adm.setVisible(false);
-            
-        } else if(ev.getSource() == adm.gbB){
-            adm.setVisible(true);
-            adm.info.setVisible(false);
-        } else if(ev.getSource() == adm.setMovies){
-            adm.movieSet.setVisible(true);
-            adm.setVisible(false);
-        } else if(ev.getSource() == adm.gbM){
-            adm.setVisible(true);
-            adm.movieSet.setVisible(false);
-        } else if(ev.getSource() == adm.cancelB){
-            adm.movieSet.setVisible(true);
-            adm.functionGenerator.setVisible(false);
-        } else if(ev.getSource() == adm.backB){
-            adm.setVisible(true);
-            adm.newCashier.setVisible(false);
-        } else if(adm.isAct("nc")){
-            
-            if(ev.getSource() == adm.regcashB){
-                if(adm.isEmpt(adm.ncs())){
+        }
+        
+        if(ev.getSource() == hdn.lognC){
+            String username = hdn.cshT.getText();
+            String password = new String(hdn.pwF.getPassword()); 
+            if(vf.verifier("cashier", username, password)){
+                hdn.setVisible(false);
+                hdn.loginCs.setVisible(false);
+                csh.setVisible(true);
+            } else{
+                hdn.alertM();
+                hdn.clear(hdn.cshT, hdn.pwF);
+            }  
+        }
+        
+        if(adm.isAct(adm.newCashier)){
+            if(ev.getSource() == adm.backB){
+                adm.setV(adm, adm.newCashier);
+            } else if(ev.getSource() == adm.regcashB){
+                if(adm.isEmp(adm.ncs())){
                     adm.alertM(adm.ncs());
                 } else{
                     pm.registerCashier(adm.getTI(adm.nT), adm.getTI(adm.unT), adm.getTI(adm.lnT), adm.getTI(adm.pwT));
-                    adm.setVisible(true);
-                    adm.newCashier.setVisible(false);
+                    adm.refresh(adm.ncs());
                 }
             }
-        } else if(adm.isAct("sp")){
+        }
+        
+        if(adm.info.isActive()){
+           if(ev.getSource() == adm.gbB){
+               adm.info.setVisible(false);
+               adm.setVisible(true);
+           }
+        }
+        
+        if(adm.setPrices.isActive()){
+            if(ev.getSource() == adm.svp1){
+                
+                if(adm.isEmpt(adm.pprom1T)){
+                    adm.alertM(adm.pr());
+                } else{
+                    prp.setPprom1(Double.parseDouble(adm.getTI(adm.pprom1T)));
+                }
+            } else if(ev.getSource()== adm.svp2){
+                
+                if(adm.isEmpt(adm.pprom2T)){
+                    adm.alertM(adm.pr());
+                } else{
+                    prp.setPprom2(Double.parseDouble(adm.getTI(adm.pprom2T)));
+                }
+            } else if(ev.getSource()== adm.svp3){
+                
+                if(adm.isEmpt(adm.pprom3T)){
+                    adm.alertM(adm.pr());
+                } else{
+                    prp.setPprom3(Double.parseDouble(adm.getTI(adm.pprom3T)));
+                }
+            } else if(ev.getSource()== adm.svp4){
+                
+                if(adm.isEmpt(adm.pprom4T)){
+                    adm.alertM(adm.pr());
+                } else{
+                    prp.setPprom4(Double.parseDouble(adm.getTI(adm.pprom4T)));
+                }
+            } else if(ev.getSource() == adm.svsH){
+                if(adm.isEmpt(adm.priceH)){
+                    adm.alertM(adm.pr());
+                } else{
+                    prp.setSeatPriceH(Double.parseDouble(adm.getTI(adm.priceH)));
+                }
+            } else if(ev.getSource() == adm.svsI){
+                if(adm.isEmpt(adm.priceI)){
+                    adm.alertM(adm.pr());
+                } else{
+                    prp.setSeatPriceI(Double.parseDouble(adm.getTI(adm.priceI)));
+                }
+            } else if(ev.getSource() == adm.svt){
+                if(adm.isEmpt(adm.taxF)){
+                    adm.alertM(adm.pr());
+                } else{
+                    prp.setSeatPriceI(Double.parseDouble(adm.getTI(adm.taxF)));
+                }           
+            }else if(ev.getSource() == adm.saveAll){
+                if(adm.isEmp(adm.pr())){
+                    adm.alertM(adm.pr());
+                } else{
+                    prp.setPprom1(Double.parseDouble(adm.getTI(adm.pprom1T)));
+                    prp.setPprom2(Double.parseDouble(adm.getTI(adm.pprom2T)));
+                    prp.setPprom3(Double.parseDouble(adm.getTI(adm.pprom3T)));
+                    prp.setPprom4(Double.parseDouble(adm.getTI(adm.pprom4T)));
+                    prp.setSeatPriceI(Double.parseDouble(adm.getTI(adm.priceI)));
+                    prp.setSeatPriceH(Double.parseDouble(adm.getTI(adm.priceH)));
+                    prp.setTaxPer(Double.parseDouble(adm.getTI(adm.taxF)));
+                    JOptionPane.showConfirmDialog(null, "Prices has been set succesfully.", "Finished", JOptionPane.OK_OPTION);
+                    adm.refresh(adm.pr());
+                }    
+            } else if(ev.getSource()== adm.gbpB){
+                adm.setPrices.setVisible(false);
+                adm.setVisible(true);
+            }   
+        }
+        
+        if(adm.movieSet.isActive()){
+            if(ev.getSource()== adm.saveB){
+                if(adm.isEmp(adm.mvs())){
+                    adm.alertM(adm.mvs());
+                } else{
+                    cn.setMovies(adm.getTI(adm.mN), Integer.parseInt(adm.getTI(adm.mD)), (String) adm.ageR.getSelectedItem());
+                    mnl.addDes(adm.getTI(adm.mvdesc));
+                    adm.refresh(adm.mvs());
+                }
+            }else if(ev.getSource() == adm.selimgM){
+                JFileChooser fc = new JFileChooser(); 
+                fc.setDialogTitle("Save Imgage As");
+                
+                FileNameExtensionFilter pngF = new FileNameExtensionFilter("PNG Files (*.png)", "png");
+                fc.addChoosableFileFilter(pngF);
+                fc.setFileFilter(pngF);
+                
+                int userSel = fc.showSaveDialog(null);
+                if(userSel == JFileChooser.APPROVE_OPTION){
+                    File imgSelPath = fc.getSelectedFile();
+                    img.mainImg(imgSelPath);
+                }
+            }else if(ev.getSource() == adm.selimgF){
+                JFileChooser fc = new JFileChooser(); 
+                fc.setDialogTitle("Save Imgage As");
+                
+                FileNameExtensionFilter pngF = new FileNameExtensionFilter("PNG Files (*.png)", "png");
+                fc.addChoosableFileFilter(pngF);
+                fc.setFileFilter(pngF);
+                
+                int userSel = fc.showSaveDialog(null);
+                if(userSel == JFileChooser.APPROVE_OPTION){
+                    File imgSelPath = fc.getSelectedFile();
+                    img.functImg(imgSelPath);
+                }
+            } else if(ev.getSource() == adm.setF){
+                if(adm.isEmp(adm.mvs())){
+                    adm.alertM(adm.mvs());
+                } else{
+                    cn.setMovies(adm.getTI(adm.mN), Integer.parseInt(adm.getTI(adm.mD)), (String) adm.ageR.getSelectedItem());
+                    mnl.addDes(adm.getTI(adm.mvdesc));
+                    adm.refresh(adm.mvs());
+                    
+                    for(int i=0; i<cn.movies().size(); i++){
+                        Movie mv = cn.movies().get(i);
+                        adm.movieSelect.insertItemAt(mv.getNameM(), i);
+                    }
+                    
+                    adm.movieSet.setVisible(false);
+                    adm.functionGenerator.setVisible(true);
+                }                
+            } else if(ev.getSource() == adm.gbM){
+                adm.refresh(adm.mvs());
+                adm.setV(adm, adm.movieSet);
+            }
+        }
+        
+        if(adm.functionGenerator.isActive()){
+            if(ev.getSource() == adm.gnrtF){
+                String movSel = (String) adm.movieSelect.getSelectedItem();
+                for(int i=0; i<cn.movies().size(); i++){
+                    Movie mv = cn.movies().get(i); 
+                    if(mv.getNameM() == movSel){
+                        cn.setFunction(mv, (String) adm.scheduleSel.getSelectedItem(), adm.selH(adm.hallSet), (Integer) adm.numH.getSelectedItem());
+                    }
+                }
+            } else if(ev.getSource() == adm.cancelB){
+                adm.setV(adm, adm.functionGenerator);
+            }
             
         }
+        
     }
     
 }

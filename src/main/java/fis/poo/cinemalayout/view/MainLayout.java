@@ -4,6 +4,8 @@
  */
 package fis.poo.cinemalayout.view;
 
+import fis.poo.cinemalayout.model.entities.Function;
+import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JTextField;
 
@@ -53,11 +55,10 @@ public class MainLayout extends javax.swing.JFrame {
         jPanel8 = new javax.swing.JPanel();
         movieDescription = new javax.swing.JTextField();
         jPanel9 = new javax.swing.JPanel();
-        movieFeatures = new javax.swing.JLabel();
+        movieFeatures = new javax.swing.JTextField();
         jPanel10 = new javax.swing.JPanel();
         seatSelB = new javax.swing.JButton();
-        jComboBox2 = new javax.swing.JComboBox<>();
-        hallD = new javax.swing.JTextField();
+        functionsS = new javax.swing.JComboBox<>();
         jLabel5 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         signB = new javax.swing.JButton();
@@ -262,7 +263,8 @@ public class MainLayout extends javax.swing.JFrame {
 
         jPanel9.setBackground(new java.awt.Color(255, 255, 255));
 
-        movieFeatures.setText("Movie Features");
+        movieFeatures.setBackground(new java.awt.Color(255, 255, 255));
+        movieFeatures.setText("movieFeatures");
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
@@ -275,17 +277,13 @@ public class MainLayout extends javax.swing.JFrame {
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(movieFeatures, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(movieFeatures, javax.swing.GroupLayout.DEFAULT_SIZE, 75, Short.MAX_VALUE)
         );
 
         jPanel10.setBackground(new java.awt.Color(153, 0, 51));
         jPanel10.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         seatSelB.setText("Seat Selection");
-
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "11AM", "14PM", "17PM", "20PM" }));
-
-        hallD.setText("Hall");
 
         jLabel5.setBackground(new java.awt.Color(255, 255, 255));
         jLabel5.setFont(new java.awt.Font("Perpetua", 2, 18)); // NOI18N
@@ -299,15 +297,13 @@ public class MainLayout extends javax.swing.JFrame {
             .addGroup(jPanel10Layout.createSequentialGroup()
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel10Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(hallD, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(63, 63, 63))
-                    .addGroup(jPanel10Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(functionsS, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(60, 60, 60)))
                 .addComponent(seatSelB)
                 .addGap(121, 121, 121))
         );
@@ -320,9 +316,7 @@ public class MainLayout extends javax.swing.JFrame {
                     .addGroup(jPanel10Layout.createSequentialGroup()
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jComboBox2, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
-                            .addComponent(hallD))))
+                        .addComponent(functionsS, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
 
@@ -621,6 +615,16 @@ public class MainLayout extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> new MainLayout().setVisible(true));
     }
+    public ArrayList<String> descriptions;
+    public Function functions;
+    
+    public void addDes(String description){
+        descriptions.add(description);
+    }
+    
+    public void selF(Function fn){
+        functions=fn;
+    }
     
     public void clear(JTextField t){
         t.setText("");
@@ -639,10 +643,9 @@ public class MainLayout extends javax.swing.JFrame {
     public javax.swing.JButton addB3;
     public javax.swing.JButton addB4;
     private javax.swing.JTextArea displayFS;
+    public javax.swing.JComboBox<String> functionsS;
     public javax.swing.JButton gbbM;
-    public javax.swing.JTextField hallD;
     public javax.swing.JButton jButton1;
-    public javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -666,14 +669,14 @@ public class MainLayout extends javax.swing.JFrame {
     public javax.swing.JButton movie2B;
     public javax.swing.JButton movie3B;
     public javax.swing.JButton movie4B;
-    private javax.swing.JTextField movieDescription;
-    public javax.swing.JLabel movieFeatures;
+    public javax.swing.JTextField movieDescription;
+    public javax.swing.JTextField movieFeatures;
     public javax.swing.JLabel movieImg;
-    private javax.swing.JTextField movieT1;
-    private javax.swing.JTextField movieT2;
-    private javax.swing.JTextField movieT3;
-    private javax.swing.JTextField movieT4;
-    private javax.swing.JTextField movieTitle;
+    public javax.swing.JTextField movieT1;
+    public javax.swing.JTextField movieT2;
+    public javax.swing.JTextField movieT3;
+    public javax.swing.JTextField movieT4;
+    public javax.swing.JTextField movieTitle;
     public javax.swing.JButton payclientB;
     public javax.swing.JButton seatSelB;
     public javax.swing.JButton signB;

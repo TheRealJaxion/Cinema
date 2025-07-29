@@ -5,6 +5,7 @@
 package fis.poo.cinemalayout.controller;
 
 import fis.poo.cinemalayout.model.entities.Function;
+import fis.poo.cinemalayout.model.entities.Reservation;
 import fis.poo.cinemalayout.view.CashierPanel;
 import fis.poo.cinemalayout.view.MainLayout;
 import fis.poo.cinemalayout.view.SeatsSelection;
@@ -19,8 +20,8 @@ import javax.swing.JToggleButton;
  * @author jordy
  */
 public class SMainController implements ActionListener{
-    
-    private Function fn;
+
+    private Reservation rs;
     private MainLayout mn; 
     private CashierPanel csp;
     private SeatsSelection st;
@@ -28,9 +29,8 @@ public class SMainController implements ActionListener{
     private boolean isCashier;
     private boolean isClient;
 
-    public SMainController(Function fn, SeatsSelection st) {
-        this.fn = fn;
-        this.st = st;
+    public SMainController(SeatsSelection st) {
+        this.rs = rs;
         this.st.aceptB.addActionListener(this);
         this.st.A1.addActionListener(this);
         this.st.A2.addActionListener(this);
@@ -123,6 +123,12 @@ public class SMainController implements ActionListener{
     public void setIsClient(boolean isClient) {
         this.isClient = isClient;
     }
+    
+    public void setRs(Reservation rs) {
+        this.rs = rs;
+    }
+    
+    
     
     private ArrayList<JToggleButton> sel;
     
@@ -281,10 +287,12 @@ public class SMainController implements ActionListener{
             }
             
             if(isCashier){
+                rs.setSeats(counter);
                 csp.setVisible(true);
                 st.setVisible(false);
                 
             }else if(isClient){
+                rs.setSeats(counter);
                 mn.FinalSel.setVisible(true);
                 st.setVisible(false);
             }
@@ -311,6 +319,5 @@ public class SMainController implements ActionListener{
         st.show(counter);
         sel.add(b);
     }
-    
     
 }

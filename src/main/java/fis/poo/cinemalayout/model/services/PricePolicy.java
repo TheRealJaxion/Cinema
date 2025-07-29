@@ -21,6 +21,18 @@ public class PricePolicy {
     private double seatPriceI; //Prices for seats that are ubicated in IMAX halls
     private double pprom1, pprom2, pprom3, pprom4; //Prices for each promo, it will give a discount in the final price.  
 
+    public PricePolicy(double taxPer, double seatPriceH, double seatPriceI, double pprom1, double pprom2, double pprom3, double pprom4) {
+        this.taxPer = taxPer;
+        this.seatPriceH = seatPriceH;
+        this.seatPriceI = seatPriceI;
+        this.pprom1 = pprom1;
+        this.pprom2 = pprom2;
+        this.pprom3 = pprom3;
+        this.pprom4 = pprom4;
+    }
+
+    
+    
     public String getProm1() {
         return prom1;
     }

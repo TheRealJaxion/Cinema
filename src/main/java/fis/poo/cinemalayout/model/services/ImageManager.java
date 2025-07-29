@@ -8,6 +8,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
 /**
@@ -15,11 +16,11 @@ import javax.swing.JOptionPane;
  * @author jordy
  */
 public class ImageManager {
-    File imgSelPath;
     String imgType = "png";
     
     public void functImg(File imgSelPath){
         String mainPath = "CinemaLayout\\src\\main\\resources\\funcl"; 
+        
         try{
            BufferedImage img = ImageIO.read(imgSelPath);
            

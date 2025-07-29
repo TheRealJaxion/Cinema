@@ -66,6 +66,38 @@ public class Function {
     public void setNHall(int nHall){
         this.nHall = nHall; 
     }
+
+    public String getMovieName() {
+        return movieName;
+    }
+
+    public int getMovieDuration() {
+        return movieDuration;
+    }
+
+    public String getRestriction() {
+        return restriction;
+    }
+
+    public int getnHall() {
+        return nHall;
+    }
+
+    public void setMovieName(String movieName) {
+        this.movieName = movieName;
+    }
+
+    public void setMovieDuration(int movieDuration) {
+        this.movieDuration = movieDuration;
+    }
+
+    public void setRestriction(String restriction) {
+        this.restriction = restriction;
+    }
+
+    public void setnHall(int nHall) {
+        this.nHall = nHall;
+    }
     
     
     
