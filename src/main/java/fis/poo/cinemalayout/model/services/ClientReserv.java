@@ -5,7 +5,9 @@
 package fis.poo.cinemalayout.model.services;
 
 import fis.poo.cinemalayout.controller.SMainController;
+import fis.poo.cinemalayout.model.entities.Function;
 import fis.poo.cinemalayout.model.entities.Reservation;
+import fis.poo.cinemalayout.view.SeatsSelection;
 import java.util.ArrayList;
 import java.util.Set;
 import javax.swing.JToggleButton;
@@ -14,16 +16,20 @@ import javax.swing.JToggleButton;
  *
  * @author jordy
  */
-public class ClientReserv implements MarkReservation{
-    
-    private SMainController smc;
-    private int seats;
-    
-    @Override
-    public void checkSeats() {
+public class ClientReserv extends MarkReservation{
+
+    public ClientReserv(Function fn, SMainController smc, SeatsSelection sl, Reservation rs) {
+        super(fn, smc, sl, rs);
+        smc.setRs(rs);
         smc.setIsClient(true);
         smc.setIsCashier(false);
-        seats = smc.getCounter();
     }
+
+    @Override
+    public void markSeats() {
+        
+    }
+    
+    
     
 }
