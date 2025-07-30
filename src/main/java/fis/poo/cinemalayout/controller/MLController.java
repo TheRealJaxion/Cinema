@@ -28,6 +28,8 @@ public class MLController implements ActionListener{
     private Loginoptions logn; 
     private ArrayList<Function> functions; 
     private Reservation rs;
+    private Movie mv;
+    private Function fn; 
     private ArrayList<Movie> movies;
     private CinemaManager cnm;
     private SeatsSelection st; 
@@ -58,7 +60,6 @@ public class MLController implements ActionListener{
         this.ml.movie3B.addActionListener(this);
         this.ml.movie4B.addActionListener(this);
         this.ml.gbbM.addActionListener(this);
-        ml.setVisible(true);
     }
     
     
@@ -73,14 +74,14 @@ public class MLController implements ActionListener{
             
             if(ev.getSource() == ml.movie1B){
                 String path = "CinemaLayout\\src\\main\\resources\\funcl\\img1.png";
-                Movie mv = movies.get(0); 
+                mv = movies.get(0); 
                 ImageIcon img = new ImageIcon(path);
                 ml.movieTitle.setText(mv.getNameM());
                 ml.movieImg.setIcon(img);
                 ml.movieFeatures.setText(mv.getRestriction()+"\n"+mv.getDuration());
                 ml.movieDescription.setText(ml.descriptions.get(0));
                 
-                Function fn = functions.get(0);
+                fn = functions.get(0);
                 ml.selF(fn);
                 
                 for(int i=0; i<cnm.functions().size(); i++){
@@ -93,14 +94,14 @@ public class MLController implements ActionListener{
                     
             } else if(ev.getSource() == ml.movie2B){
                 String path = "CinemaLayout\\src\\main\\resources\\funcl\\img2.png";
-                Movie mv = movies.get(1); 
+                mv = movies.get(1); 
                 ImageIcon img = new ImageIcon(path);
                 ml.movieTitle.setText(mv.getNameM());
                 ml.movieImg.setIcon(img);
                 ml.movieFeatures.setText(mv.getRestriction()+"\n"+mv.getDuration());
                 ml.movieDescription.setText(ml.descriptions.get(1));
                 
-                Function fn = functions.get(1);
+                fn = functions.get(1);
                 ml.selF(fn);
                 
                 for(int i=0; i<cnm.functions().size(); i++){
@@ -113,14 +114,14 @@ public class MLController implements ActionListener{
                 
             } else if(ev.getSource() == ml.movie3B){
                 String path = "CinemaLayout\\src\\main\\resources\\funcl\\img3.png";
-                Movie mv = movies.get(2); 
+                mv = movies.get(2); 
                 ImageIcon img = new ImageIcon(path);
                 ml.movieTitle.setText(mv.getNameM());
                 ml.movieImg.setIcon(img);
                 ml.movieFeatures.setText(mv.getRestriction()+"\n"+mv.getDuration());
                 ml.movieDescription.setText(ml.descriptions.get(2));
                 
-                Function fn = functions.get(2);
+                fn = functions.get(2);
                 ml.selF(fn);
                 
                 for(int i=0; i<cnm.functions().size(); i++){
@@ -133,14 +134,14 @@ public class MLController implements ActionListener{
                 
             } else if(ev.getSource() == ml.movie4B){
                 String path = "CinemaLayout\\src\\main\\resources\\funcl\\img4.png";
-                Movie mv = movies.get(3); 
+                mv = movies.get(3); 
                 ImageIcon img = new ImageIcon(path);
                 ml.movieTitle.setText(mv.getNameM());
                 ml.movieImg.setIcon(img);
                 ml.movieFeatures.setText(mv.getRestriction()+"\n"+mv.getDuration());
                 ml.movieDescription.setText(ml.descriptions.get(3));
                 
-                Function fn = functions.get(3);
+                fn = functions.get(3);
                 ml.selF(fn);
                 
                 for(int i=0; i<cnm.functions().size(); i++){
@@ -159,9 +160,7 @@ public class MLController implements ActionListener{
                 ml.MovieDisp.setVisible(false);
                 ml.setVisible(true);
             } else if(ev.getSource() == ml.seatSelB){
-                rs.setFunction(ml.functions);
-                smc.setIsClient(true);
-                smc.setRs(rs);
+                rs.setFunction(fn);
                 st.setVisible(true);
                 ml.MovieDisp.setVisible(false);
             }

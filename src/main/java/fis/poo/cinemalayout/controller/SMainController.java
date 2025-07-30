@@ -21,7 +21,7 @@ import javax.swing.JToggleButton;
  */
 public class SMainController implements ActionListener{
 
-    private Reservation rs;
+    private Function fn; 
     private MainLayout mn; 
     private CashierPanel csp;
     private SeatsSelection st;
@@ -29,89 +29,16 @@ public class SMainController implements ActionListener{
     private boolean isCashier;
     private boolean isClient;
 
-    public SMainController(SeatsSelection st) {
-        this.rs = rs;
-        this.st.aceptB.addActionListener(this);
-        this.st.A1.addActionListener(this);
-        this.st.A2.addActionListener(this);
-        this.st.A3.addActionListener(this);
-        this.st.A4.addActionListener(this);
-        this.st.A5.addActionListener(this);
-        this.st.A6.addActionListener(this);
-        this.st.A7.addActionListener(this);
-        this.st.A8.addActionListener(this);
-        this.st.A9.addActionListener(this);
-        this.st.A10.addActionListener(this);
-        this.st.A11.addActionListener(this);
-        this.st.A12.addActionListener(this);
-        this.st.B1.addActionListener(this);
-        this.st.B2.addActionListener(this);
-        this.st.B3.addActionListener(this);
-        this.st.B4.addActionListener(this);
-        this.st.B5.addActionListener(this);
-        this.st.B6.addActionListener(this);
-        this.st.B7.addActionListener(this);
-        this.st.B8.addActionListener(this);
-        this.st.B9.addActionListener(this);
-        this.st.B10.addActionListener(this);
-        this.st.B11.addActionListener(this);
-        this.st.B12.addActionListener(this);
-        this.st.C1.addActionListener(this);
-        this.st.C2.addActionListener(this);
-        this.st.C3.addActionListener(this);
-        this.st.C4.addActionListener(this);
-        this.st.C5.addActionListener(this);
-        this.st.C6.addActionListener(this);
-        this.st.C7.addActionListener(this);
-        this.st.C8.addActionListener(this);
-        this.st.C9.addActionListener(this);
-        this.st.C10.addActionListener(this);
-        this.st.C11.addActionListener(this);
-        this.st.C12.addActionListener(this);
-        this.st.D1.addActionListener(this);
-        this.st.D2.addActionListener(this);
-        this.st.D3.addActionListener(this);
-        this.st.D4.addActionListener(this);
-        this.st.D5.addActionListener(this);
-        this.st.D6.addActionListener(this);
-        this.st.D7.addActionListener(this);
-        this.st.D8.addActionListener(this);
-        this.st.D9.addActionListener(this);
-        this.st.D10.addActionListener(this);
-        this.st.D11.addActionListener(this);
-        this.st.D12.addActionListener(this);
-        this.st.E1.addActionListener(this);
-        this.st.E2.addActionListener(this);
-        this.st.E3.addActionListener(this);
-        this.st.E4.addActionListener(this);
-        this.st.E5.addActionListener(this);
-        this.st.E6.addActionListener(this);
-        this.st.E7.addActionListener(this);
-        this.st.E8.addActionListener(this);
-        this.st.E9.addActionListener(this);
-        this.st.E10.addActionListener(this);
-        this.st.E11.addActionListener(this);
-        this.st.E12.addActionListener(this);
-        this.st.F1.addActionListener(this);
-        this.st.F2.addActionListener(this);
-        this.st.F3.addActionListener(this);
-        this.st.F4.addActionListener(this);
-        this.st.F5.addActionListener(this);
-        this.st.F6.addActionListener(this);
-        this.st.F7.addActionListener(this);
-        this.st.F8.addActionListener(this);
-        this.st.F9.addActionListener(this);
-        this.st.F10.addActionListener(this);
-        this.st.F11.addActionListener(this);
-        this.st.F12.addActionListener(this);
+    public SMainController(SeatsSelection st, Function fn) {
+        this.fn = fn; 
+        this.st = st;
+        for(int i=0; i<st.seats().length; i++){
+            st.seats()[i].addActionListener(this);
+        }
     }
 
     public ArrayList<JToggleButton> getSel() {
         return sel;
-    }
-
-    public SeatsSelection getSt() {
-        return st;
     }
     public int getCounter() {
         return counter;
@@ -124,9 +51,6 @@ public class SMainController implements ActionListener{
         this.isClient = isClient;
     }
     
-    public void setRs(Reservation rs) {
-        this.rs = rs;
-    }
     
     
     
@@ -287,12 +211,10 @@ public class SMainController implements ActionListener{
             }
             
             if(isCashier){
-                rs.setSeats(counter);
                 csp.setVisible(true);
                 st.setVisible(false);
                 
             }else if(isClient){
-                rs.setSeats(counter);
                 mn.FinalSel.setVisible(true);
                 st.setVisible(false);
             }
