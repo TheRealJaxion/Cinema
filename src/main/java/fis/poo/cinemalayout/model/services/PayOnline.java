@@ -4,15 +4,19 @@
  */
 package fis.poo.cinemalayout.model.services;
 
+import fis.poo.cinemalayout.model.entities.PayGateway;
+import fis.poo.cinemalayout.model.entities.Recipe;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author jordy
  */
 public class PayOnline implements PayOptions{
     private boolean isLogged; 
-    private Recipe total; 
+    private PayGateway total; 
 
-    public void setTotal(Recipe total) {
+    public void setTotal(PayGateway total) {
         this.total = total;
     }
 
@@ -22,15 +26,13 @@ public class PayOnline implements PayOptions{
 
     @Override
     public void payment() {
-        System.out.println(total.setInitialPrice());
-        System.out.println(total.setDiscount());
-        System.out.println(total.setFinalPrice());
+
     }
 
     @Override
     public boolean successPay(boolean check) {
         if(check){
-            System.out.println("Thanks for preffer us!");
+            JOptionPane.showMessageDialog(null, "Thanks for preffer us! ", "Policinema", JOptionPane.OK_OPTION);            
             return true; 
         }else{
             return false; 

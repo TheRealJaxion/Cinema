@@ -6,7 +6,6 @@ package fis.poo.cinemalayout.model.services;
 
 import fis.poo.cinemalayout.model.entities.Cashier;
 import fis.poo.cinemalayout.model.entities.Client;
-import java.util.ArrayList;
 
 /**
  *
@@ -14,13 +13,30 @@ import java.util.ArrayList;
  */
 public class Verificator {
     private PersonManager pm;
+    private int positionc; 
+    private int posCh;
+    private boolean isLog = false;
+
+    public boolean isIsLog() {
+        return isLog;
+    }
+
+    public int getPosition() {
+        return positionc;
+    }
+
+    public int getPosCh() {
+        return posCh;
+    }
     
     public boolean verifier(String select, String username, String password){
         switch(select){
             case "client"->{
                 for(int i=0; i<pm.clients().size(); i++){
                     Client client = pm.clients().get(i);
-                    if(username == client.getUsername() && password == client.getPassword()){
+                    if((username == null ? client.getUsername() == null : username.equals(client.getUsername())) && (password == null ? client.getPassword() == null : password.equals(client.getPassword()))){
+                        isLog = true; 
+                        positionc = i; 
                         return true;
                     }
                 }
@@ -29,7 +45,8 @@ public class Verificator {
             case "cashier"->{
                 for(int i=0; i<pm.clients().size(); i++){
                     Cashier cashier = pm.cashiers().get(i);
-                    if(username == cashier.getUsername() && password == cashier.getPassword()){
+                    if((username == null ? cashier.getUsername() == null : username.equals(cashier.getUsername())) && (password == null ? cashier.getPassword() == null : password.equals(cashier.getPassword()))){
+                        posCh = i;
                         return true;
                     }
                 }

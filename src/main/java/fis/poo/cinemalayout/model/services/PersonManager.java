@@ -22,9 +22,9 @@ public class PersonManager {
     String fileNameCl = "clientReg.txt";
     String fileNameCs = "cahsierReg.txt";    
     
-    public void registerClient(String username, String namesP, String lastnamesP, String password, String email, int age){
+    public void registerClient(String username, String namesP, String lastnamesP, String password, String email, int id){
         File file = new File(fileNameCl);   
-        Client client = new Client(username, namesP, lastnamesP, password, age, email); 
+        Client client = new Client(username, namesP, lastnamesP, password, id, email); 
         String content = client.toCSV();        
             try{
             //if the file doesn't exist, it will be generated. 

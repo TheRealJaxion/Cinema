@@ -4,7 +4,7 @@
  */
 package fis.poo.cinemalayout.model.services;
 
-import fis.poo.cinemalayout.controller.SMainController;
+import fis.poo.cinemalayout.controller.SeatController;
 import fis.poo.cinemalayout.model.entities.Function;
 import fis.poo.cinemalayout.model.entities.Reservation;
 import fis.poo.cinemalayout.view.SeatsSelection;
@@ -15,11 +15,11 @@ import fis.poo.cinemalayout.view.SeatsSelection;
  */
 public abstract class MarkReservation {
     protected Function fn;
-    protected SMainController smc;
+    protected SeatController smc;
     protected SeatsSelection sl; 
     protected Reservation rs;
 
-    public MarkReservation(Function fn, SMainController smc, SeatsSelection sl, Reservation rs) {
+    public MarkReservation(Function fn, SeatController smc, SeatsSelection sl, Reservation rs) {
         this.fn = fn;
         this.smc = smc;
         this.sl = sl;

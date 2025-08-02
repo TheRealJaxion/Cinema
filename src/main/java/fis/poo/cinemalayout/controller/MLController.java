@@ -4,10 +4,12 @@
  */
 package fis.poo.cinemalayout.controller;
 
+import fis.poo.cinemalayout.model.entities.Client;
 import fis.poo.cinemalayout.model.entities.Function;
 import fis.poo.cinemalayout.model.entities.Movie;
 import fis.poo.cinemalayout.model.entities.Reservation;
 import fis.poo.cinemalayout.model.services.CinemaManager;
+import fis.poo.cinemalayout.model.entities.Recipe;
 import fis.poo.cinemalayout.view.Loginoptions;
 import fis.poo.cinemalayout.view.MainLayout;
 import fis.poo.cinemalayout.view.SeatsSelection;
@@ -17,6 +19,7 @@ import java.io.File;
 import java.util.ArrayList;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -26,21 +29,23 @@ public class MLController implements ActionListener{
     
     private MainLayout ml;
     private Loginoptions logn; 
+    private boolean isLoged = false; 
     private ArrayList<Function> functions; 
+    private Recipe rcp; 
     private Reservation rs;
     private Movie mv;
+    private Client cln; 
     private Function fn; 
     private ArrayList<Movie> movies;
     private CinemaManager cnm;
     private SeatsSelection st; 
-    private SMainController smc;
-    
-    public MLController(MainLayout ml, SeatsSelection st) {
-        this.ml = ml;
-        
-    }    
+    private SeatController smc;
 
-    public MLController(MainLayout ml, Loginoptions logn, CinemaManager cnm, SeatsSelection st, SMainController smc) {
+    public void setIsLoged(boolean isLoged) {
+        this.isLoged = isLoged;
+    }
+
+    public MLController(MainLayout ml, Loginoptions logn, CinemaManager cnm, SeatsSelection st, SeatController smc) {
         this.ml = ml;
         this.logn = logn;
         this.cnm = cnm;
@@ -61,8 +66,10 @@ public class MLController implements ActionListener{
         this.ml.movie4B.addActionListener(this);
         this.ml.gbbM.addActionListener(this);
     }
-    
-    
+
+    public void setCln(Client cln) {
+        this.cln = cln;
+    }
     
     @Override
     public void actionPerformed(ActionEvent ev) {
@@ -70,7 +77,7 @@ public class MLController implements ActionListener{
         movies = cnm.movies();
         functions = cnm.functions();
         
-        if(ml.isAct(ml)){
+        if(ml.isActive()){
             
             if(ev.getSource() == ml.movie1B){
                 String path = "CinemaLayout\\src\\main\\resources\\funcl\\img1.png";
@@ -160,10 +167,22 @@ public class MLController implements ActionListener{
                 ml.MovieDisp.setVisible(false);
                 ml.setVisible(true);
             } else if(ev.getSource() == ml.seatSelB){
-                rs.setFunction(fn);
-                st.setVisible(true);
-                ml.MovieDisp.setVisible(false);
+                
+                if(isLoged){
+                    rcp.setClientName(cln.getNamesP());
+                    rcp.setClientId(Integer.toString(cln.getId()));
+                    rs.setFunction(fn);
+                    st.setVisible(true);
+                    ml.MovieDisp.setVisible(false);
+                } else{
+                    JOptionPane.showMessageDialog(null, "You must have been logged in first.", "Policinema", JOptionPane.OK_OPTION);
+                }
             }
+        }
+        
+        if(ml.FinalSel.isActive()){
+            rcp.setRes(rs);
+            ml.displayFS.setText(rcp.displayRecipe());
         }
     }  
 }

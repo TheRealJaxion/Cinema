@@ -19,7 +19,7 @@ import javax.swing.JToggleButton;
  *
  * @author jordy
  */
-public class SMainController implements ActionListener{
+public class SeatController implements ActionListener{
 
     private Function fn; 
     private MainLayout mn; 
@@ -29,7 +29,7 @@ public class SMainController implements ActionListener{
     private boolean isCashier;
     private boolean isClient;
 
-    public SMainController(SeatsSelection st, Function fn) {
+    public SeatController(SeatsSelection st, Function fn) {
         this.fn = fn; 
         this.st = st;
         for(int i=0; i<st.seats().length; i++){

@@ -13,6 +13,7 @@ public class Function {
     private String movieName;
     private int movieDuration;
     private String restriction;
+    private String functionId;
     private String schedule; 
     private char hall;
     private int nHall;
@@ -25,6 +26,7 @@ public class Function {
         this.schedule = schedule;
         this.hall = hall;
         this.nHall = nHall;
+        this.functionId = movieName + schedule + hall;
     }
 
     public Function(String movieName, int movieDuration, String schedule, char hall, int nHall) {
@@ -34,6 +36,10 @@ public class Function {
         this.hall = hall;
         this.nHall = nHall; 
         this.restriction = restriction;
+    }
+
+    public String getFunctionId() {
+        return functionId;
     }
     
     public Movie getMovieD() {
@@ -102,7 +108,7 @@ public class Function {
     
     
     public String toCSV() {
-        return movieName+","+Integer.toString(movieDuration)+","+schedule+","+hall+","+Integer.toString(nHall)+","+restriction;
+        return functionId+","+movieName+","+Integer.toString(movieDuration)+","+schedule+","+hall+","+Integer.toString(nHall)+","+restriction;
     }    
     
 }

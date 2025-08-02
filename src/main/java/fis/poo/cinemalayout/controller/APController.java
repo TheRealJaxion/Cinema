@@ -7,12 +7,11 @@ package fis.poo.cinemalayout.controller;
 import fis.poo.cinemalayout.model.entities.Cashier;
 import fis.poo.cinemalayout.model.entities.Function;
 import fis.poo.cinemalayout.model.entities.Movie;
-import fis.poo.cinemalayout.model.entities.Reservation;
 import fis.poo.cinemalayout.model.services.CinemaManager;
 import fis.poo.cinemalayout.model.services.ImageManager;
 import fis.poo.cinemalayout.model.services.PersonManager;
 import fis.poo.cinemalayout.model.services.PricePolicy;
-import fis.poo.cinemalayout.model.services.Recipe;
+import fis.poo.cinemalayout.model.entities.Recipe;
 import fis.poo.cinemalayout.model.services.Verificator;
 import fis.poo.cinemalayout.view.AdminPanel;
 import fis.poo.cinemalayout.view.CashierPanel;
@@ -21,8 +20,6 @@ import fis.poo.cinemalayout.view.MainLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -35,6 +32,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 public class APController implements ActionListener{
     
     private AdminPanel adm;
+    private CHController ch; 
     private HiddenView hdn;
     private MainLayout mnl;
     private CashierPanel csh;
@@ -108,8 +106,15 @@ public class APController implements ActionListener{
         
         if(hdn.isActive()){
             if(ev.getSource() == hdn.hiddenAdm){
-                adm.setVisible(true);
-                hdn.setVisible(false);
+                String pass = JOptionPane.showInputDialog(null, "Type the secret code.", "Restringed Acces");
+                if(pass.equals("admntest3")){
+                    JOptionPane.showMessageDialog(null, "Access Guaranted!", "Policinema", JOptionPane.OK_OPTION);
+                    hdn.setVisible(false);
+                    adm.setVisible(true);
+                } else{
+                    JOptionPane.showMessageDialog(null, "Incorrect code!", "Alert!", JOptionPane.ERROR);
+                }
+                
             } else if(ev.getSource() == hdn.hiddenCash){
                 hdn.loginCs.setVisible(true);
             }
@@ -119,8 +124,13 @@ public class APController implements ActionListener{
             String username = hdn.cshT.getText();
             String password = new String(hdn.pwF.getPassword()); 
             if(vf.verifier("cashier", username, password)){
+                cshr = pm.cashiers().get(vf.getPosCh());
                 hdn.setVisible(false);
                 hdn.loginCs.setVisible(false);
+                csh.displayC.setText(cshr.getNamesP());
+                for(Function fn : cn.functions()){
+                    csh.movieCB1.addItem(fn.getFunctionId());
+                }
                 csh.setVisible(true);
             } else{
                 hdn.alertM();
@@ -277,16 +287,13 @@ public class APController implements ActionListener{
                 String movSel = (String) adm.movieSelect.getSelectedItem();
                 for(int i=0; i<cn.movies().size(); i++){
                     Movie mv = cn.movies().get(i); 
-                    if(mv.getNameM() == movSel){
+                    if(mv.getNameM().equals(movSel)){
                         cn.setFunction(mv, (String) adm.scheduleSel.getSelectedItem(), adm.selH(adm.hallSet), (Integer) adm.numH.getSelectedItem());
                     }
                 }
             } else if(ev.getSource() == adm.cancelB){
                 adm.setV(adm, adm.functionGenerator);
-            }
-            
-        }
-        
+            }   
+        }   
     }
-    
 }

@@ -12,14 +12,14 @@ import java.util.ArrayList;
  */
 public class Reservation {
     private Function function;
-    private ArrayList <Integer> seats = new ArrayList<>(); 
+    private int seats; 
     private String promo; 
 
     public Function getFunction() {
         return function;
     }
 
-    public ArrayList<Integer> getSeats() {
+    public int getSeats() {
         return seats;
     }
 
@@ -32,7 +32,7 @@ public class Reservation {
     }
 
     public void setSeats(int seat) {
-        seats.add(seat); 
+        seats = seat; 
     }
 
     public void setProms(String promo) {

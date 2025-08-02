@@ -4,6 +4,8 @@
 
 package fis.poo.cinemalayout;
 
+import fis.poo.cinemalayout.view.SeatsSelection;
+
 /**
  *
  * @author jordy
@@ -11,6 +13,6 @@ package fis.poo.cinemalayout;
 public class CinemaLayout {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        
     }
 }

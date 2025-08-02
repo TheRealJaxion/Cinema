@@ -23,8 +23,12 @@ public class Client extends Person {
         this.email = email;
     }
 
-    public void setAge(int id) {
+    public void setId(int id) {
         this.id = id;
+    }
+
+    public int getId() {
+        return id;
     }
 
     @Override
