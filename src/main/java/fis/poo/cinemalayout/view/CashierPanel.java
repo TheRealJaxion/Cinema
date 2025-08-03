@@ -1,5 +1,7 @@
 package fis.poo.cinemalayout.view;
 
+import javax.swing.JButton;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -20,7 +22,21 @@ public class CashierPanel extends javax.swing.JFrame {
     public CashierPanel() {
         initComponents();
     }
-
+    
+    public JButton[] buttons(){
+        JButton[] btn = {seatSB, addB, cancelB, payB, logOut};
+        return btn;
+    }
+    
+    public boolean isEmpty(){
+        return clientID.getText().isEmpty() && clientNames.getText().isEmpty();
+    }
+    
+    public void clear(){
+        clientID.setText("");
+        clientNames.setText("");
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -47,7 +63,7 @@ public class CashierPanel extends javax.swing.JFrame {
         cancelB = new javax.swing.JButton();
         seatSB = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        movieCB1 = new javax.swing.JComboBox<>();
+        functionCB = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(102, 0, 0));
@@ -93,6 +109,12 @@ public class CashierPanel extends javax.swing.JFrame {
 
         payB.setText("Payment");
 
+        clientID.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                clientIDKeyTyped(evt);
+            }
+        });
+
         jLabel5.setBackground(new java.awt.Color(255, 255, 255));
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Client ID:");
@@ -110,12 +132,6 @@ public class CashierPanel extends javax.swing.JFrame {
         jLabel2.setText("Function Selection:");
         jLabel2.setToolTipText("");
 
-        movieCB1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                movieCB1ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout cashierPanelLayout = new javax.swing.GroupLayout(cashierPanel);
         cashierPanel.setLayout(cashierPanelLayout);
         cashierPanelLayout.setHorizontalGroup(
@@ -125,7 +141,7 @@ public class CashierPanel extends javax.swing.JFrame {
                 .addGroup(cashierPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(clientID)
                     .addComponent(clientNames)
-                    .addComponent(movieCB1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(functionCB, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(cashierPanelLayout.createSequentialGroup()
                         .addGroup(cashierPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel6)
@@ -155,7 +171,7 @@ public class CashierPanel extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(movieCB1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(functionCB, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, Short.MAX_VALUE)
                 .addComponent(seatSB, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -218,9 +234,13 @@ public class CashierPanel extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void movieCB1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_movieCB1ActionPerformed
+    private void clientIDKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_clientIDKeyTyped
         // TODO add your handling code here:
-    }//GEN-LAST:event_movieCB1ActionPerformed
+        char c = evt.getKeyChar();
+        if(!Character.isDigit(c)){
+            evt.consume();
+        }
+    }//GEN-LAST:event_clientIDKeyTyped
 
     /**
      * @param args the command line arguments
@@ -254,6 +274,7 @@ public class CashierPanel extends javax.swing.JFrame {
     public javax.swing.JTextField clientID;
     public javax.swing.JTextField clientNames;
     public javax.swing.JTextField displayC;
+    public javax.swing.JComboBox<String> functionCB;
     public javax.swing.JTextArea gDisplay;
     public javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel5;
@@ -263,7 +284,6 @@ public class CashierPanel extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     public javax.swing.JButton logOut;
-    public javax.swing.JComboBox<String> movieCB1;
     public javax.swing.JButton payB;
     public javax.swing.JButton seatSB;
     // End of variables declaration//GEN-END:variables

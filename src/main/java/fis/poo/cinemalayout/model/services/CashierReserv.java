@@ -20,12 +20,15 @@ public class CashierReserv extends MarkReservation{
         smc.setIsCashier(true);
         smc.setIsClient(false);
     }
-    
-    
+
+    public Function getFn() {
+        return fn;
+    }
     
     @Override
     public void markSeats() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        rs.setSeats(smc.getCounter());
+        smc.setCounter(0);
     }
     
 }

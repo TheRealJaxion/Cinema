@@ -129,7 +129,7 @@ public class APController implements ActionListener{
                 hdn.loginCs.setVisible(false);
                 csh.displayC.setText(cshr.getNamesP());
                 for(Function fn : cn.functions()){
-                    csh.movieCB1.addItem(fn.getFunctionId());
+                    csh.functionCB.addItem(fn.getFunctionId());
                 }
                 csh.setVisible(true);
             } else{

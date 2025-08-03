@@ -14,7 +14,7 @@ import fis.poo.cinemalayout.view.SeatsSelection;
  * @author jordy
  */
 public class ClientReserv extends MarkReservation{
-
+    
     public ClientReserv(Function fn, SeatController smc, SeatsSelection sl, Reservation rs) {
         super(fn, smc, sl, rs);
         smc.setIsClient(true);
@@ -23,7 +23,8 @@ public class ClientReserv extends MarkReservation{
 
     @Override
     public void markSeats() {
-        
+        rs.setSeats(smc.getCounter());
+        smc.setCounter(0);
     }
     
     

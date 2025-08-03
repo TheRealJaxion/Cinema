@@ -12,7 +12,7 @@ import fis.poo.cinemalayout.model.services.PricePolicy;
  */
 public class Recipe {
     private Reservation res;
-    private PricePolicy prp; 
+    private PricePolicy prp = new PricePolicy(); 
     private PayGateway pgt;
     private String clientName; 
     private String clientId; 

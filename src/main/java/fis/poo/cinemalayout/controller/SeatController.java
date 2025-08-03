@@ -5,14 +5,12 @@
 package fis.poo.cinemalayout.controller;
 
 import fis.poo.cinemalayout.model.entities.Function;
-import fis.poo.cinemalayout.model.entities.Reservation;
 import fis.poo.cinemalayout.view.CashierPanel;
 import fis.poo.cinemalayout.view.MainLayout;
 import fis.poo.cinemalayout.view.SeatsSelection;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import javax.swing.JButton;
 import javax.swing.JToggleButton;
 
 /**
@@ -29,14 +27,21 @@ public class SeatController implements ActionListener{
     private boolean isCashier;
     private boolean isClient;
 
-    public SeatController(SeatsSelection st, Function fn) {
-        this.fn = fn; 
+    public SeatController(SeatsSelection st) {
         this.st = st;
         for(int i=0; i<st.seats().length; i++){
             st.seats()[i].addActionListener(this);
         }
     }
+    
+    public void setFn(Function fn) {
+        this.fn = fn;
+    }
 
+    public void setCounter(int counter) {
+        this.counter = counter;
+    }
+    
     public ArrayList<JToggleButton> getSel() {
         return sel;
     }
@@ -50,9 +55,6 @@ public class SeatController implements ActionListener{
     public void setIsClient(boolean isClient) {
         this.isClient = isClient;
     }
-    
-    
-    
     
     private ArrayList<JToggleButton> sel;
     
@@ -205,11 +207,7 @@ public class SeatController implements ActionListener{
         }
             
         if(ev.getSource() == st.aceptB){
-            
-            for(JToggleButton button : sel){
-                button.setEnabled(false);
-            }
-            
+                        
             if(isCashier){
                 csp.setVisible(true);
                 st.setVisible(false);
@@ -240,6 +238,16 @@ public class SeatController implements ActionListener{
         counter++;
         st.show(counter);
         sel.add(b);
+    }
+    
+    public void lock(){
+        for(JToggleButton button : sel){
+            button.setEnabled(false);
+        }
+    }
+    
+    public void clean(){
+        sel.clear();
     }
     
 }
