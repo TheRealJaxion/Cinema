@@ -20,6 +20,7 @@ import fis.poo.cinemalayout.view.MainLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -29,48 +30,44 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  *
  * @author jordy
  */
-public class APController implements ActionListener{
-    
+public class APController{
+/*    
     private AdminPanel adm;
     private CHController ch; 
     private HiddenView hdn;
     private MainLayout mnl;
     private CashierPanel csh;
-    private Movie movie;
     private Cashier cshr;
-    private PricePolicy prp;
+    private PricePolicy prp = new PricePolicy();
     private Recipe rp;
-    private ImageManager img;
+    private ImageManager img = new ImageManager();
     private Function fn;
-    private PersonManager pm;
-    private CinemaManager cn;
-    private Verificator vf;
-    
+    private PersonManager pm = new PersonManager();
+    private CinemaManager cn = new CinemaManager();
+    private Verificator vf = new Verificator();
 
-    public APController(MainLayout mnl, AdminPanel adm, CashierPanel csh, HiddenView hdn, PricePolicy prp, PersonManager pm, Movie movie, Verificator vf) {
-        this.mnl = mnl;
+    public APController(AdminPanel adm, CHController ch, HiddenView hdn, MainLayout mnl, CashierPanel csh, Cashier cshr, Function fn, Recipe rp) {
         this.adm = adm;
-        this.vf = vf;
+        this.ch = ch;
+        this.hdn = hdn;
+        this.mnl = mnl;
         this.csh = csh;
-        this.movie = movie;
-        this.prp = prp;
-        this.pm = pm;
-        this.hdn = hdn; 
-        this.adm.showInfo.addActionListener(this);
-        this.adm.nCashier.addActionListener(this);
-        this.adm.setMovies.addActionListener(this);
-        this.adm.setPr.addActionListener(this);
-        this.adm.logout.addActionListener(this);    
-        this.adm.gbB.addActionListener(this);
+        this.cshr = cshr;
+        this.fn = fn;
+        this.rp = rp;
+        for(JButton btns : adm.buttons()){
+            btns.addActionListener(this);
+        }
         this.adm.model.addColumn("Name");
         this.adm.model.addColumn("Duration");
-        this.adm.model.addColumn("Restriction");
-        adm.setVisible(true);
+        this.adm.model.addColumn("Restriction");          
     }
+    
+    
     
     @Override
     public void actionPerformed(ActionEvent ev) {
-        if(adm.isAct(adm)){
+        if(adm.isActive()){
             if(ev.getSource() == adm.showInfo){
                 for(int i=0; i<cn.movies().size(); i++){
                     Movie movie = cn.movies().get(i);
@@ -97,7 +94,7 @@ public class APController implements ActionListener{
                 adm.priceSI.setText(Double.toString(prp.getSeatPriceI()));
                 adm.taxT.setText(Double.toString(prp.getTaxPer()));
                 
-                adm.setV(adm.setPrices, adm);
+                adm.setV(adm.pricePanel, adm);
             } else if(ev.getSource() == adm.logout){
                 adm.setVisible(false);
                 hdn.setVisible(true);
@@ -106,7 +103,7 @@ public class APController implements ActionListener{
         
         if(hdn.isActive()){
             if(ev.getSource() == hdn.hiddenAdm){
-                String pass = JOptionPane.showInputDialog(null, "Type the secret code.", "Restringed Acces");
+                String pass = JOptionPane.showInputDialog(hdn, "Type the secret code.", "Restringed Acces");
                 if(pass.equals("admntest3")){
                     JOptionPane.showMessageDialog(null, "Access Guaranted!", "Policinema", JOptionPane.OK_OPTION);
                     hdn.setVisible(false);
@@ -120,7 +117,7 @@ public class APController implements ActionListener{
             }
         }
         
-        if(ev.getSource() == hdn.lognC){
+        if(ev.getSource() == hdn.loginCs){
             String username = hdn.cshT.getText();
             String password = new String(hdn.pwF.getPassword()); 
             if(vf.verifier("cashier", username, password)){
@@ -128,8 +125,8 @@ public class APController implements ActionListener{
                 hdn.setVisible(false);
                 hdn.loginCs.setVisible(false);
                 csh.displayC.setText(cshr.getNamesP());
-                for(Function fn : cn.functions()){
-                    csh.functionCB.addItem(fn.getFunctionId());
+                for(Function fns : cn.functions()){
+                    csh.functionCB.addItem(fns.getFunctionId());
                 }
                 csh.setVisible(true);
             } else{
@@ -158,9 +155,8 @@ public class APController implements ActionListener{
            }
         }
         
-        if(adm.setPrices.isActive()){
+        if(adm.pricePanel.isActive()){
             if(ev.getSource() == adm.svp1){
-                
                 if(adm.isEmpt(adm.pprom1T)){
                     adm.alertM(adm.pr());
                 } else{
@@ -220,21 +216,14 @@ public class APController implements ActionListener{
                     adm.refresh(adm.pr());
                 }    
             } else if(ev.getSource()== adm.gbpB){
-                adm.setPrices.setVisible(false);
+                adm.pricePanel.setVisible(false);
                 adm.setVisible(true);
+                adm.setLocationRelativeTo(null);
             }   
         }
         
         if(adm.movieSet.isActive()){
-            if(ev.getSource()== adm.saveB){
-                if(adm.isEmp(adm.mvs())){
-                    adm.alertM(adm.mvs());
-                } else{
-                    cn.setMovies(adm.getTI(adm.mN), Integer.parseInt(adm.getTI(adm.mD)), (String) adm.ageR.getSelectedItem());
-                    mnl.addDes(adm.getTI(adm.mvdesc));
-                    adm.refresh(adm.mvs());
-                }
-            }else if(ev.getSource() == adm.selimgM){
+            if(ev.getSource() == adm.selimgM){
                 JFileChooser fc = new JFileChooser(); 
                 fc.setDialogTitle("Save Imgage As");
                 
@@ -266,15 +255,11 @@ public class APController implements ActionListener{
                 } else{
                     cn.setMovies(adm.getTI(adm.mN), Integer.parseInt(adm.getTI(adm.mD)), (String) adm.ageR.getSelectedItem());
                     mnl.addDes(adm.getTI(adm.mvdesc));
+                    adm.mvTitle.setText(adm.getTI(adm.mN));
                     adm.refresh(adm.mvs());
-                    
-                    for(int i=0; i<cn.movies().size(); i++){
-                        Movie mv = cn.movies().get(i);
-                        adm.movieSelect.insertItemAt(mv.getNameM(), i);
-                    }
-                    
                     adm.movieSet.setVisible(false);
                     adm.functionGenerator.setVisible(true);
+                    adm.functionGenerator.setLocationRelativeTo(null);
                 }                
             } else if(ev.getSource() == adm.gbM){
                 adm.refresh(adm.mvs());
@@ -284,7 +269,7 @@ public class APController implements ActionListener{
         
         if(adm.functionGenerator.isActive()){
             if(ev.getSource() == adm.gnrtF){
-                String movSel = (String) adm.movieSelect.getSelectedItem();
+                String movSel = adm.getTI(adm.mvTitle);
                 for(int i=0; i<cn.movies().size(); i++){
                     Movie mv = cn.movies().get(i); 
                     if(mv.getNameM().equals(movSel)){
@@ -295,5 +280,5 @@ public class APController implements ActionListener{
                 adm.setV(adm, adm.functionGenerator);
             }   
         }   
-    }
+    }*/
 }

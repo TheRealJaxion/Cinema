@@ -12,12 +12,20 @@ import fis.poo.cinemalayout.model.services.PricePolicy;
  */
 public class Recipe {
     private Reservation res;
-    private PricePolicy prp = new PricePolicy(); 
+    private PricePolicy prp;
     private PayGateway pgt;
     private String clientName; 
     private String clientId; 
-    private String promo = res.getProms(); 
+    private String promo;
 
+    public Recipe(Reservation res) {
+        this.res = res;
+        promo = res.getProms();
+        prp = new PricePolicy(); 
+    }
+
+    
+    
     public void setClientName(String clientName) {
         this.clientName = clientName;
     }

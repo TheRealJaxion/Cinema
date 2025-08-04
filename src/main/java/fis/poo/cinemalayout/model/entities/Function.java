@@ -31,6 +31,9 @@ public class Function {
         this.functionId = movieName+"||"+ schedule +"||"+ hall +"||"+ Integer.toString(nHall);
     }
 
+    public Function() {
+    }
+
     public Function(String movieName, int movieDuration, String schedule, char hall, int nHall) {
         this.movieName = movieName;
         this.movieDuration = movieDuration;
@@ -111,7 +114,7 @@ public class Function {
     
     
     public String toCSV() {
-        return functionId+","+restriction;
+        return " "+functionId+","+restriction;
     }    
     
 }

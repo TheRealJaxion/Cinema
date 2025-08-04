@@ -30,35 +30,48 @@ public class MLController implements ActionListener{
     private MainLayout ml;
     private Loginoptions logn; 
     private boolean isLoged = false; 
-    private ArrayList<Function> functions; 
+    private ArrayList<Function> functions = new ArrayList<>(); 
     private Recipe rcp; 
     private Reservation rs;
     private Movie mv;
     private Client cln; 
     private Function fn; 
-    private ArrayList<Movie> movies;
-    private CinemaManager cnm;
+    private ArrayList<Movie> movies = new ArrayList<>();
+    private CinemaManager cnm = new CinemaManager();
     private SeatsSelection st; 
     private SeatController smc;
 
     public void setIsLoged(boolean isLoged) {
         this.isLoged = isLoged;
     }
-
-    public MLController(MainLayout ml, Loginoptions logn, CinemaManager cnm, SeatsSelection st, SeatController smc) {
+    
+    
+    public MLController(MainLayout ml, Loginoptions logn, SeatsSelection st, SeatController smc, ArrayList<Movie> movies) {
         this.ml = ml;
         this.logn = logn;
-        this.cnm = cnm;
         this.st = st;
+        this.movies = movies; 
         this.smc = smc;
-        this.ml.movieT1.setText(functions.get(0).getMovieD().getNameM());
-        this.ml.movieT2.setText(functions.get(1).getMovieD().getNameM());
-        this.ml.movieT3.setText(functions.get(2).getMovieD().getNameM());
-        this.ml.movieT4.setText(functions.get(3).getMovieD().getNameM());
-        this.ml.movie1B.setIcon((Icon) new File("CinemaLayout\\src\\main\\resources\\mainl\\img1.png"));
-        this.ml.movie2B.setIcon((Icon) new File("CinemaLayout\\src\\main\\resources\\mainl\\img2.png"));
-        this.ml.movie3B.setIcon((Icon) new File("CinemaLayout\\src\\main\\resources\\mainl\\img3.png"));
-        this.ml.movie4B.setIcon((Icon) new File("CinemaLayout\\src\\main\\resources\\mainl\\img4.png"));
+        if(!cnm.movies().isEmpty()){
+            this.ml.movieT1.setText(movies.get(0).getNameM());
+            this.ml.movieT2.setText(movies.get(1).getNameM());
+            this.ml.movieT3.setText(movies.get(2).getNameM());
+            this.ml.movieT4.setText(movies.get(3).getNameM());
+            File im1 = new File("C:\\Users\\jordy\\Documents\\NetBeansProjects\\CinemaLayout\\src\\main\\resources\\mainl\\img1.png");
+            File im2 = new File("C:\\Users\\jordy\\Documents\\NetBeansProjects\\CinemaLayout\\src\\main\\resources\\mainl\\img2.png");
+            File im3 = new File("C:\\Users\\jordy\\Documents\\NetBeansProjects\\CinemaLayout\\src\\main\\resources\\mainl\\img3.png");
+            File im4 = new File("C:\\Users\\jordy\\Documents\\NetBeansProjects\\CinemaLayout\\src\\main\\resources\\mainl\\img4.png");
+            
+            ImageIcon ic1 = new ImageIcon(im1.getAbsolutePath());
+            ImageIcon ic2 = new ImageIcon(im2.getAbsolutePath());
+            ImageIcon ic3 = new ImageIcon(im3.getAbsolutePath());
+            ImageIcon ic4 = new ImageIcon(im4.getAbsolutePath());
+            
+            this.ml.movie1B.setIcon(ic1);
+            this.ml.movie2B.setIcon(ic2);
+            this.ml.movie3B.setIcon(ic3);
+            this.ml.movie4B.setIcon(ic4);
+        }
         this.ml.signB.addActionListener(this); 
         this.ml.movie1B.addActionListener(this);
         this.ml.movie2B.addActionListener(this);
@@ -86,7 +99,7 @@ public class MLController implements ActionListener{
                 ml.movieTitle.setText(mv.getNameM());
                 ml.movieImg.setIcon(img);
                 ml.movieFeatures.setText(mv.getRestriction()+"\n"+mv.getDuration());
-                ml.movieDescription.setText(ml.descriptions.get(0));
+                ml.movieDescription.setText(cnm.descriptions().get(0));
                 
                 fn = functions.get(0);
                 ml.selF(fn);
@@ -159,6 +172,10 @@ public class MLController implements ActionListener{
                 
                 ml.setVisible(false);
                 ml.MovieDisp.setVisible(true);
+            } else if(ev.getSource() == ml.signB){
+                ml.setVisible(false);
+                logn.setVisible(true);
+                logn.setLocationRelativeTo(null);
             }
         }
         

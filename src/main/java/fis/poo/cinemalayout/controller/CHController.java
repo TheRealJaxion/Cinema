@@ -24,12 +24,12 @@ import javax.swing.JOptionPane;
  */
 public class CHController implements ActionListener{
     private CinemaManager cnm;
-    private Reservation rsr;
+    private Reservation rsr = new Reservation();
     private Recipe rcp;
     private AdminPanel adm;
     private SeatsSelection stl;
     private CashierReserv chr;
-    private SeatController stc;
+    private SeatController stc; 
     private APController ap;
     private CashierPanel cshp;
 

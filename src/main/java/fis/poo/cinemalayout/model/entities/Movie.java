@@ -60,6 +60,6 @@ public class Movie {
     }
     
     public String toCSV(){
-        return nameM +","+ Integer.toString(duration) +","+ restriction;
+        return " "+nameM +","+ Integer.toString(duration) +","+ restriction;
     }
 }

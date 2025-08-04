@@ -30,14 +30,11 @@ public class LController implements ActionListener{
     private Client client; 
     private String secret = "RR1717160533";
     
-    public LController(Loginoptions lgn, Verificator vrf, CinemaManager cnm, PersonManager prm, AdminPanel adm, MainLayout ml, MLController mlc) {
+    public LController(Loginoptions lgn, AdminPanel adm, MainLayout ml, MLController mlc) {
         this.lgn = lgn;
         this.mlc = mlc; 
         this.ml = ml; 
         this.adm = adm;
-        this.vrf = vrf;
-        this.cnm = cnm;
-        this.prm = prm;
         lgn.signB.addActionListener(this);
         lgn.lognB.addActionListener(this);
         lgn.cnclB.addActionListener(this);
@@ -54,7 +51,7 @@ public class LController implements ActionListener{
                 lgn.setVisible(false);
                 lgn.signinF.setVisible(true);
             } else if(sr==lgn.lognB){
-                lgn.mainIn.setVisible(true);
+                lgn.maiIn.setVisible(true);
             } else if(sr==lgn.hiddenB){
                 String pss = JOptionPane.showInputDialog(null, "Enter the secret Password:"); 
                 if(pss.equals(secret)){
@@ -82,7 +79,7 @@ public class LController implements ActionListener{
             }
         }
         
-        if(lgn.mainIn.isEnabled()){
+        if(lgn.maiIn.isEnabled()){
             if(sr == lgn.loginB){
                 String uN = lgn.userIn.getText();
                 String pW = lgn.psw.getText();
@@ -90,7 +87,7 @@ public class LController implements ActionListener{
                     JOptionPane.showMessageDialog(null, "Welcome Back!", "Policinema", JOptionPane.OK_OPTION);
                     mlc.setCln(prm.clients().get(vrf.getPosition())); 
                     mlc.setIsLoged(true);
-                    lgn.mainIn.setVisible(false);
+                    lgn.maiIn.setVisible(false);
                     lgn.setVisible(false);
                     ml.setVisible(true);
                 } else{

@@ -19,9 +19,12 @@ import javax.swing.JOptionPane;
  * @author jordy
  */
 public class CinemaManager {
+
     String fileNameM = "movieReg.txt";
+    String fileNameD = "movieDesc.txt";
     String fileNameF = "functionReg.txt";
     File fileM = new File(fileNameM);
+    File fileD = new File(fileNameD);
     File fileF = new File(fileNameF);    
     
     public void setMovies(String nameM, int duration, String restriction){
@@ -35,7 +38,26 @@ public class CinemaManager {
             FileWriter fw = new FileWriter(fileM.getAbsoluteFile(), true); 
             fw.write(content);
             fw.close(); 
+            JOptionPane.showConfirmDialog(null, "Movie saved succesfully!", "Policinema", JOptionPane.DEFAULT_OPTION);
         }catch(IOException e){
+            JOptionPane.showConfirmDialog(null,"There was an exception at FileWritter.(cn.fw.mv)", "WARNING!", JOptionPane.ERROR_MESSAGE);
+            e.printStackTrace(); 
+        } 
+    }
+    
+    public void setDesc(String description){
+        String content = " "+description + "||"; 
+        
+        try{
+            if(fileD.exists()){
+                fileD.createNewFile();   
+            }
+            FileWriter fw = new FileWriter(fileD.getAbsoluteFile(), true); 
+            fw.write(content);
+            fw.close(); 
+            JOptionPane.showConfirmDialog(null, "Movie saved succesfully!", "Policinema", JOptionPane.DEFAULT_OPTION);
+        }catch(IOException e){
+            JOptionPane.showConfirmDialog(null,"There was an exception at FileWritter.(cn.fw.mv)", "WARNING!", JOptionPane.ERROR_MESSAGE);
             e.printStackTrace(); 
         } 
     }
@@ -50,7 +72,9 @@ public class CinemaManager {
             FileWriter fw = new FileWriter(fileF.getAbsoluteFile(), true); 
             fw.write(content);
             fw.close(); 
+            JOptionPane.showConfirmDialog(null, "Function saved succesfully!", "Policinema", JOptionPane.DEFAULT_OPTION);
         }catch(IOException e){
+            JOptionPane.showConfirmDialog(null,"There was an exception at FileWritter.(cnm.fw.fc)", "WARNING!", JOptionPane.ERROR_MESSAGE);
             e.printStackTrace(); 
         }         
     }
@@ -68,14 +92,34 @@ public class CinemaManager {
                 String[] data = line.split(csvSeparator);
                 Movie movie = new Movie(data[0], Integer.parseInt(data[1]), data[2]);
                 movies.add(movie); 
+                System.out.println("readed!");
             }
             
         }catch(IOException e){
-            JOptionPane.showConfirmDialog(null,"There was an exception at FileReader.", "WARNING!", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showConfirmDialog(null,"There was an exception at FileReader.(cnm.fr.mvA)", "WARNING!", JOptionPane.ERROR_MESSAGE);
             movies.clear(); 
         }
         
         return movies; 
+    }
+    
+    public ArrayList<String> descriptions(){
+        String line;
+        String csvSeparator = "||";
+        ArrayList<String> descriptions = new ArrayList<>();
+        try(BufferedReader br = new BufferedReader(new FileReader(fileNameF))){
+                        
+            while((line = br.readLine()) != null){
+                String[] data = line.split(csvSeparator);
+                String description = data[0];
+                descriptions.add(description); 
+            }
+            
+        }catch(IOException e){
+            JOptionPane.showConfirmDialog(null,"There was an exception at FileReader.(cnm.fr.fcA)", "WARNING!", JOptionPane.ERROR_MESSAGE);
+            descriptions.clear(); 
+        }       
+        return descriptions;         
     }
     
     public ArrayList<Function> functions(){
@@ -83,7 +127,7 @@ public class CinemaManager {
         String csvSeparator = ","; 
         ArrayList<Function> functions = new ArrayList<>();
         
-        try(BufferedReader br = new BufferedReader(new FileReader(fileNameM))){
+        try(BufferedReader br = new BufferedReader(new FileReader(fileNameF))){
             
             br.readLine();
             
@@ -94,7 +138,7 @@ public class CinemaManager {
             }
             
         }catch(IOException e){
-            JOptionPane.showConfirmDialog(null,"There was an exception at FileReader.", "WARNING!", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showConfirmDialog(null,"There was an exception at FileReader.(cnm.fr.fcA)", "WARNING!", JOptionPane.ERROR_MESSAGE);
             functions.clear(); 
         }       
         return functions;         

@@ -13,6 +13,9 @@ public class Cashier extends Person {
     public Cashier(String username, String namesP, String lastnamesP, String password) {
         super(username, namesP, lastnamesP, password);
     }
+
+    public Cashier() {
+    }
     
     @Override
     public String toCSV(){

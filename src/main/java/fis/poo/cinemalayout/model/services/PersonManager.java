@@ -53,7 +53,7 @@ public class PersonManager {
             FileWriter fw = new FileWriter(file.getAbsoluteFile(), true); 
             fw.write(content);
             fw.close(); 
-            JOptionPane.showConfirmDialog(null, "The cashier has been created successfully!", "Policinema", JOptionPane.OK_OPTION);
+            JOptionPane.showConfirmDialog(null, "The cashier has been created successfully!", "Policinema", JOptionPane.DEFAULT_OPTION);
         }catch(IOException e){
             e.printStackTrace();
             JOptionPane.showConfirmDialog(null, "FATAL ERROR", "Alert!", JOptionPane.ERROR_MESSAGE);

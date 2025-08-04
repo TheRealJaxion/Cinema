@@ -4,6 +4,7 @@
  */
 package fis.poo.cinemalayout.model.services;
 
+import java.awt.Component;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -18,45 +19,59 @@ import javax.swing.JOptionPane;
 public class ImageManager {
     String imgType = "png";
     
-    public void functImg(File imgSelPath){
-        String mainPath = "CinemaLayout\\src\\main\\resources\\funcl"; 
+    public void functImg(Component parent, File imgSelPath) {
+        String mainPath = "C:\\Users\\jordy\\Documents\\NetBeansProjects\\CinemaLayout\\src\\main\\resources\\funcl\\"; 
+        String fileName = JOptionPane.showInputDialog(parent, "Please, type the image name.");
         
-        try{
-           BufferedImage img = ImageIO.read(imgSelPath);
-           
-           if(img == null){
-               JOptionPane.showConfirmDialog(null, "The image selected couldn't be read", "Alert", JOptionPane.ERROR_MESSAGE); 
-               return;
-           }
-           
-           File saveImg = new File(mainPath);
-           ImageIO.write(img, imgType, saveImg);
-           JOptionPane.showConfirmDialog(null, "The image has been succesfully saved!", "Image Saved", JOptionPane.OK_OPTION); 
-            
-        }catch(IOException e){
-            JOptionPane.showConfirmDialog(null,"FATAL ERROR!", "Warning!", JOptionPane.ERROR_MESSAGE);
+        try {
+
+            BufferedImage img = ImageIO.read(imgSelPath);
+
+            if (img == null) {
+                JOptionPane.showMessageDialog(parent,"The image selected couldn't be read.", "Read Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
+            File dir = new File(mainPath);
+            if (!dir.exists()) {
+                dir.mkdirs();
+            }
+
+            File saveImg = new File(mainPath + fileName + "." + imgType);
+            ImageIO.write(img, imgType, saveImg);
+            JOptionPane.showMessageDialog(parent, "The image has been successfully saved!","Image Saved",JOptionPane.INFORMATION_MESSAGE);
+
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(parent, "FATAL ERROR while saving image!", "Saving Error", JOptionPane.ERROR_MESSAGE);
             e.printStackTrace();
         }
-    }
+    }    
     
-    public void mainImg(File imgSelPath){
-        String mainPath = "CinemaLayout\\src\\main\\resources\\mainl"; 
-        try{
-           BufferedImage img = ImageIO.read(imgSelPath);
-           
-           if(img == null){
-               JOptionPane.showConfirmDialog(null, "The image selected couldn't be read", "Alert", JOptionPane.ERROR_MESSAGE); 
-               return;
-           }
-           
-           File saveImg = new File(mainPath);
-           ImageIO.write(img, imgType, saveImg);
-           JOptionPane.showConfirmDialog(null, "The image has been succesfully saved!", "Image Saved", JOptionPane.OK_OPTION); 
-            
-        }catch(IOException e){
-            JOptionPane.showConfirmDialog(null,"FATAL ERROR!", "Warning!", JOptionPane.ERROR_MESSAGE);
+    public void mainImg(Component parent, File imgSelPath) {
+        String mainPath = "C:\\Users\\jordy\\Documents\\NetBeansProjects\\CinemaLayout\\src\\main\\resources\\mainl\\"; 
+        String fileName = JOptionPane.showInputDialog(parent, "Please, type the image name.");
+        try {
+
+            BufferedImage img = ImageIO.read(imgSelPath);
+
+            if (img == null) {
+                JOptionPane.showMessageDialog(parent,"The image selected couldn't be read.", "Read Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
+            File dir = new File(mainPath);
+            if (!dir.exists()) {
+                dir.mkdirs();
+            }
+
+            File saveImg = new File(mainPath + fileName +"." + imgType);
+            ImageIO.write(img, imgType, saveImg);
+            JOptionPane.showMessageDialog(parent, "The image has been successfully saved!","Image Saved",JOptionPane.INFORMATION_MESSAGE);
+
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(parent, "FATAL ERROR while saving image!", "Saving Error", JOptionPane.ERROR_MESSAGE);
             e.printStackTrace();
         }
-    }
+    }   
     
 }

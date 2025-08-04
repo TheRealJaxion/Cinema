@@ -52,7 +52,10 @@ public abstract class Person {
     public void setPassword(String password) {
         this.password = password;
     }
-    
+
+    public Person() {
+    }
+
     public abstract String toCSV();
     
 }

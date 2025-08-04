@@ -19,6 +19,9 @@ public class Client extends Person {
         this.id = id;
     }
 
+    public Client() {
+    }
+
     public void setEmail(String email) {
         this.email = email;
     }
@@ -33,7 +36,7 @@ public class Client extends Person {
 
     @Override
     public String toCSV() {
-        return username + "," + namesP + "," + email + "," + Integer.toString(id) + "," + lastnamesP + "," + password;
+        return " "+username + "," + namesP + "," + email + "," + Integer.toString(id) + "," + lastnamesP + "," + password;
     }
 
 }

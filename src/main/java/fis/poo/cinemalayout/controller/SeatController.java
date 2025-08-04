@@ -34,6 +34,8 @@ public class SeatController implements ActionListener{
         }
     }
     
+    
+    
     public void setFn(Function fn) {
         this.fn = fn;
     }
