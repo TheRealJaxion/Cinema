@@ -26,6 +26,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.util.ArrayList;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -41,9 +42,9 @@ public class Controller implements ActionListener{
     private HiddenView hdn = new HiddenView();
     private CashierPanel csh = new CashierPanel(); 
     private Loginoptions lgn = new Loginoptions();
-    private MainLayout mnl = new MainLayout();
+    private MainLayout ml = new MainLayout();
     private AJCBController jcb = new AJCBController(adm);
-    //private SeatManager smn;
+    private SeatManager smn;
     private SSController ssc;
     private CJCBController cb;
     private Verificator vrf = new Verificator();
@@ -62,14 +63,13 @@ public class Controller implements ActionListener{
     private Client cln;
     private Cashier cshr;
     private String secret = "RR1717160533";
-    private MLController ml;
+    private boolean isLoged = false;
+    private ArrayList<SeatManager> smg = new ArrayList<>();
 
-    public Controller(Reservation rsr, Recipe rcp, Client cln, Cashier cshr) {
-        this.rsr = rsr;
-        this.rcp = rcp;
+    public Controller(Client cln, Cashier cshr) {
+
         this.cln = cln;
         this.cshr = cshr;
-        this.cb = new CJCBController(csh);
         this.adm.model.addColumn("Name");
         this.adm.model.addColumn("Duration");
         this.adm.model.addColumn("Restriction");    
@@ -82,26 +82,61 @@ public class Controller implements ActionListener{
         for(JButton bt : hdn.buttons()){
             bt.addActionListener(this);
         }
-
-        if(!cn.movies(null).isEmpty()){
-            movies = cn.movies(null);
-            for(int i=0; i<cn.movies(null).size(); i++){
-                Movie movie = cn.movies(null).get(i);
-                Object[] ob = {movie.getNameM(), movie.getDuration(), movie.getRestriction()};
-                adm.model.addRow(ob);
-            }
-            ml = new MLController(mnl, lgn, movies);
-            
-        } else{
-            ml = new MLController(mnl, lgn, movies);
-            System.out.println("empty");
-        }
         lgn.signB.addActionListener(this);
         lgn.lognB.addActionListener(this);
         lgn.cnclB.addActionListener(this);
         lgn.hiddenB.addActionListener(this);
         lgn.loginB.addActionListener(this);
         lgn.signin.addActionListener(this);
+        movies = cn.movies(null);
+        if(!movies.isEmpty()){
+            for(int i=0; i<cn.movies(null).size(); i++){
+                Movie movie = cn.movies(null).get(i);
+                Object[] ob = {movie.getNameM(), movie.getDuration(), movie.getRestriction()};
+                adm.model.addRow(ob);
+            }
+        }
+        if(cn.movies(null).size() == 4){
+            
+            this.cb = new CJCBController(csh);
+            
+            if(cn.movies(null).size() == 4){
+                this.ml.movieT1.setText(movies.get(0).getNameM());
+                this.ml.movieT2.setText(movies.get(1).getNameM());
+                this.ml.movieT3.setText(movies.get(2).getNameM());
+                this.ml.movieT4.setText(movies.get(3).getNameM());
+                File im1 = new File("C:\\Users\\jordy\\Documents\\NetBeansProjects\\CinemaLayout\\src\\main\\resources\\mainl\\img1.png");
+                File im2 = new File("C:\\Users\\jordy\\Documents\\NetBeansProjects\\CinemaLayout\\src\\main\\resources\\mainl\\img2.png");
+                File im3 = new File("C:\\Users\\jordy\\Documents\\NetBeansProjects\\CinemaLayout\\src\\main\\resources\\mainl\\img3.png");
+                File im4 = new File("C:\\Users\\jordy\\Documents\\NetBeansProjects\\CinemaLayout\\src\\main\\resources\\mainl\\img4.png");
+
+                ImageIcon ic1 = new ImageIcon(im1.getAbsolutePath());
+                ImageIcon ic2 = new ImageIcon(im2.getAbsolutePath());
+                ImageIcon ic3 = new ImageIcon(im3.getAbsolutePath());
+                ImageIcon ic4 = new ImageIcon(im4.getAbsolutePath());
+
+                this.ml.movie1B.setIcon(ic1);
+                this.ml.movie2B.setIcon(ic2);
+                this.ml.movie3B.setIcon(ic3);
+                this.ml.movie4B.setIcon(ic4);
+                
+                this.ml.signB.addActionListener(this); 
+                this.ml.seatSelB.addActionListener(this);
+                this.ml.movie1B.addActionListener(this);
+                this.ml.movie2B.addActionListener(this);
+                this.ml.movie3B.addActionListener(this);
+                this.ml.movie4B.addActionListener(this);
+                this.ml.gbbM.addActionListener(this);
+   
+                ml.setVisible(true);
+                ml.setLocationRelativeTo(null);
+            }
+        } else{
+            System.out.println("empty");
+            JOptionPane.showMessageDialog(ml, "Movies are not loaded yet, you'll be redirected to login panel.", "Policinema", JOptionPane.ERROR_MESSAGE);
+            lgn.setVisible(true);
+            lgn.setLocationRelativeTo(null);
+        }
     }
 
     
@@ -110,6 +145,7 @@ public class Controller implements ActionListener{
         Object sr = ev.getSource();
         String[] schdl = {"11AM", "13PM", "15PM", "17PM", "19PM"};
         String[] hallN = {"1", "2", "3", "4", "5", "6"};
+        int cpos = 0;
         if(adm.isActive()){
             if(sr == adm.showInfo){
                 adm.info.setVisible(true);
@@ -400,47 +436,74 @@ public class Controller implements ActionListener{
                     for(Movie mv : cn.movies(csh)){
                         if(mv.getNameM().equals(csh.movieCB.getSelectedItem())){
                             cmov = mv;
-                            System.out.println("setted!");
-                            System.out.println(cmov.getNameM());
-                            break;
-                        }
-                    }
-                    
-                    Function cfn = null;
-                    functions = cn.functions(csh, cmov.getNameM());
-                    
-                    for(Function fns : functions){
-                        System.out.println("Searching..");
-                        if(fns.getFunctionId().equals(csh.functionCB.getSelectedItem())){
-                            cfn = fns;
-                            System.out.println("fnset");
                             break;
                         }
                     }
 
-                    ssc = new SSController(csh, cmov, cfn);
+                    Function cfn = null;
+                    functions = cn.functions(csh, cmov.getNameM());
+
+                    for(Function fns : functions){
+                        if(fns.getFunctionId().equals(csh.functionCB.getSelectedItem())){
+                            System.out.println("found!");
+                            cfn = fns;
+                            break;
+                        }
+                    }
+                    
+                    
+                    
+                    if(smg.isEmpty() || !seatVerf(cfn.getFunctionId())){
+                        rsr = new Reservation(cfn, 0);
+                        cpos = 0;
+                        SeatManager sm = new SeatManager();
+                        sm.setFr(csh);
+                        sm.setPerson("Cashier");
+                        sm.setFn(cfn);
+                        sm.setMv(cmov);
+                        smg.add(sm);
+                        sm.init();
+                        
+                    }else{
+                        
+                        for(int i=0; i<smg.size(); i++){
+                            if(cfn.getFunctionId().equals(smg.get(i).getSmID())){
+                                rsr = new Reservation(cfn, 0);
+                                cpos = i;
+                                smg.get(i).setMv(cmov);
+                                smg.get(i).setFr(csh);
+                                smg.get(i).setPerson("Cashier");
+                                smg.get(i).init();
+                                
+                                break;
+                            }
+                        }
+                    
+                    }
                     
                 } else{
                     JOptionPane.showMessageDialog(csh, "There's no movies availables!", "Error!", JOptionPane.ERROR_MESSAGE);
                 }    
                 
             } else if(sr == csh.addB){
-                if(csh.isEmpty() || ssc.getCounter() == 0){
-                    JOptionPane.showMessageDialog(csh, "Invalid Statements!", "Cashier Panel", JOptionPane.ERROR);
+                rsr.setSeats(smg.get(cpos).getCount());
+                System.out.println(rsr.getSeats());
+                if(csh.isEmpty() || rsr.getSeats() == 0){
+                    JOptionPane.showMessageDialog(csh, "Invalid Statements!", "Cashier Panel", JOptionPane.ERROR_MESSAGE);
                     csh.clear();
                 } else{
+                    rcp = new Recipe(rsr);
                     rcp.setClientId(csh.clientID.getText());
                     rcp.setClientName(csh.clientNames.getText());
-                    crs.markSeats();
                     rcp.setRes(rsr);
-                    csh.displayC.setText(rcp.displayRecipe());
+                    csh.gDisplay.setText(rcp.displayRecipe());
                 }
             }
 
             if(sr == csh.cancelB){
                 csh.clear();
-                ssc.clear();
-                csh.displayC.setText("");
+                smg.get(cpos).clear();
+                csh.gDisplay.setText("");
             }
 
             if(sr == csh.payB){
@@ -499,18 +562,207 @@ public class Controller implements ActionListener{
                 String pW = lgn.psw.getText();
                 if(vrf.verifier(lgn.maiIn, "client", uN, pW)){
                     JOptionPane.showMessageDialog(lgn.maiIn, "Welcome Back!", "Policinema", JOptionPane.OK_OPTION);
-                    ml.setCln(pm.clients(lgn.maiIn).get(vrf.getPosition())); 
-                    mnl.signB.hide();
-                    ml.setIsLoged(true);
+                    cln = (pm.clients(lgn.maiIn).get(vrf.getPosition())); 
+                    ml.signB.hide();
+                    isLoged = true;
                     lgn.maiIn.setVisible(false);
                     lgn.setVisible(false);
-                    mnl.setVisible(true);
-                    mnl.setLocationRelativeTo(null);
+                    ml.setVisible(true);
+                    ml.setLocationRelativeTo(null);
                 } else{
                     JOptionPane.showMessageDialog(lgn.maiIn, "User not found!", "Error", JOptionPane.ERROR_MESSAGE);
                     lgn.clear(lgn.fields());
                 }
             }
         }
+        if(ml.isActive()){
+            
+            ArrayList<Movie> movies = cn.movies(ml);
+            ArrayList<Function> fns = null;
+            Movie mv = new Movie();
+            if(ev.getSource() == ml.movie1B){
+
+                if(!movies.isEmpty()){
+                    String path = "C:\\Users\\jordy\\Documents\\NetBeansProjects\\CinemaLayout\\src\\main\\resources\\funcl\\img1.png";
+                    mv = movies.get(0); 
+                    ImageIcon img = new ImageIcon(path);
+                    ml.movieTitle.setText(mv.getNameM());
+                    ml.movieImg.setIcon(img);
+                    ml.durationT.setText(Integer.toString(mv.getDuration())+ml.durationT.getText());
+                    ml.restrictionT.setText(mv.getRestriction());
+                    ml.movieDescription.setText(cn.descriptions(ml, mv.getNameM()));
+                    
+                    fns = cn.functions(ml, mv.getNameM());
+                    
+                    for(Function fn : fns){
+                        ml.functionsS.addItem(fn.getFunctionId());
+                    }
+                    
+                    ml.setVisible(false);
+                    ml.MovieDisp.setVisible(true);
+                    ml.MovieDisp.setLocationRelativeTo(null);
+                }else{
+                    JOptionPane.showMessageDialog(ml, "Functions are not loaded yet!", "Alert!", JOptionPane.ERROR_MESSAGE);
+                }    
+            } else if(ev.getSource() == ml.movie2B){
+                if(!movies.isEmpty()){
+                    String path = "C:\\Users\\jordy\\Documents\\NetBeansProjects\\CinemaLayout\\src\\main\\resources\\funcl\\img2.png";
+                    mv = movies.get(1); 
+                    ImageIcon img = new ImageIcon(path);
+                    ml.movieTitle.setText(mv.getNameM());
+                    ml.movieImg.setIcon(img);
+                    ml.durationT.setText(Integer.toString(mv.getDuration())+ml.durationT.getText());
+                    ml.restrictionT.setText(mv.getRestriction());
+                    ml.movieDescription.setText(cn.descriptions(ml, mv.getNameM()));
+                    
+                    fns = cn.functions(ml, mv.getNameM());
+                    
+                    for(Function fn : fns){
+                        ml.functionsS.addItem(fn.getFunctionId());
+                    }
+                    
+                    ml.setVisible(false);
+                    ml.MovieDisp.setVisible(true);   
+                    ml.MovieDisp.setLocationRelativeTo(null);
+                }else{
+                    JOptionPane.showMessageDialog(ml, "Functions are not loaded yet!", "Alert!", JOptionPane.ERROR_MESSAGE);
+                }  
+            } else if(ev.getSource() == ml.movie3B){
+                if(!movies.isEmpty()){
+                    String path = "C:\\Users\\jordy\\Documents\\NetBeansProjects\\CinemaLayout\\src\\main\\resources\\funcl\\img3.png";
+                    mv = movies.get(2); 
+                    ImageIcon img = new ImageIcon(path);
+                    ml.movieTitle.setText(mv.getNameM());
+                    ml.movieImg.setIcon(img);
+                    ml.durationT.setText(Integer.toString(mv.getDuration())+ml.durationT.getText());
+                    ml.restrictionT.setText(mv.getRestriction());
+                    ml.movieDescription.setText(cn.descriptions(ml, mv.getNameM()));
+
+                    fns = cn.functions(ml, mv.getNameM());
+                    
+                    for(Function fn : fns){
+                        ml.functionsS.addItem(fn.getFunctionId());
+                    }
+                    
+                    ml.setVisible(false);
+                    ml.MovieDisp.setVisible(true);
+                    ml.MovieDisp.setLocationRelativeTo(null);
+                }else{
+                    JOptionPane.showMessageDialog(ml, "Functions are not loaded yet!", "Alert!", JOptionPane.ERROR_MESSAGE);
+                } 
+            } else if(ev.getSource() == ml.movie4B){
+                if(!movies.isEmpty()){
+                    String path = "C:\\Users\\jordy\\Documents\\NetBeansProjects\\CinemaLayout\\src\\main\\resources\\funcl\\img4.png";
+                    mv = movies.get(3); 
+                    ImageIcon img = new ImageIcon(path);
+                    ml.movieTitle.setText(mv.getNameM());
+                    ml.movieImg.setIcon(img);
+                    ml.durationT.setText(Integer.toString(mv.getDuration())+ml.durationT.getText());
+                    ml.restrictionT.setText(mv.getRestriction());
+                    ml.movieDescription.setText(cn.descriptions(ml, mv.getNameM()));
+
+                    fns = cn.functions(ml, mv.getNameM());
+                    
+                    for(Function fn : fns){
+                        ml.functionsS.addItem(fn.getFunctionId());
+                    }
+
+                    ml.setVisible(false);
+                    ml.MovieDisp.setVisible(true);
+                    ml.MovieDisp.setLocationRelativeTo(null);                    
+                }else{
+                    JOptionPane.showMessageDialog(ml, "Functions are not loaded yet!", "Alert!", JOptionPane.ERROR_MESSAGE);
+                } 
+            } else if(ev.getSource() == ml.signB){
+                ml.setVisible(false);
+                lgn.setVisible(true);
+                lgn.setLocationRelativeTo(null);
+            }
+        }
+        
+        if(ml.MovieDisp.isActive()){
+            if(ev.getSource() == ml.gbbM){
+                ml.durationT.setText("");
+                ml.durationT.setText("min");
+                ml.functionsS.removeAllItems();
+                ml.MovieDisp.setVisible(false);
+                ml.setVisible(true);
+                ml.setLocationRelativeTo(null);
+            } else if(ev.getSource() == ml.seatSelB){
+                System.out.println("readed");
+                if(isLoged){
+                   Movie mMov = null;
+                   Function mFun = null;
+                   
+                   for(Movie mv : cn.movies(ml)){
+                       System.out.println("searching..");
+                       if(mv.getNameM().equals(ml.movieTitle.getText())){
+                           mMov = mv;
+                           System.out.println(mMov.getNameM());
+                           break;
+                       }
+                   }
+                   for(Function fn : cn.functions(ml, mMov.getNameM())){
+                       if(fn.getFunctionId().equals(ml.functionsS.getSelectedItem())){
+                           mFun = fn;
+                           break;
+                       }
+                   }
+                   
+                   if(smg.isEmpty() || !seatVerf(mFun.getFunctionId())){
+                        rsr = new Reservation(mFun, 0);
+                        cpos = 0;
+                        SeatManager sm = new SeatManager();
+                        sm.setFr(ml.FinalSel);
+                        sm.setPerson("Client");
+                        sm.setFn(mFun);
+                        sm.setMv(mMov);
+                        smg.add(sm);
+                        sm.init();
+                        
+                    }else{
+                        
+                        for(int i=0; i<smg.size(); i++){
+                            if(mFun.getFunctionId().equals(smg.get(i).getSmID())){
+                                rsr = new Reservation(mFun, 0);
+                                cpos = i;
+                                smg.get(i).setMv(mMov);
+                                smg.get(i).setFr(ml.FinalSel);
+                                smg.get(i).setPerson("Cashier");
+                                smg.get(i).init();
+                                
+                                break;
+                            }
+                        }
+                    
+                    }
+
+                ml.MovieDisp.setVisible(false);
+                rsr.setSeats(smg.get(cpos).getCount());
+                System.out.println(smg.get(cpos).getCount());
+                rcp.setRes(rsr);
+                } else{
+                    JOptionPane.showMessageDialog(ml.MovieDisp, "You must have been logged in first.", "Policinema", JOptionPane.OK_OPTION);
+                }
+            }
+        }
+        
+        if(ml.FinalSel.isActive()){
+            rsr.setSeats(smg.get(cpos).getCount());
+            System.out.println(smg.get(cpos).getCount());
+            rcp.setRes(rsr);
+            ml.displayFS.setText(rcp.displayRecipe());
+        }
+    }
+    
+    public boolean seatVerf(String id){
+        if(!smg.isEmpty()){
+            for(int i=0; i<smg.size(); i++){
+                if(id.equals(smg.get(i).getSmID())){
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 }

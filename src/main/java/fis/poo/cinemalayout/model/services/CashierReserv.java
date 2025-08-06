@@ -18,7 +18,6 @@ public class CashierReserv extends MarkReservation{
 
     public CashierReserv(Function fn, SSController ssc, Reservation rs) {
         super(fn, ssc, rs);
-        ssc.setIsCashier(true);
     }
 
     @Override

@@ -15,6 +15,12 @@ public class Reservation {
     private int seats; 
     private String promo; 
 
+    public Reservation(Function fn, int seats) {
+        this.function = fn;
+        this.seats = seats;
+        
+    }
+
     public Function getFunction() {
         return function;
     }
@@ -33,6 +39,13 @@ public class Reservation {
 
     public void setSeats(int seat) {
         seats = seat; 
+        if(seats > 3){
+            promo = "TPO";
+        } else if(seats == 2){
+            promo = "FEBR14";
+        } else{
+            promo = "NS";
+        }
     }
 
     public void setProms(String promo) {

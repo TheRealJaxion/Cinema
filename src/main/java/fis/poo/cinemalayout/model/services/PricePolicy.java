@@ -16,10 +16,13 @@ public class PricePolicy {
     private String prom2 = "FEBR14";
     private String prom3 = "BD";
     private String prom4 = "TPO";
-    private double taxPer; 
-    private double seatPriceH; //Prices for seats that are ubicated in a normal hall
-    private double seatPriceI; //Prices for seats that are ubicated in IMAX halls
-    private double pprom1, pprom2, pprom3, pprom4; //Prices for each promo, it will give a discount in the final price.  
+    private double taxPer = 12; 
+    private double seatPriceH = 5; //Prices for seats that are ubicated in a normal hall
+    private double seatPriceI  = 10; //Prices for seats that are ubicated in IMAX halls
+    private double pprom1 = 15;
+    private double pprom2 = 30;
+    private double pprom3 = 40;
+    private double pprom4 = 50;
     
     public String getProm1() {
         return prom1;
@@ -38,7 +41,7 @@ public class PricePolicy {
     }
 
     public double getTaxPer() {
-        return taxPer;
+        return taxPer/100;
     }
 
     public double getSeatPriceH() {

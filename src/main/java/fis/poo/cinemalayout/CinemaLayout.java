@@ -16,11 +16,9 @@ import fis.poo.cinemalayout.model.entities.Reservation;
 public class CinemaLayout {
     
     public static void main(String[] args) {
-        Reservation rsr = new Reservation();
-        Recipe rcp = new Recipe(rsr);
         Client cln = new Client();
         Cashier csh = new Cashier();
         
-        Controller cinema = new Controller(rsr, rcp, cln, csh);
+        Controller cinema = new Controller(cln, csh);
     }
 }

@@ -95,7 +95,6 @@ public class CashierPanel extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(102, 0, 0));
 
-        gDisplay.setEditable(false);
         gDisplay.setBackground(new java.awt.Color(255, 255, 255));
         gDisplay.setColumns(20);
         gDisplay.setRows(5);

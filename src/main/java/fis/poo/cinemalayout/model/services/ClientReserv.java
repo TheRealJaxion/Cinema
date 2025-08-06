@@ -18,7 +18,6 @@ public class ClientReserv extends MarkReservation{
     
     public ClientReserv(Function fn, SSController ssc, Reservation rs) {
         super(fn, ssc, rs);
-        ssc.setIsClient(true);
     }
 
     @Override

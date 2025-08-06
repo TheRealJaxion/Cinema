@@ -17,12 +17,29 @@ import javax.swing.JToggleButton;
 public class SeatsSelection extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(SeatsSelection.class.getName());
-
+    
+    public JToggleButton[] seats(){
+        JToggleButton[] jtb = {A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12,
+        B1, B2, B3, B4, B5, B6, B7, B8, B9, B10, B11, B12, C1, C2, C3, C4, C5, C6, C7, C8, C9, C10, C11, C12,
+        D1, D2, D3, D4, D5, D6, D7, D8, D9, D10, D11, D12, E1, E2, E3, E4, E5, E6, E7, E8, E9, E10, E11, E12,
+        F1, F2, F3, F4, F5, F6, F7, F8, F9, F10, F11, F12};
+        return jtb;
+    }
+    
+    String[] bn = {"A1", "A2", "A3", "A4", "A5", "A6", "A7", "A8", "A9", "A10", "A11", "A12",
+        "B1", "B2", "B3", "B4", "B5", "B6", "B7", "B8", "B9", "B10", "B11", "B12", "C1", "C2", "C3", "C4", "C5", 
+        "C6", "C7", "C8", "C9", "C10", "C11", "C12", "D1", "D2", "D3", "D4", "D5", "D6", "D7", "D8", "D9", "D10", 
+        "D11", "D12", "E1", "E2", "E3", "E4", "E5", "E6", "E7", "E8", "E9", "E10", "E11", "E12", "F1", "F2", "F3", 
+        "F4", "F5", "F6", "F7", "F8", "F9", "F10", "F11", "F12"};
+    
     /**
      * Creates new form seatsSelection
      */
     public SeatsSelection() {
         initComponents();
+        for(int i=0; i<seats().length; i++){
+            seats()[i].setName(bn[i]);
+        }
     }
 
     /**
@@ -36,7 +53,6 @@ public class SeatsSelection extends javax.swing.JFrame {
 
         jPanel2 = new javax.swing.JPanel();
         displayMN = new javax.swing.JTextField();
-        displayH = new javax.swing.JTextField();
         displayH1 = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         jLabel25 = new javax.swing.JLabel();
@@ -136,6 +152,7 @@ public class SeatsSelection extends javax.swing.JFrame {
         D12 = new javax.swing.JToggleButton();
         C12 = new javax.swing.JToggleButton();
         A12 = new javax.swing.JToggleButton();
+        displayH = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(102, 0, 0));
@@ -148,14 +165,14 @@ public class SeatsSelection extends javax.swing.JFrame {
         displayMN.setForeground(new java.awt.Color(255, 255, 255));
         displayMN.setText("Movie Name");
         displayMN.setBorder(null);
-
-        displayH.setEditable(false);
-        displayH.setBackground(new java.awt.Color(0, 0, 0));
-        displayH.setFont(new java.awt.Font("Perpetua", 2, 36)); // NOI18N
-        displayH.setForeground(new java.awt.Color(255, 255, 255));
-        displayH.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        displayH.setText("Hall");
-        displayH.setBorder(null);
+        displayMN.setDisabledTextColor(new java.awt.Color(255, 255, 255));
+        displayMN.setFocusable(false);
+        displayMN.setRequestFocusEnabled(false);
+        displayMN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                displayMNActionPerformed(evt);
+            }
+        });
 
         displayH1.setEditable(false);
         displayH1.setBackground(new java.awt.Color(0, 0, 0));
@@ -164,19 +181,19 @@ public class SeatsSelection extends javax.swing.JFrame {
         displayH1.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         displayH1.setText("Schedule");
         displayH1.setBorder(null);
+        displayH1.setFocusable(false);
+        displayH1.setRequestFocusEnabled(false);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addComponent(displayMN, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(displayH, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(14, 14, 14)
+                .addComponent(displayMN, javax.swing.GroupLayout.PREFERRED_SIZE, 374, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(displayH1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(44, 44, 44))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -184,8 +201,7 @@ public class SeatsSelection extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(displayMN, javax.swing.GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE)
-                    .addComponent(displayH, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(displayH1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(displayH1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, 0))
         );
 
@@ -193,13 +209,14 @@ public class SeatsSelection extends javax.swing.JFrame {
 
         jLabel25.setFont(new java.awt.Font("Monotype Corsiva", 0, 24)); // NOI18N
         jLabel25.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel25.setText("Select A Seat:");
+        jLabel25.setText("Seat Selection:");
 
         jPanel6.setBackground(new java.awt.Color(102, 0, 51));
 
         displayS.setEditable(false);
         displayS.setBackground(new java.awt.Color(255, 255, 255));
         displayS.setBorder(null);
+        displayS.setDisabledTextColor(new java.awt.Color(255, 255, 255));
 
         aceptB.setText("Acept");
 
@@ -216,12 +233,12 @@ public class SeatsSelection extends javax.swing.JFrame {
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(aceptB, javax.swing.GroupLayout.DEFAULT_SIZE, 77, Short.MAX_VALUE)
+                    .addComponent(aceptB, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addGap(6, 6, 6)
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel24)
-                            .addComponent(displayS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(displayS, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(cancelB1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
@@ -597,7 +614,7 @@ public class SeatsSelection extends javax.swing.JFrame {
                         .addComponent(jLabel22)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel23)
-                        .addContainerGap(47, Short.MAX_VALUE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(F3, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -688,7 +705,7 @@ public class SeatsSelection extends javax.swing.JFrame {
                                 .addComponent(C12, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(B12, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(A12, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addGap(0, 22, Short.MAX_VALUE))))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -872,6 +889,15 @@ public class SeatsSelection extends javax.swing.JFrame {
                 .addContainerGap(29, Short.MAX_VALUE))
         );
 
+        displayH.setEditable(false);
+        displayH.setBackground(new java.awt.Color(102, 0, 0));
+        displayH.setFont(new java.awt.Font("Perpetua", 2, 24)); // NOI18N
+        displayH.setForeground(new java.awt.Color(255, 255, 255));
+        displayH.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        displayH.setText("Hall");
+        displayH.setBorder(null);
+        displayH.setFocusable(false);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -879,21 +905,24 @@ public class SeatsSelection extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(36, 36, 36)
-                        .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(displayH, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(displayH, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(41, Short.MAX_VALUE))
         );
 
@@ -915,6 +944,10 @@ public class SeatsSelection extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void displayMNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_displayMNActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_displayMNActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -924,14 +957,6 @@ public class SeatsSelection extends javax.swing.JFrame {
     }
     public void show(int a){
         displayS.setText(Integer.toString(a));
-    }
-    
-    public JToggleButton[] seats(){
-        JToggleButton[] jtb = {A1, A2, A3, A4, A5, A6, A7, A8, A9, A10, A11, A12,
-        B1, B2, B3, B4, B5, B6, B7, B8, B9, B10, B11, B12, C1, C2, C3, C4, C5, C6, C7, C8, C9, C10, C11, C12,
-        D1, D2, D3, D4, D5, D6, D7, D8, D9, D10, D11, D12, E1, E2, E3, E4, E5, E6, E7, E8, E9, E10, E11, E12,
-        F1, F2, F3, F4, F5, F6, F7, F8, F9, F10, F11, F12};
-        return jtb;
     }
     
     public String buttonPostion(JToggleButton jtg){

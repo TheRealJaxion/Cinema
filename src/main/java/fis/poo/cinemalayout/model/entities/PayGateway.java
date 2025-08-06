@@ -13,12 +13,15 @@ import fis.poo.cinemalayout.model.services.PricePolicy;
 public class PayGateway {
     private PricePolicy prc;
     private Reservation rs;
-    private int seats = rs.getSeats(); 
-    private char hallS = rs.getFunction().getHall();
+    private int seats = 0; 
+    private char hallS;
 
     public PayGateway(PricePolicy prc, Reservation rs) {
         this.prc = prc;
+        prc = new PricePolicy();
         this.rs = rs;
+        seats = rs.getSeats();
+        hallS = rs.getFunction().getHall();
     }
 
     public Reservation getRs() {
@@ -38,7 +41,7 @@ public class PayGateway {
     }
     
     public double setDiscount(){
-        return setInitialPrice()*prc.promS(rs.getProms()); 
+        return setInitialPrice()*(prc.promS(rs.getProms())/100); 
     }
     
     public double setFinalPrice(){
