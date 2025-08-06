@@ -6,13 +6,14 @@ package fis.poo.cinemalayout.model.services;
 
 import fis.poo.cinemalayout.model.entities.Cashier;
 import fis.poo.cinemalayout.model.entities.Client;
+import java.awt.Component;
 
 /**
  *
  * @author jordy
  */
 public class Verificator {
-    private PersonManager pm;
+    private PersonManager pm = new PersonManager();
     private int positionc; 
     private int posCh;
     private boolean isLog = false;
@@ -29,12 +30,12 @@ public class Verificator {
         return posCh;
     }
     
-    public boolean verifier(String select, String username, String password){
+    public boolean verifier(Component fr, String select, String username, String password){
         switch(select){
             case "client"->{
-                for(int i=0; i<pm.clients().size(); i++){
-                    Client client = pm.clients().get(i);
-                    if((username == null ? client.getUsername() == null : username.equals(client.getUsername())) && (password == null ? client.getPassword() == null : password.equals(client.getPassword()))){
+                for(int i=0; i<pm.clients(fr).size(); i++){
+                    Client client = pm.clients(fr).get(i);
+                    if(username.matches(client.getUsername()) && password.matches(client.getPassword())){
                         isLog = true; 
                         positionc = i; 
                         return true;
@@ -43,8 +44,8 @@ public class Verificator {
                 return false; 
             }
             case "cashier"->{
-                for(int i=0; i<pm.clients().size(); i++){
-                    Cashier cashier = pm.cashiers().get(i);
+                for(int i=0; i<pm.cashiers(fr).size(); i++){
+                    Cashier cashier = pm.cashiers(fr).get(i);
                     if((username == null ? cashier.getUsername() == null : username.equals(cashier.getUsername())) && (password == null ? cashier.getPassword() == null : password.equals(cashier.getPassword()))){
                         posCh = i;
                         return true;

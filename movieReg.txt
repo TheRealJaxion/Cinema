@@ -1,5 +1,4 @@
-Title,Duration,Restriction
- F1: La Película,155,Older 12
- Five Nights at Freddy's 2,145,Older 15
- Lilo y Stitch,108,All Ages
- Mission: Impossible-TFR,169,Older 15
+F1: La Pelicula,155,Older 12
+Five Nights at Freddy's 2,145,Older 15
+Lilo y Stitch,108,All Ages
+Mission: Impossible-TFR,169,Older 15

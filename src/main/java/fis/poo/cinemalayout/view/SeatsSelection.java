@@ -153,7 +153,7 @@ public class SeatsSelection extends javax.swing.JFrame {
         displayH.setBackground(new java.awt.Color(0, 0, 0));
         displayH.setFont(new java.awt.Font("Perpetua", 2, 36)); // NOI18N
         displayH.setForeground(new java.awt.Color(255, 255, 255));
-        displayH.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        displayH.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         displayH.setText("Hall");
         displayH.setBorder(null);
 
@@ -173,9 +173,9 @@ public class SeatsSelection extends javax.swing.JFrame {
                 .addGap(26, 26, 26)
                 .addComponent(displayMN, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(displayH, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(displayH1)
+                .addComponent(displayH, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(displayH1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -198,8 +198,7 @@ public class SeatsSelection extends javax.swing.JFrame {
         jPanel6.setBackground(new java.awt.Color(102, 0, 51));
 
         displayS.setEditable(false);
-        displayS.setBackground(new java.awt.Color(102, 0, 0));
-        displayS.setForeground(new java.awt.Color(255, 255, 255));
+        displayS.setBackground(new java.awt.Color(255, 255, 255));
         displayS.setBorder(null);
 
         aceptB.setText("Acept");
@@ -234,7 +233,7 @@ public class SeatsSelection extends javax.swing.JFrame {
                 .addComponent(jLabel24)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(displayS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 108, Short.MAX_VALUE)
                 .addComponent(aceptB)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(cancelB1)
@@ -243,22 +242,22 @@ public class SeatsSelection extends javax.swing.JFrame {
 
         jPanel5.setBackground(new java.awt.Color(0, 0, 0));
 
-        A1.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        A1.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         A1.setText("|");
 
-        B1.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        B1.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         B1.setText("|");
 
-        C1.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        C1.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         C1.setText("|");
 
-        D1.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        D1.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         D1.setText("|");
 
-        E1.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        E1.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         E1.setText("|");
 
-        F1.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        F1.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         F1.setText("|");
 
         jLabel3.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
@@ -341,202 +340,202 @@ public class SeatsSelection extends javax.swing.JFrame {
         jLabel23.setText("12");
         jLabel23.setToolTipText("");
 
-        A2.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        A2.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         A2.setText("|");
 
-        D2.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        D2.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         D2.setText("|");
 
-        E2.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        E2.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         E2.setText("|");
 
-        F2.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        F2.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         F2.setText("|");
 
-        B2.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        B2.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         B2.setText("|");
 
-        C2.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        C2.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         C2.setText("|");
 
-        D3.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        D3.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         D3.setText("|");
 
-        A3.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        A3.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         A3.setText("|");
 
-        B3.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        B3.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         B3.setText("|");
 
-        C3.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        C3.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         C3.setText("|");
 
-        F3.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        F3.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         F3.setText("|");
 
-        E3.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        E3.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         E3.setText("|");
 
-        A4.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        A4.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         A4.setText("|");
 
-        C4.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        C4.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         C4.setText("|");
 
-        B4.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        B4.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         B4.setText("|");
 
-        D4.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        D4.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         D4.setText("|");
 
-        E4.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        E4.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         E4.setText("|");
 
-        F4.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        F4.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         F4.setText("|");
 
-        A5.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        A5.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         A5.setText("|");
 
-        C5.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        C5.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         C5.setText("|");
 
-        F5.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        F5.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         F5.setText("|");
 
-        E5.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        E5.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         E5.setText("|");
 
-        D5.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        D5.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         D5.setText("|");
 
-        B5.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        B5.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         B5.setText("|");
 
-        B6.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        B6.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         B6.setText("|");
 
-        A6.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        A6.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         A6.setText("|");
 
-        E6.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        E6.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         E6.setText("|");
 
-        F6.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        F6.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         F6.setText("|");
 
-        D6.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        D6.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         D6.setText("|");
 
-        C6.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        C6.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         C6.setText("|");
 
-        C7.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        C7.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         C7.setText("|");
 
-        D7.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        D7.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         D7.setText("|");
 
-        F7.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        F7.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         F7.setText("|");
 
-        E7.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        E7.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         E7.setText("|");
 
-        A7.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        A7.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         A7.setText("|");
 
-        B7.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        B7.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         B7.setText("|");
 
-        B8.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        B8.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         B8.setText("|");
 
-        A8.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        A8.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         A8.setText("|");
 
-        E8.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        E8.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         E8.setText("|");
 
-        F8.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        F8.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         F8.setText("|");
 
-        D8.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        D8.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         D8.setText("|");
 
-        C8.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        C8.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         C8.setText("|");
 
-        F9.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        F9.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         F9.setText("|");
 
-        E9.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        E9.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         E9.setText("|");
 
-        B9.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        B9.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         B9.setText("|");
 
-        A9.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        A9.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         A9.setText("|");
 
-        C9.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        C9.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         C9.setText("|");
 
-        D9.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        D9.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         D9.setText("|");
 
-        D10.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        D10.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         D10.setText("|");
 
-        C10.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        C10.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         C10.setText("|");
 
-        A10.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        A10.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         A10.setText("|");
 
-        B10.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        B10.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         B10.setText("|");
 
-        E10.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        E10.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         E10.setText("|");
 
-        F10.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        F10.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         F10.setText("|");
 
-        A11.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        A11.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         A11.setText("|");
 
-        C11.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        C11.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         C11.setText("|");
 
-        D11.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        D11.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         D11.setText("|");
 
-        F11.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        F11.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         F11.setText("|");
 
-        E11.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        E11.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         E11.setText("|");
 
-        B11.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        B11.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         B11.setText("|");
 
-        B12.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        B12.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         B12.setText("|");
 
-        E12.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        E12.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         E12.setText("|");
 
-        F12.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        F12.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         F12.setText("|");
 
-        D12.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        D12.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         D12.setText("|");
 
-        C12.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        C12.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         C12.setText("|");
 
-        A12.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        A12.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         A12.setText("|");
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
@@ -598,7 +597,7 @@ public class SeatsSelection extends javax.swing.JFrame {
                         .addComponent(jLabel22)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel23)
-                        .addContainerGap(27, Short.MAX_VALUE))
+                        .addContainerGap(47, Short.MAX_VALUE))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(F3, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -870,33 +869,32 @@ public class SeatsSelection extends javax.swing.JFrame {
                             .addComponent(E11)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                             .addComponent(F11))))
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(12, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(36, 36, 36)
                         .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel25, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(7, 7, 7))
+                .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -911,8 +909,7 @@ public class SeatsSelection extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -935,6 +932,10 @@ public class SeatsSelection extends javax.swing.JFrame {
         D1, D2, D3, D4, D5, D6, D7, D8, D9, D10, D11, D12, E1, E2, E3, E4, E5, E6, E7, E8, E9, E10, E11, E12,
         F1, F2, F3, F4, F5, F6, F7, F8, F9, F10, F11, F12};
         return jtb;
+    }
+    
+    public String buttonPostion(JToggleButton jtg){
+        return jtg.getName();
     }
         
     public static void main(String args[]) {

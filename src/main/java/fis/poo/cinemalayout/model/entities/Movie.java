@@ -26,6 +26,9 @@ public class Movie {
         this.duration = duration;
         this.restriction = restriction;
     }
+
+    public Movie() {
+    }
     
     public String getNameM() {
         return nameM;
@@ -60,6 +63,6 @@ public class Movie {
     }
     
     public String toCSV(){
-        return " "+nameM +","+ Integer.toString(duration) +","+ restriction;
+        return nameM +","+ Integer.toString(duration) +","+ restriction+"\n";
     }
 }

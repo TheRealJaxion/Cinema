@@ -35,8 +35,7 @@
           <Group type="102" alignment="0" attributes="0">
               <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-              <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
+              <Component id="jPanel1" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -56,9 +55,9 @@
                   <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                   <Component id="displayMN" min="-2" pref="270" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="displayH" min="-2" pref="52" max="-2" attributes="0"/>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="displayH1" max="32767" attributes="0"/>
+                  <Component id="displayH" min="-2" pref="155" max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
+                  <Component id="displayH1" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -111,7 +110,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
-            <Property name="horizontalAlignment" type="int" value="4"/>
+            <Property name="horizontalAlignment" type="int" value="2"/>
             <Property name="text" type="java.lang.String" value="Hall"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="null"/>
@@ -155,31 +154,30 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace pref="12" max="32767" attributes="0"/>
+              <Group type="102" attributes="0">
+                  <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jLabel25" alignment="0" min="-2" pref="161" max="-2" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="jPanel5" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
                           <Component id="jPanel6" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
+                  <Component id="jLabel25" min="-2" pref="52" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jLabel25" max="32767" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="jPanel6" alignment="0" max="32767" attributes="0"/>
-                      <Component id="jPanel5" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="jPanel5" min="-2" max="-2" attributes="0"/>
+                      <Component id="jPanel6" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
+                  <EmptySpace pref="41" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -231,7 +229,7 @@
                       <Component id="jLabel24" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="displayS" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="108" max="32767" attributes="0"/>
                       <Component id="aceptB" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="cancelB1" min="-2" max="-2" attributes="0"/>
@@ -245,9 +243,6 @@
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="0" green="0" red="66" type="rgb"/>
-                </Property>
-                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
                 </Property>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -359,7 +354,7 @@
                               <Component id="jLabel22" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="jLabel23" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="27" max="32767" attributes="0"/>
+                              <EmptySpace pref="47" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="1" max="-2" attributes="0">
@@ -681,7 +676,7 @@
                               </Group>
                           </Group>
                       </Group>
-                      <EmptySpace pref="14" max="32767" attributes="0"/>
+                      <EmptySpace pref="29" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -690,7 +685,7 @@
             <Component class="javax.swing.JToggleButton" name="A1">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Times New Roman" size="12" style="0"/>
+                  <Font name="Times New Roman" size="8" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="|"/>
               </Properties>
@@ -701,7 +696,7 @@
             <Component class="javax.swing.JToggleButton" name="B1">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Times New Roman" size="12" style="0"/>
+                  <Font name="Times New Roman" size="8" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="|"/>
               </Properties>
@@ -712,7 +707,7 @@
             <Component class="javax.swing.JToggleButton" name="C1">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Times New Roman" size="12" style="0"/>
+                  <Font name="Times New Roman" size="8" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="|"/>
               </Properties>
@@ -723,7 +718,7 @@
             <Component class="javax.swing.JToggleButton" name="D1">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Times New Roman" size="12" style="0"/>
+                  <Font name="Times New Roman" size="8" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="|"/>
               </Properties>
@@ -734,7 +729,7 @@
             <Component class="javax.swing.JToggleButton" name="E1">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Times New Roman" size="12" style="0"/>
+                  <Font name="Times New Roman" size="8" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="|"/>
               </Properties>
@@ -745,7 +740,7 @@
             <Component class="javax.swing.JToggleButton" name="F1">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Times New Roman" size="12" style="0"/>
+                  <Font name="Times New Roman" size="8" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="|"/>
               </Properties>
@@ -962,7 +957,7 @@
             <Component class="javax.swing.JToggleButton" name="A2">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Times New Roman" size="12" style="0"/>
+                  <Font name="Times New Roman" size="8" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="|"/>
               </Properties>
@@ -973,7 +968,7 @@
             <Component class="javax.swing.JToggleButton" name="D2">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Times New Roman" size="12" style="0"/>
+                  <Font name="Times New Roman" size="8" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="|"/>
               </Properties>
@@ -984,7 +979,7 @@
             <Component class="javax.swing.JToggleButton" name="E2">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Times New Roman" size="12" style="0"/>
+                  <Font name="Times New Roman" size="8" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="|"/>
               </Properties>
@@ -995,7 +990,7 @@
             <Component class="javax.swing.JToggleButton" name="F2">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Times New Roman" size="12" style="0"/>
+                  <Font name="Times New Roman" size="8" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="|"/>
               </Properties>
@@ -1006,7 +1001,7 @@
             <Component class="javax.swing.JToggleButton" name="B2">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Times New Roman" size="12" style="0"/>
+                  <Font name="Times New Roman" size="8" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="|"/>
               </Properties>
@@ -1017,7 +1012,7 @@
             <Component class="javax.swing.JToggleButton" name="C2">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Times New Roman" size="12" style="0"/>
+                  <Font name="Times New Roman" size="8" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="|"/>
               </Properties>
@@ -1028,7 +1023,7 @@
             <Component class="javax.swing.JToggleButton" name="D3">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Times New Roman" size="12" style="0"/>
+                  <Font name="Times New Roman" size="8" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="|"/>
               </Properties>
@@ -1039,7 +1034,7 @@
             <Component class="javax.swing.JToggleButton" name="A3">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Times New Roman" size="12" style="0"/>
+                  <Font name="Times New Roman" size="8" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="|"/>
               </Properties>
@@ -1050,7 +1045,7 @@
             <Component class="javax.swing.JToggleButton" name="B3">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Times New Roman" size="12" style="0"/>
+                  <Font name="Times New Roman" size="8" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="|"/>
               </Properties>
@@ -1061,7 +1056,7 @@
             <Component class="javax.swing.JToggleButton" name="C3">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Times New Roman" size="12" style="0"/>
+                  <Font name="Times New Roman" size="8" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="|"/>
               </Properties>
@@ -1072,7 +1067,7 @@
             <Component class="javax.swing.JToggleButton" name="F3">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Times New Roman" size="12" style="0"/>
+                  <Font name="Times New Roman" size="8" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="|"/>
               </Properties>
@@ -1083,7 +1078,7 @@
             <Component class="javax.swing.JToggleButton" name="E3">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Times New Roman" size="12" style="0"/>
+                  <Font name="Times New Roman" size="8" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="|"/>
               </Properties>
@@ -1094,7 +1089,7 @@
             <Component class="javax.swing.JToggleButton" name="A4">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Times New Roman" size="12" style="0"/>
+                  <Font name="Times New Roman" size="8" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="|"/>
               </Properties>
@@ -1105,7 +1100,7 @@
             <Component class="javax.swing.JToggleButton" name="C4">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Times New Roman" size="12" style="0"/>
+                  <Font name="Times New Roman" size="8" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="|"/>
               </Properties>
@@ -1116,7 +1111,7 @@
             <Component class="javax.swing.JToggleButton" name="B4">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Times New Roman" size="12" style="0"/>
+                  <Font name="Times New Roman" size="8" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="|"/>
               </Properties>
@@ -1127,7 +1122,7 @@
             <Component class="javax.swing.JToggleButton" name="D4">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Times New Roman" size="12" style="0"/>
+                  <Font name="Times New Roman" size="8" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="|"/>
               </Properties>
@@ -1138,7 +1133,7 @@
             <Component class="javax.swing.JToggleButton" name="E4">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Times New Roman" size="12" style="0"/>
+                  <Font name="Times New Roman" size="8" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="|"/>
               </Properties>
@@ -1149,7 +1144,7 @@
             <Component class="javax.swing.JToggleButton" name="F4">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Times New Roman" size="12" style="0"/>
+                  <Font name="Times New Roman" size="8" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="|"/>
               </Properties>
@@ -1160,7 +1155,7 @@
             <Component class="javax.swing.JToggleButton" name="A5">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Times New Roman" size="12" style="0"/>
+                  <Font name="Times New Roman" size="8" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="|"/>
               </Properties>
@@ -1171,7 +1166,7 @@
             <Component class="javax.swing.JToggleButton" name="C5">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Times New Roman" size="12" style="0"/>
+                  <Font name="Times New Roman" size="8" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="|"/>
               </Properties>
@@ -1182,7 +1177,7 @@
             <Component class="javax.swing.JToggleButton" name="F5">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Times New Roman" size="12" style="0"/>
+                  <Font name="Times New Roman" size="8" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="|"/>
               </Properties>
@@ -1193,7 +1188,7 @@
             <Component class="javax.swing.JToggleButton" name="E5">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Times New Roman" size="12" style="0"/>
+                  <Font name="Times New Roman" size="8" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="|"/>
               </Properties>
@@ -1204,7 +1199,7 @@
             <Component class="javax.swing.JToggleButton" name="D5">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Times New Roman" size="12" style="0"/>
+                  <Font name="Times New Roman" size="8" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="|"/>
               </Properties>
@@ -1215,7 +1210,7 @@
             <Component class="javax.swing.JToggleButton" name="B5">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Times New Roman" size="12" style="0"/>
+                  <Font name="Times New Roman" size="8" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="|"/>
               </Properties>
@@ -1226,7 +1221,7 @@
             <Component class="javax.swing.JToggleButton" name="B6">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Times New Roman" size="12" style="0"/>
+                  <Font name="Times New Roman" size="8" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="|"/>
               </Properties>
@@ -1237,7 +1232,7 @@
             <Component class="javax.swing.JToggleButton" name="A6">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Times New Roman" size="12" style="0"/>
+                  <Font name="Times New Roman" size="8" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="|"/>
               </Properties>
@@ -1248,7 +1243,7 @@
             <Component class="javax.swing.JToggleButton" name="E6">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Times New Roman" size="12" style="0"/>
+                  <Font name="Times New Roman" size="8" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="|"/>
               </Properties>
@@ -1259,7 +1254,7 @@
             <Component class="javax.swing.JToggleButton" name="F6">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Times New Roman" size="12" style="0"/>
+                  <Font name="Times New Roman" size="8" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="|"/>
               </Properties>
@@ -1270,7 +1265,7 @@
             <Component class="javax.swing.JToggleButton" name="D6">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Times New Roman" size="12" style="0"/>
+                  <Font name="Times New Roman" size="8" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="|"/>
               </Properties>
@@ -1281,7 +1276,7 @@
             <Component class="javax.swing.JToggleButton" name="C6">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Times New Roman" size="12" style="0"/>
+                  <Font name="Times New Roman" size="8" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="|"/>
               </Properties>
@@ -1292,7 +1287,7 @@
             <Component class="javax.swing.JToggleButton" name="C7">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Times New Roman" size="12" style="0"/>
+                  <Font name="Times New Roman" size="8" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="|"/>
               </Properties>
@@ -1303,7 +1298,7 @@
             <Component class="javax.swing.JToggleButton" name="D7">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Times New Roman" size="12" style="0"/>
+                  <Font name="Times New Roman" size="8" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="|"/>
               </Properties>
@@ -1314,7 +1309,7 @@
             <Component class="javax.swing.JToggleButton" name="F7">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Times New Roman" size="12" style="0"/>
+                  <Font name="Times New Roman" size="8" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="|"/>
               </Properties>
@@ -1325,7 +1320,7 @@
             <Component class="javax.swing.JToggleButton" name="E7">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Times New Roman" size="12" style="0"/>
+                  <Font name="Times New Roman" size="8" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="|"/>
               </Properties>
@@ -1336,7 +1331,7 @@
             <Component class="javax.swing.JToggleButton" name="A7">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Times New Roman" size="12" style="0"/>
+                  <Font name="Times New Roman" size="8" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="|"/>
               </Properties>
@@ -1347,7 +1342,7 @@
             <Component class="javax.swing.JToggleButton" name="B7">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Times New Roman" size="12" style="0"/>
+                  <Font name="Times New Roman" size="8" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="|"/>
               </Properties>
@@ -1358,7 +1353,7 @@
             <Component class="javax.swing.JToggleButton" name="B8">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Times New Roman" size="12" style="0"/>
+                  <Font name="Times New Roman" size="8" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="|"/>
               </Properties>
@@ -1369,7 +1364,7 @@
             <Component class="javax.swing.JToggleButton" name="A8">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Times New Roman" size="12" style="0"/>
+                  <Font name="Times New Roman" size="8" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="|"/>
               </Properties>
@@ -1380,7 +1375,7 @@
             <Component class="javax.swing.JToggleButton" name="E8">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Times New Roman" size="12" style="0"/>
+                  <Font name="Times New Roman" size="8" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="|"/>
               </Properties>
@@ -1391,7 +1386,7 @@
             <Component class="javax.swing.JToggleButton" name="F8">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Times New Roman" size="12" style="0"/>
+                  <Font name="Times New Roman" size="8" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="|"/>
               </Properties>
@@ -1402,7 +1397,7 @@
             <Component class="javax.swing.JToggleButton" name="D8">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Times New Roman" size="12" style="0"/>
+                  <Font name="Times New Roman" size="8" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="|"/>
               </Properties>
@@ -1413,7 +1408,7 @@
             <Component class="javax.swing.JToggleButton" name="C8">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Times New Roman" size="12" style="0"/>
+                  <Font name="Times New Roman" size="8" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="|"/>
               </Properties>
@@ -1424,7 +1419,7 @@
             <Component class="javax.swing.JToggleButton" name="F9">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Times New Roman" size="12" style="0"/>
+                  <Font name="Times New Roman" size="8" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="|"/>
               </Properties>
@@ -1435,7 +1430,7 @@
             <Component class="javax.swing.JToggleButton" name="E9">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Times New Roman" size="12" style="0"/>
+                  <Font name="Times New Roman" size="8" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="|"/>
               </Properties>
@@ -1446,7 +1441,7 @@
             <Component class="javax.swing.JToggleButton" name="B9">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Times New Roman" size="12" style="0"/>
+                  <Font name="Times New Roman" size="8" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="|"/>
               </Properties>
@@ -1457,7 +1452,7 @@
             <Component class="javax.swing.JToggleButton" name="A9">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Times New Roman" size="12" style="0"/>
+                  <Font name="Times New Roman" size="8" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="|"/>
               </Properties>
@@ -1468,7 +1463,7 @@
             <Component class="javax.swing.JToggleButton" name="C9">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Times New Roman" size="12" style="0"/>
+                  <Font name="Times New Roman" size="8" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="|"/>
               </Properties>
@@ -1479,7 +1474,7 @@
             <Component class="javax.swing.JToggleButton" name="D9">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Times New Roman" size="12" style="0"/>
+                  <Font name="Times New Roman" size="8" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="|"/>
               </Properties>
@@ -1490,7 +1485,7 @@
             <Component class="javax.swing.JToggleButton" name="D10">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Times New Roman" size="12" style="0"/>
+                  <Font name="Times New Roman" size="8" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="|"/>
               </Properties>
@@ -1501,7 +1496,7 @@
             <Component class="javax.swing.JToggleButton" name="C10">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Times New Roman" size="12" style="0"/>
+                  <Font name="Times New Roman" size="8" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="|"/>
               </Properties>
@@ -1512,7 +1507,7 @@
             <Component class="javax.swing.JToggleButton" name="A10">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Times New Roman" size="12" style="0"/>
+                  <Font name="Times New Roman" size="8" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="|"/>
               </Properties>
@@ -1523,7 +1518,7 @@
             <Component class="javax.swing.JToggleButton" name="B10">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Times New Roman" size="12" style="0"/>
+                  <Font name="Times New Roman" size="8" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="|"/>
               </Properties>
@@ -1534,7 +1529,7 @@
             <Component class="javax.swing.JToggleButton" name="E10">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Times New Roman" size="12" style="0"/>
+                  <Font name="Times New Roman" size="8" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="|"/>
               </Properties>
@@ -1545,7 +1540,7 @@
             <Component class="javax.swing.JToggleButton" name="F10">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Times New Roman" size="12" style="0"/>
+                  <Font name="Times New Roman" size="8" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="|"/>
               </Properties>
@@ -1556,7 +1551,7 @@
             <Component class="javax.swing.JToggleButton" name="A11">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Times New Roman" size="12" style="0"/>
+                  <Font name="Times New Roman" size="8" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="|"/>
               </Properties>
@@ -1567,7 +1562,7 @@
             <Component class="javax.swing.JToggleButton" name="C11">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Times New Roman" size="12" style="0"/>
+                  <Font name="Times New Roman" size="8" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="|"/>
               </Properties>
@@ -1578,7 +1573,7 @@
             <Component class="javax.swing.JToggleButton" name="D11">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Times New Roman" size="12" style="0"/>
+                  <Font name="Times New Roman" size="8" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="|"/>
               </Properties>
@@ -1589,7 +1584,7 @@
             <Component class="javax.swing.JToggleButton" name="F11">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Times New Roman" size="12" style="0"/>
+                  <Font name="Times New Roman" size="8" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="|"/>
               </Properties>
@@ -1600,7 +1595,7 @@
             <Component class="javax.swing.JToggleButton" name="E11">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Times New Roman" size="12" style="0"/>
+                  <Font name="Times New Roman" size="8" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="|"/>
               </Properties>
@@ -1611,7 +1606,7 @@
             <Component class="javax.swing.JToggleButton" name="B11">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Times New Roman" size="12" style="0"/>
+                  <Font name="Times New Roman" size="8" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="|"/>
               </Properties>
@@ -1622,7 +1617,7 @@
             <Component class="javax.swing.JToggleButton" name="B12">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Times New Roman" size="12" style="0"/>
+                  <Font name="Times New Roman" size="8" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="|"/>
               </Properties>
@@ -1633,7 +1628,7 @@
             <Component class="javax.swing.JToggleButton" name="E12">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Times New Roman" size="12" style="0"/>
+                  <Font name="Times New Roman" size="8" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="|"/>
               </Properties>
@@ -1644,7 +1639,7 @@
             <Component class="javax.swing.JToggleButton" name="F12">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Times New Roman" size="12" style="0"/>
+                  <Font name="Times New Roman" size="8" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="|"/>
               </Properties>
@@ -1655,7 +1650,7 @@
             <Component class="javax.swing.JToggleButton" name="D12">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Times New Roman" size="12" style="0"/>
+                  <Font name="Times New Roman" size="8" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="|"/>
               </Properties>
@@ -1666,7 +1661,7 @@
             <Component class="javax.swing.JToggleButton" name="C12">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Times New Roman" size="12" style="0"/>
+                  <Font name="Times New Roman" size="8" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="|"/>
               </Properties>
@@ -1677,7 +1672,7 @@
             <Component class="javax.swing.JToggleButton" name="A12">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Times New Roman" size="12" style="0"/>
+                  <Font name="Times New Roman" size="8" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="|"/>
               </Properties>

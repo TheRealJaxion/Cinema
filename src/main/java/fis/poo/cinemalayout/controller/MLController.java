@@ -30,29 +30,27 @@ public class MLController implements ActionListener{
     private MainLayout ml;
     private Loginoptions logn; 
     private boolean isLoged = false; 
-    private ArrayList<Function> functions = new ArrayList<>(); 
     private Recipe rcp; 
     private Reservation rs;
+    private ArrayList<Function> fns = new ArrayList<>();
     private Movie mv;
     private Client cln; 
     private Function fn; 
     private ArrayList<Movie> movies = new ArrayList<>();
     private CinemaManager cnm = new CinemaManager();
-    private SeatsSelection st; 
-    private SeatController smc;
+    private SSController ssc;
+    //private SeatManager smn;
 
     public void setIsLoged(boolean isLoged) {
         this.isLoged = isLoged;
     }
     
     
-    public MLController(MainLayout ml, Loginoptions logn, SeatsSelection st, SeatController smc, ArrayList<Movie> movies) {
+    public MLController(MainLayout ml, Loginoptions logn, ArrayList<Movie> movies) {
         this.ml = ml;
         this.logn = logn;
-        this.st = st;
         this.movies = movies; 
-        this.smc = smc;
-        if(!cnm.movies().isEmpty()){
+        if(!cnm.movies(null).isEmpty() && cnm.movies(null).size() == 4){
             this.ml.movieT1.setText(movies.get(0).getNameM());
             this.ml.movieT2.setText(movies.get(1).getNameM());
             this.ml.movieT3.setText(movies.get(2).getNameM());
@@ -71,6 +69,13 @@ public class MLController implements ActionListener{
             this.ml.movie2B.setIcon(ic2);
             this.ml.movie3B.setIcon(ic3);
             this.ml.movie4B.setIcon(ic4);
+            
+            ml.setVisible(true);
+            ml.setLocationRelativeTo(null);
+        } else{
+            JOptionPane.showMessageDialog(ml, "Movies are not loaded yet, you'll be redirected to login panel.", "Policinema", JOptionPane.ERROR_MESSAGE);
+            logn.setVisible(true);
+            logn.setLocationRelativeTo(null);
         }
         this.ml.signB.addActionListener(this); 
         this.ml.movie1B.addActionListener(this);
@@ -87,91 +92,102 @@ public class MLController implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent ev) {
         
-        movies = cnm.movies();
-        functions = cnm.functions();
-        
+        movies = cnm.movies(null);
+                
         if(ml.isActive()){
             
             if(ev.getSource() == ml.movie1B){
-                String path = "CinemaLayout\\src\\main\\resources\\funcl\\img1.png";
-                mv = movies.get(0); 
-                ImageIcon img = new ImageIcon(path);
-                ml.movieTitle.setText(mv.getNameM());
-                ml.movieImg.setIcon(img);
-                ml.movieFeatures.setText(mv.getRestriction()+"\n"+mv.getDuration());
-                ml.movieDescription.setText(cnm.descriptions().get(0));
-                
-                fn = functions.get(0);
-                ml.selF(fn);
-                
-                for(int i=0; i<cnm.functions().size(); i++){
-                    if(ml.movieTitle.getText().equals(fn.getMovieName())){
-                        ml.functionsS.insertItemAt(fn.getSchedule()+" "+ fn.getHall()+" "+ fn.getnHall(), i);
-                    }
-                }
-                ml.setVisible(false);
-                ml.MovieDisp.setVisible(true);
+                if(!movies.isEmpty()){
+                    String path = "C:\\Users\\jordy\\Documents\\NetBeansProjects\\CinemaLayout\\src\\main\\resources\\funcl\\img1.png";
+                    mv = movies.get(0); 
+                    ImageIcon img = new ImageIcon(path);
+                    ml.movieTitle.setText(mv.getNameM());
+                    ml.movieImg.setIcon(img);
+                    ml.durationT.setText(Integer.toString(mv.getDuration())+ml.durationT.getText());
+                    ml.restrictionT.setText(mv.getRestriction());
+                    ml.movieDescription.setText(cnm.descriptions(ml, mv.getNameM()));
                     
+                    fns = cnm.functions(ml, mv.getNameM());
+                    
+                    for(Function fn : fns){
+                        ml.functionsS.addItem(fn.getFunctionId());
+                    }
+                    
+                    ml.setVisible(false);
+                    ml.MovieDisp.setVisible(true);
+                    ml.MovieDisp.setLocationRelativeTo(null);
+                }else{
+                    JOptionPane.showMessageDialog(ml, "Functions are not loaded yet!", "Alert!", JOptionPane.ERROR_MESSAGE);
+                }    
             } else if(ev.getSource() == ml.movie2B){
-                String path = "CinemaLayout\\src\\main\\resources\\funcl\\img2.png";
-                mv = movies.get(1); 
-                ImageIcon img = new ImageIcon(path);
-                ml.movieTitle.setText(mv.getNameM());
-                ml.movieImg.setIcon(img);
-                ml.movieFeatures.setText(mv.getRestriction()+"\n"+mv.getDuration());
-                ml.movieDescription.setText(ml.descriptions.get(1));
-                
-                fn = functions.get(1);
-                ml.selF(fn);
-                
-                for(int i=0; i<cnm.functions().size(); i++){
-                    if(ml.movieTitle.getText().equals(fn.getMovieName())){
-                        ml.functionsS.insertItemAt(fn.getSchedule()+" "+ fn.getHall()+" "+ fn.getnHall(), i);
+                if(!movies.isEmpty()){
+                    String path = "C:\\Users\\jordy\\Documents\\NetBeansProjects\\CinemaLayout\\src\\main\\resources\\funcl\\img2.png";
+                    mv = movies.get(1); 
+                    ImageIcon img = new ImageIcon(path);
+                    ml.movieTitle.setText(mv.getNameM());
+                    ml.movieImg.setIcon(img);
+                    ml.durationT.setText(Integer.toString(mv.getDuration())+ml.durationT.getText());
+                    ml.restrictionT.setText(mv.getRestriction());
+                    ml.movieDescription.setText(cnm.descriptions(ml, mv.getNameM()));
+                    
+                    fns = cnm.functions(ml, mv.getNameM());
+                    
+                    for(Function fn : fns){
+                        ml.functionsS.addItem(fn.getFunctionId());
                     }
-                }
-                ml.setVisible(false);
-                ml.MovieDisp.setVisible(true);   
-                
+                    
+                    ml.setVisible(false);
+                    ml.MovieDisp.setVisible(true);   
+                    ml.MovieDisp.setLocationRelativeTo(null);
+                }else{
+                    JOptionPane.showMessageDialog(ml, "Functions are not loaded yet!", "Alert!", JOptionPane.ERROR_MESSAGE);
+                }  
             } else if(ev.getSource() == ml.movie3B){
-                String path = "CinemaLayout\\src\\main\\resources\\funcl\\img3.png";
-                mv = movies.get(2); 
-                ImageIcon img = new ImageIcon(path);
-                ml.movieTitle.setText(mv.getNameM());
-                ml.movieImg.setIcon(img);
-                ml.movieFeatures.setText(mv.getRestriction()+"\n"+mv.getDuration());
-                ml.movieDescription.setText(ml.descriptions.get(2));
-                
-                fn = functions.get(2);
-                ml.selF(fn);
-                
-                for(int i=0; i<cnm.functions().size(); i++){
-                    if(ml.movieTitle.getText().equals(fn.getMovieName())){
-                        ml.functionsS.insertItemAt(fn.getSchedule()+" "+ fn.getHall()+" "+ fn.getnHall(), i);
+                if(!movies.isEmpty()){
+                    String path = "C:\\Users\\jordy\\Documents\\NetBeansProjects\\CinemaLayout\\src\\main\\resources\\funcl\\img3.png";
+                    mv = movies.get(2); 
+                    ImageIcon img = new ImageIcon(path);
+                    ml.movieTitle.setText(mv.getNameM());
+                    ml.movieImg.setIcon(img);
+                    ml.durationT.setText(Integer.toString(mv.getDuration())+ml.durationT.getText());
+                    ml.restrictionT.setText(mv.getRestriction());
+                    ml.movieDescription.setText(cnm.descriptions(ml, mv.getNameM()));
+
+                    fns = cnm.functions(ml, mv.getNameM());
+                    
+                    for(Function fn : fns){
+                        ml.functionsS.addItem(fn.getFunctionId());
                     }
-                }
-                ml.setVisible(false);
-                ml.MovieDisp.setVisible(true); 
-                
+                    
+                    ml.setVisible(false);
+                    ml.MovieDisp.setVisible(true);
+                    ml.MovieDisp.setLocationRelativeTo(null);
+                }else{
+                    JOptionPane.showMessageDialog(ml, "Functions are not loaded yet!", "Alert!", JOptionPane.ERROR_MESSAGE);
+                } 
             } else if(ev.getSource() == ml.movie4B){
-                String path = "CinemaLayout\\src\\main\\resources\\funcl\\img4.png";
-                mv = movies.get(3); 
-                ImageIcon img = new ImageIcon(path);
-                ml.movieTitle.setText(mv.getNameM());
-                ml.movieImg.setIcon(img);
-                ml.movieFeatures.setText(mv.getRestriction()+"\n"+mv.getDuration());
-                ml.movieDescription.setText(ml.descriptions.get(3));
-                
-                fn = functions.get(3);
-                ml.selF(fn);
-                
-                for(int i=0; i<cnm.functions().size(); i++){
-                    if(ml.movieTitle.getText().equals(fn.getMovieName())){
-                        ml.functionsS.insertItemAt(fn.getSchedule()+" "+ fn.getHall()+" "+ fn.getnHall(), i);
+                if(!movies.isEmpty()){
+                    String path = "C:\\Users\\jordy\\Documents\\NetBeansProjects\\CinemaLayout\\src\\main\\resources\\funcl\\img4.png";
+                    mv = movies.get(3); 
+                    ImageIcon img = new ImageIcon(path);
+                    ml.movieTitle.setText(mv.getNameM());
+                    ml.movieImg.setIcon(img);
+                    ml.durationT.setText(Integer.toString(mv.getDuration())+ml.durationT.getText());
+                    ml.restrictionT.setText(mv.getRestriction());
+                    ml.movieDescription.setText(cnm.descriptions(ml, mv.getNameM()));
+
+                    fns = cnm.functions(ml, mv.getNameM());
+                    
+                    for(Function fn : fns){
+                        ml.functionsS.addItem(fn.getFunctionId());
                     }
-                }
-                
-                ml.setVisible(false);
-                ml.MovieDisp.setVisible(true);
+
+                    ml.setVisible(false);
+                    ml.MovieDisp.setVisible(true);
+                    ml.MovieDisp.setLocationRelativeTo(null);                    
+                }else{
+                    JOptionPane.showMessageDialog(ml, "Functions are not loaded yet!", "Alert!", JOptionPane.ERROR_MESSAGE);
+                } 
             } else if(ev.getSource() == ml.signB){
                 ml.setVisible(false);
                 logn.setVisible(true);
@@ -181,16 +197,37 @@ public class MLController implements ActionListener{
         
         if(ml.MovieDisp.isActive()){
             if(ev.getSource() == ml.gbbM){
+                ml.durationT.setText("");
+                ml.durationT.setText("min");
+                ml.functionsS.removeAllItems();
                 ml.MovieDisp.setVisible(false);
                 ml.setVisible(true);
+                ml.setLocationRelativeTo(null);
             } else if(ev.getSource() == ml.seatSelB){
                 
                 if(isLoged){
                     rcp.setClientName(cln.getNamesP());
                     rcp.setClientId(Integer.toString(cln.getId()));
-                    rs.setFunction(fn);
-                    st.setVisible(true);
+                    
+                    Movie mMov = null;
+                    Function mFn = null;
+                    for(Movie mov : cnm.movies(ml.MovieDisp)){
+                        if(mov.getNameM().equals(ml.movieTitle)){
+                            mMov = mov;
+                            for(Function fun : cnm.functions(ml.MovieDisp, mMov.getNameM())){
+                                if(fun.equals(ml.functionsS.getSelectedItem())){
+                                    mFn = fun;
+                                    break;
+                                }
+                            }
+                            break;
+                        }
+                    }
+                    
+                    rs.setFunction(mFn);
+                    ssc = new SSController(ml, mMov, mFn);
                     ml.MovieDisp.setVisible(false);
+                    
                 } else{
                     JOptionPane.showMessageDialog(null, "You must have been logged in first.", "Policinema", JOptionPane.OK_OPTION);
                 }

@@ -4,117 +4,62 @@
  */
 package fis.poo.cinemalayout.model.entities;
 
-import fis.poo.cinemalayout.controller.SeatController;
+import fis.poo.cinemalayout.model.services.CinemaManager;
+import java.util.ArrayList;
 
 /**
  *
  * @author jordy
  */
 public class Function {
-    private Movie movieD; 
-    private String movieName;
-    private int movieDuration;
-    private String restriction;
-    private String functionId;
-    private String schedule; 
+    private CinemaManager cnm = new CinemaManager();
+    private Movie movie;
+    private String nameF;
     private char hall;
-    private int nHall;
+    private int nhall;
+    private String schedule;
 
-    public Function(Movie movieD, String schedule, char hall, int nHall) {
-        this.movieD = movieD;
-        this.movieName = movieD.getNameM();
-        this.movieDuration = movieD.getDuration();
-        this.restriction = movieD.getRestriction(); 
+    public Function(Movie movie, String schedule, char hall, int nhall) {
+        this.movie = movie;
+        this.hall = hall;
+        this.nhall = nhall;
+        this.schedule = schedule;
+        this.nameF = movie.getNameM();
+    }
+
+    public Function(char hall, int nhall, String schedule) {
         this.schedule = schedule;
         this.hall = hall;
-        this.nHall = nHall;
-        this.functionId = movieName+"||"+ schedule +"||"+ hall +"||"+ Integer.toString(nHall);
-    }
-
-    public Function() {
-    }
-
-    public Function(String movieName, int movieDuration, String schedule, char hall, int nHall) {
-        this.movieName = movieName;
-        this.movieDuration = movieDuration;
-        this.schedule = schedule;
-        this.hall = hall;
-        this.nHall = nHall; 
-        this.restriction = restriction;
-        this.functionId = movieName+"||"+ schedule +"||"+ hall +"||"+ Integer.toString(nHall);
-    }
-
-    public String getFunctionId() {
-        return functionId;
+        this.nhall = nhall;
     }
     
-    public Movie getMovieD() {
-        return movieD;
+    public String mName(){
+        return movie.getNameM();
     }
     
-    public String getDescription(){
-        return movieD.getDescription();
-    }
-    
-    public String getSchedule() {
-        return schedule;
+    public String getFunctionId(){
+        return schedule+" : "+hall +" "+nhall; 
     }
 
     public char getHall() {
         return hall;
     }
 
-    public void setMovieD(Movie movieD) {
-        this.movieD = movieD;
+    public void setNameF(String nameF) {
+        this.nameF = nameF;
     }
 
-    public void setSchedule(String schedule) {
-        this.schedule = schedule;
+    public int getNhall() {
+        return nhall;
     }
 
-    public void setHall(char hall) {
-        this.hall = hall;
-    }
-    public void setNHall(int nHall){
-        this.nHall = nHall; 
-    }
-
-    public String getMovieName() {
-        return movieName;
-    }
-
-    public int getMovieDuration() {
-        return movieDuration;
-    }
-
-    public String getRestriction() {
-        return restriction;
-    }
-
-    public int getnHall() {
-        return nHall;
-    }
-
-    public void setMovieName(String movieName) {
-        this.movieName = movieName;
-    }
-
-    public void setMovieDuration(int movieDuration) {
-        this.movieDuration = movieDuration;
-    }
-
-    public void setRestriction(String restriction) {
-        this.restriction = restriction;
-    }
-
-    public void setnHall(int nHall) {
-        this.nHall = nHall;
+    public String getSchedule() {
+        return schedule;
     }
     
     
     
-    public String toCSV() {
-        return " "+functionId+","+restriction;
-    }    
-    
+    public String toCSV(){
+        return hall+","+nhall+","+schedule+"\n";
+    }
 }

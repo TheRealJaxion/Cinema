@@ -37,7 +37,7 @@ public class Loginoptions extends javax.swing.JFrame {
         return false; 
     }
     
-    public void clear(){
+    public void clear(JTextField[] fields){
         for(JTextField fld : fields()){
             fld.setText("");
         }
@@ -45,7 +45,7 @@ public class Loginoptions extends javax.swing.JFrame {
         psw.setText("");
     }
     public boolean validMail(){
-        if(mTxt.getText().matches("@") && mTxt.getText().matches("mail.com")){
+        if(mTxt.getText().contains("@") && mTxt.getText().contains("mail.com")){
             return true;
         } else{
             return false; 
@@ -118,7 +118,11 @@ public class Loginoptions extends javax.swing.JFrame {
         signB = new javax.swing.JButton();
         lognB = new javax.swing.JButton();
 
+        signinF.setAlwaysOnTop(true);
+        signinF.setAutoRequestFocus(false);
         signinF.setBackground(new java.awt.Color(102, 0, 0));
+        signinF.setMinimumSize(new java.awt.Dimension(500, 530));
+        signinF.setResizable(false);
 
         jPanel2.setBackground(new java.awt.Color(102, 0, 0));
 
@@ -240,7 +244,7 @@ public class Loginoptions extends javax.swing.JFrame {
                 .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(signin, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(39, Short.MAX_VALUE))
+                .addContainerGap(45, Short.MAX_VALUE))
         );
 
         jPanel16.setBackground(new java.awt.Color(0, 0, 0));
@@ -260,7 +264,7 @@ public class Loginoptions extends javax.swing.JFrame {
                 .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(cnclB)
-                .addGap(10, 10, 10))
+                .addGap(65, 65, 65))
         );
         jPanel16Layout.setVerticalGroup(
             jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -284,9 +288,15 @@ public class Loginoptions extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, signinFLayout.createSequentialGroup()
                 .addComponent(jPanel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(0, 0, 0)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
+
+        maiIn.setAlwaysOnTop(true);
+        maiIn.setAutoRequestFocus(false);
+        maiIn.setMaximumSize(new java.awt.Dimension(355, 475));
+        maiIn.setMinimumSize(new java.awt.Dimension(355, 475));
+        maiIn.setPreferredSize(new java.awt.Dimension(355, 475));
+        maiIn.setResizable(false);
 
         jPanel17.setBackground(new java.awt.Color(0, 0, 0));
 
@@ -351,14 +361,13 @@ public class Loginoptions extends javax.swing.JFrame {
                     .addComponent(psw, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(20, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel18Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(panel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(103, 103, 103))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel18Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel18Layout.createSequentialGroup()
-                        .addComponent(panel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(100, 100, 100))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel18Layout.createSequentialGroup()
-                        .addComponent(loginB, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(109, 109, 109))))
+                .addComponent(loginB, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(109, 109, 109))
         );
         jPanel18Layout.setVerticalGroup(
             jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -373,9 +382,9 @@ public class Loginoptions extends javax.swing.JFrame {
                 .addComponent(jLabel12)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(psw, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                 .addComponent(loginB, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(38, Short.MAX_VALUE))
+                .addGap(27, 27, 27))
         );
 
         javax.swing.GroupLayout maiInLayout = new javax.swing.GroupLayout(maiIn.getContentPane());
@@ -628,7 +637,7 @@ public class Loginoptions extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, 0)
-                .addComponent(panelI, javax.swing.GroupLayout.PREFERRED_SIZE, 506, Short.MAX_VALUE)
+                .addComponent(panelI, javax.swing.GroupLayout.DEFAULT_SIZE, 506, Short.MAX_VALUE)
                 .addGap(0, 0, 0))
         );
         layout.setVerticalGroup(

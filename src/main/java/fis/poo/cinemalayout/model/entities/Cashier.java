@@ -19,7 +19,7 @@ public class Cashier extends Person {
     
     @Override
     public String toCSV(){
-        return " "+username+", "+ namesP +", "+ lastnamesP +", "+ password; 
+        return username+","+namesP +","+lastnamesP +","+ password+"\n"; 
     }
     
 }

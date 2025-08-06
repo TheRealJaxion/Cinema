@@ -4,10 +4,11 @@
  */
 package fis.poo.cinemalayout.model.services;
 
-import fis.poo.cinemalayout.controller.SeatController;
+
+import fis.poo.cinemalayout.controller.SSController;
+import fis.poo.cinemalayout.controller.SeatManager;
 import fis.poo.cinemalayout.model.entities.Function;
 import fis.poo.cinemalayout.model.entities.Reservation;
-import fis.poo.cinemalayout.view.SeatsSelection;
 
 /**
  *
@@ -15,16 +16,15 @@ import fis.poo.cinemalayout.view.SeatsSelection;
  */
 public class ClientReserv extends MarkReservation{
     
-    public ClientReserv(Function fn, SeatController smc, SeatsSelection sl, Reservation rs) {
-        super(fn, smc, sl, rs);
-        smc.setIsClient(true);
-        smc.setIsCashier(false);
+    public ClientReserv(Function fn, SSController ssc, Reservation rs) {
+        super(fn, ssc, rs);
+        ssc.setIsClient(true);
     }
 
     @Override
     public void markSeats() {
-        rs.setSeats(smc.getCounter());
-        smc.setCounter(0);
+        rs.setSeats(ssc.getCounter());
+        ssc.setCounter(0);
     }
     
     

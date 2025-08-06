@@ -4,6 +4,7 @@
  */
 package fis.poo.cinemalayout.view;
 
+import java.awt.Component;
 import javax.swing.JButton;
 import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
@@ -266,8 +267,8 @@ public class HiddenView extends javax.swing.JFrame {
         pw.setText("");
     }
     
-    public void alertM(){
-        JOptionPane.showConfirmDialog(null, "Invalid Credentials!", "Error", JOptionPane.ERROR_MESSAGE); 
+    public void alertM(Component fr){
+        JOptionPane.showMessageDialog(fr, "Invalid Credentials!", "Error", JOptionPane.ERROR_MESSAGE); 
     }
     
     public JButton[] buttons(){

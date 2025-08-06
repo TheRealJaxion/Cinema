@@ -22,7 +22,6 @@ import fis.poo.cinemalayout.view.CashierPanel;
 import fis.poo.cinemalayout.view.HiddenView;
 import fis.poo.cinemalayout.view.Loginoptions;
 import fis.poo.cinemalayout.view.MainLayout;
-import fis.poo.cinemalayout.view.SeatsSelection;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -43,8 +42,10 @@ public class Controller implements ActionListener{
     private CashierPanel csh = new CashierPanel(); 
     private Loginoptions lgn = new Loginoptions();
     private MainLayout mnl = new MainLayout();
-    private SeatsSelection sts;
-    private SeatController stc;
+    private AJCBController jcb = new AJCBController(adm);
+    //private SeatManager smn;
+    private SSController ssc;
+    private CJCBController cb;
     private Verificator vrf = new Verificator();
     private PersonManager pm = new PersonManager();
     private CinemaManager cn = new CinemaManager(); 
@@ -68,6 +69,10 @@ public class Controller implements ActionListener{
         this.rcp = rcp;
         this.cln = cln;
         this.cshr = cshr;
+        this.cb = new CJCBController(csh);
+        this.adm.model.addColumn("Name");
+        this.adm.model.addColumn("Duration");
+        this.adm.model.addColumn("Restriction");    
         for(JButton btn : csh.buttons()){
             btn.addActionListener(this);
         }
@@ -77,37 +82,36 @@ public class Controller implements ActionListener{
         for(JButton bt : hdn.buttons()){
             bt.addActionListener(this);
         }
-        if(!cn.movies().isEmpty()){
-            movies = cn.movies();
-            ml = new MLController(mnl, lgn, sts, stc, movies);
-            System.out.println("aa");
+
+        if(!cn.movies(null).isEmpty()){
+            movies = cn.movies(null);
+            for(int i=0; i<cn.movies(null).size(); i++){
+                Movie movie = cn.movies(null).get(i);
+                Object[] ob = {movie.getNameM(), movie.getDuration(), movie.getRestriction()};
+                adm.model.addRow(ob);
+            }
+            ml = new MLController(mnl, lgn, movies);
+            
         } else{
-            ml = new MLController(mnl, lgn, sts, stc, movies);
+            ml = new MLController(mnl, lgn, movies);
             System.out.println("empty");
         }
-        this.adm.model.addColumn("Name");
-        this.adm.model.addColumn("Duration");
-        this.adm.model.addColumn("Restriction");             
         lgn.signB.addActionListener(this);
         lgn.lognB.addActionListener(this);
         lgn.cnclB.addActionListener(this);
         lgn.hiddenB.addActionListener(this);
         lgn.loginB.addActionListener(this);
         lgn.signin.addActionListener(this);
-        mnl.setVisible(true);
-        mnl.setLocationRelativeTo(null);
     }
 
     
     @Override
     public void actionPerformed(ActionEvent ev) {
         Object sr = ev.getSource();
+        String[] schdl = {"11AM", "13PM", "15PM", "17PM", "19PM"};
+        String[] hallN = {"1", "2", "3", "4", "5", "6"};
         if(adm.isActive()){
             if(sr == adm.showInfo){
-                for(int i=0; i<cn.movies().size(); i++){
-                    Movie movie = cn.movies().get(i);
-                    adm.model.addRow(new Object[]{movie.getNameM(), movie.getDuration(), movie.getRestriction()});
-                }
                 adm.info.setVisible(true);
                 adm.setVisible(false);
                 adm.info.setLocationRelativeTo(null);
@@ -164,20 +168,27 @@ public class Controller implements ActionListener{
         }
         
         if(hdn.loginCs.isActive()){
-            if(sr == hdn.loginCs){
+            if(sr == hdn.lognC){
                 String username = hdn.cshT.getText();
                 String password = hdn.pwF.getText(); 
-                if(vrf.verifier("cashier", username, password)){
-                    cshr = pm.cashiers().get(vrf.getPosCh());
+                if(vrf.verifier(hdn.loginCs, "cashier", username, password)){
+                    cshr = pm.cashiers(hdn.loginCs).get(vrf.getPosCh());
                     hdn.setVisible(false);
                     hdn.loginCs.setVisible(false);
+                    
                     csh.displayC.setText(cshr.getNamesP());
-                    for(Function fns : cn.functions()){
-                        csh.functionCB.addItem(fns.getFunctionId());
+                    movies = cn.movies(hdn.loginCs);
+                    
+                    
+                    for(Movie mv : movies){
+                        csh.movieCB.addItem(mv.getNameM());
                     }
+
                     csh.setVisible(true);
+                    csh.setLocationRelativeTo(null);
+                    
                 } else{
-                    hdn.alertM();
+                    hdn.alertM(hdn.loginCs);
                     hdn.clear(hdn.cshT, hdn.pwF);
                 }  
             }else if(sr == hdn.canclC){
@@ -195,7 +206,7 @@ public class Controller implements ActionListener{
                 if(adm.isEmp(adm.ncs())){
                     adm.alertM(adm.ncs(), adm.newCashier);
                 } else{
-                    pm.registerCashier(adm.getTI(adm.nT), adm.getTI(adm.unT), adm.getTI(adm.lnT), adm.getTI(adm.pwT));
+                    pm.registerCashier(adm.newCashier, adm.getTI(adm.nT), adm.getTI(adm.unT), adm.getTI(adm.lnT), adm.getTI(adm.pwT));
                     adm.refresh(adm.ncs());
                 }
             }
@@ -205,6 +216,7 @@ public class Controller implements ActionListener{
            if(sr == adm.gbB){
                adm.info.setVisible(false);
                adm.setVisible(true);
+               adm.setLocationRelativeTo(null);
            }
         }
         
@@ -230,7 +242,6 @@ public class Controller implements ActionListener{
                     prp.setPprom3(Double.parseDouble(adm.getTI(adm.pprom3T)));
                 }
             } else if(sr == adm.svp4){ 
-                
                 if(adm.isEmpt(adm.pprom4T)){
                     adm.alertM(adm.pr(), adm.pricePanel);
                 } else{
@@ -303,16 +314,46 @@ public class Controller implements ActionListener{
                     File imgSelPath = fc.getSelectedFile();
                     img.functImg(adm.movieSet, imgSelPath);
                 }
-            } else if(sr == adm.setF){
+            }else if(sr == adm.saveM){
                 if(adm.isEmp(adm.mvs())){
                     adm.alertM(adm.mvs(), adm.movieSet);
                 } else{
-                    cn.setMovies(adm.getTI(adm.mN), Integer.parseInt(adm.getTI(adm.mD)), (String) adm.ageR.getSelectedItem());
-                    mnl.addDes(adm.getTI(adm.mvdesc));
-                    adm.mvTitle.setText(adm.getTI(adm.mN));
+                    cn.setMovies(adm.movieSet, adm.getTI(adm.mN), Integer.parseInt(adm.getTI(adm.mD)), (String) adm.ageR.getSelectedItem());
+                    cn.setDesc(adm.movieSet, adm.mvdesc.getText(), adm.getTI(adm.mN));
                     adm.refresh(adm.mvs());
+                }
+            
+            }else if(sr == adm.setF){
+                if(!adm.isEmp(adm.mvs())){
+                    cn.setMovies(adm.movieSet, adm.getTI(adm.mN), Integer.parseInt(adm.getTI(adm.mD)), (String) adm.ageR.getSelectedItem());
+                    cn.setDesc(adm.movieSet, adm.mvdesc.getText(), adm.getTI(adm.mN));
+                    adm.movieBx.addItem(adm.getTI(adm.mN));
+                    adm.refresh(adm.mvs());
+                    
+                    for(String s : schdl){
+                        adm.scheduleSel.addItem(s);
+                    }
+                    adm.hallSet.addItem("Normal Hall");
+                    adm.hallSet.addItem("IMAX");
+                    
+                    
+                    
                     adm.movieSet.setVisible(false);
                     adm.functionGenerator.setVisible(true);
+                    adm.functionGenerator.setLocationRelativeTo(null);
+                } else{
+                    ArrayList<Movie> mvs = cn.movies(adm.movieSet);
+                    for(Movie mv : mvs){
+                    adm.movieBx.addItem(mv.getNameM());
+                    }   
+                    for(String s : schdl){
+                        adm.scheduleSel.addItem(s);
+                    }
+                    adm.hallSet.addItem("Normal Hall");
+                    adm.hallSet.addItem("IMAX");
+                    
+                    adm.functionGenerator.setVisible(true);
+                    adm.movieSet.setVisible(false);
                     adm.functionGenerator.setLocationRelativeTo(null);
                 }                
             } else if(sr == adm.gbM){
@@ -325,82 +366,112 @@ public class Controller implements ActionListener{
         
         if(adm.functionGenerator.isActive()){
             if(sr == adm.gnrtF){
-                String movSel = adm.getTI(adm.mvTitle);
-                for(int i=0; i<cn.movies().size(); i++){
-                    Movie mv = cn.movies().get(i); 
-                    if(mv.getNameM().equals(movSel)){
-                        cn.setFunction(mv, (String) adm.scheduleSel.getSelectedItem(), adm.selH(adm.hallSet), (Integer) adm.numH.getSelectedItem());
+                Movie mvF = new Movie();
+                for(Movie mvs : cn.movies(adm.functionGenerator)){
+                    mvF = mvs;
+                    if(mvF.getNameM().equals(adm.getItem(adm.movieBx))){
+                        mvF = mvs;
+                        break;
+                    } else{
+                        System.out.println(mvF.getNameM());
+                        mvF = null;
                     }
                 }
+                if(mvF != null){
+                    cn.setFunction(adm.functionGenerator, mvF, (String) adm.scheduleSel.getSelectedItem(), adm.selH(adm.hallSet), Integer.parseInt((String) adm.numH.getSelectedItem()));
+                    adm.numH.removeItem(adm.numH.getSelectedItem());
+                } else{
+                    JOptionPane.showMessageDialog(adm.functionGenerator, "Movie not found!", "Alert!", JOptionPane.ERROR_MESSAGE);
+                }
             } else if(sr == adm.cancelB){
+                adm.movieBx.removeAllItems();
+                adm.scheduleSel.removeAllItems();
+                adm.hallSet.removeAllItems();
                 adm.setVisible(true);
                 adm.functionGenerator.setVisible(false);
                 adm.setLocationRelativeTo(null);
             }   
-        }   
-        if(sr == csh.seatSB){
-            String sel = (String) csh.functionCB.getSelectedItem(); 
-            if(sel.isBlank() || sel.isEmpty()){
-                JOptionPane.showMessageDialog(null, "Please, select a function first", "Cashier Panel", JOptionPane.OK_OPTION);
-            } else{
-                ArrayList<Function> fns = cn.functions();
-                for(Function fn : fns){
-                    if(sel.equals(fn.getFunctionId())){
-                        rsr.setFunction(fn);
-                        break;
+        }
+        
+        if(csh.isActive()){
+            if(sr == csh.seatSB){
+                if(cn.movies(csh)!=null){
+                    Movie cmov = new Movie();
+                    for(Movie mv : cn.movies(csh)){
+                        if(mv.getNameM().equals(csh.movieCB.getSelectedItem())){
+                            cmov = mv;
+                            System.out.println("setted!");
+                            System.out.println(cmov.getNameM());
+                            break;
+                        }
                     }
+                    
+                    Function cfn = null;
+                    functions = cn.functions(csh, cmov.getNameM());
+                    
+                    for(Function fns : functions){
+                        System.out.println("Searching..");
+                        if(fns.getFunctionId().equals(csh.functionCB.getSelectedItem())){
+                            cfn = fns;
+                            System.out.println("fnset");
+                            break;
+                        }
+                    }
+
+                    ssc = new SSController(csh, cmov, cfn);
+                    
+                } else{
+                    JOptionPane.showMessageDialog(csh, "There's no movies availables!", "Error!", JOptionPane.ERROR_MESSAGE);
+                }    
+                
+            } else if(sr == csh.addB){
+                if(csh.isEmpty() || ssc.getCounter() == 0){
+                    JOptionPane.showMessageDialog(csh, "Invalid Statements!", "Cashier Panel", JOptionPane.ERROR);
+                    csh.clear();
+                } else{
+                    rcp.setClientId(csh.clientID.getText());
+                    rcp.setClientName(csh.clientNames.getText());
+                    crs.markSeats();
+                    rcp.setRes(rsr);
+                    csh.displayC.setText(rcp.displayRecipe());
                 }
-                sts = new SeatsSelection();
-                stc = new SeatController(sts);
-                crs = new CashierReserv(rsr.getFunction(), stc, sts, rsr);
-                sts.setVisible(true);
             }
-        }
-        
-        if(sr == csh.addB){
-            if(csh.isEmpty() || stc.getCounter() == 0){
-                JOptionPane.showMessageDialog(null, "Invalid Statements!", "Cashier Panel", JOptionPane.ERROR);
+
+            if(sr == csh.cancelB){
                 csh.clear();
-            } else{
-                rcp.setClientId(csh.clientID.getText());
-                rcp.setClientName(csh.clientNames.getText());
-                crs.markSeats();
-                rcp.setRes(rsr);
-                csh.displayC.setText(rcp.displayRecipe());
+                ssc.clear();
+                csh.displayC.setText("");
             }
-        }
+
+            if(sr == csh.payB){
+
+            }
         
-        if(sr == csh.cancelB){
-            csh.clear();
-            stc.clean();
-            csh.displayC.setText("");
-        }
-        
-        if(sr == csh.payB){
-            
-        }
-        
-        if(sr == csh.logOut){
-            if(JOptionPane.showConfirmDialog(null, "Are you sure to finish this shift?", "Cashier Panel", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION){
-                csh.clear();
-                adm.setVisible(true);
-                csh.setVisible(false);
+            if(sr == csh.logOut){
+                if(JOptionPane.showConfirmDialog(csh, "Are you sure to finish this shift?", "Cashier Panel", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION){
+                    csh.clear();
+                    hdn.setVisible(true);
+                    csh.setVisible(false);
+                    hdn.setLocationRelativeTo(null);
+                }
             }
         }
         if(lgn.isActive()){
             if(sr==lgn.signB){
                 lgn.setVisible(false);
                 lgn.signinF.setVisible(true);
+                lgn.signinF.setLocationRelativeTo(null);
             } else if(sr==lgn.lognB){
                 lgn.maiIn.setVisible(true);
+                lgn.maiIn.setLocationRelativeTo(null);
             } else if(sr==lgn.hiddenB){
-                String pss = JOptionPane.showInputDialog(null, "Enter the secret Password:"); 
+                String pss = JOptionPane.showInputDialog(lgn, "Enter the secret Password:"); 
                 if(pss.equals(secret)){
                     lgn.setVisible(false);
                     hdn.setVisible(true);
                     hdn.setLocationRelativeTo(null);                    
                 } else{
-                    JOptionPane.showConfirmDialog(null, "INVALID PASSWORD!", "ALERT", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(lgn, "INVALID PASSWORD!", "ALERT", JOptionPane.ERROR_MESSAGE);
                     lgn.setVisible(false);
                 }
             }
@@ -408,15 +479,16 @@ public class Controller implements ActionListener{
         
         if(lgn.signinF.isActive()){
             if(sr == lgn.cnclB){
-                lgn.clear(); 
+                lgn.clear(lgn.fields()); 
                 lgn.signinF.setVisible(false);
                 lgn.setVisible(true);
             } else if(sr == lgn.signin){
                 if(lgn.conditions()){
-                    pm.registerClient(lgn.unTxt.getText(), lgn.nTxt.getText(), lgn.lnTxt.getText(), lgn.pwTxt.getText(), lgn.mTxt.getText(), Integer.parseInt(lgn.idTxt.getText()));
+                    pm.registerClient(lgn.signinF, lgn.unTxt.getText(), lgn.nTxt.getText(), lgn.lnTxt.getText(), lgn.pwTxt.getText(), lgn.mTxt.getText(), Integer.parseInt(lgn.idTxt.getText()));
+                    lgn.clear(lgn.fields());
                 } else{
-                    JOptionPane.showMessageDialog(null, "Incompatible data. Please, try again.", "Error", JOptionPane.ERROR_MESSAGE);
-                    lgn.clear();
+                    JOptionPane.showMessageDialog(lgn.signinF, "Incompatible data. Please, try again.", "Error", JOptionPane.ERROR_MESSAGE);
+                    lgn.clear(lgn.fields());
                 }
             }
         }
@@ -425,16 +497,18 @@ public class Controller implements ActionListener{
             if(sr == lgn.loginB){
                 String uN = lgn.userIn.getText();
                 String pW = lgn.psw.getText();
-                if(vrf.verifier("client", uN, pW)){
-                    JOptionPane.showMessageDialog(null, "Welcome Back!", "Policinema", JOptionPane.OK_OPTION);
-                    ml.setCln(pm.clients().get(vrf.getPosition())); 
+                if(vrf.verifier(lgn.maiIn, "client", uN, pW)){
+                    JOptionPane.showMessageDialog(lgn.maiIn, "Welcome Back!", "Policinema", JOptionPane.OK_OPTION);
+                    ml.setCln(pm.clients(lgn.maiIn).get(vrf.getPosition())); 
+                    mnl.signB.hide();
                     ml.setIsLoged(true);
                     lgn.maiIn.setVisible(false);
                     lgn.setVisible(false);
                     mnl.setVisible(true);
+                    mnl.setLocationRelativeTo(null);
                 } else{
-                    JOptionPane.showMessageDialog(null, "User not found!", "Error", JOptionPane.ERROR_MESSAGE);
-                    lgn.clear();
+                    JOptionPane.showMessageDialog(lgn.maiIn, "User not found!", "Error", JOptionPane.ERROR_MESSAGE);
+                    lgn.clear(lgn.fields());
                 }
             }
         }
