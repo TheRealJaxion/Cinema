@@ -259,21 +259,27 @@ public class SeatsSelection extends javax.swing.JFrame {
 
         jPanel5.setBackground(new java.awt.Color(0, 0, 0));
 
+        A1.setBackground(new java.awt.Color(204, 0, 0));
         A1.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         A1.setText("|");
 
+        B1.setBackground(new java.awt.Color(204, 0, 0));
         B1.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         B1.setText("|");
 
+        C1.setBackground(new java.awt.Color(204, 0, 0));
         C1.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         C1.setText("|");
 
+        D1.setBackground(new java.awt.Color(204, 0, 0));
         D1.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         D1.setText("|");
 
+        E1.setBackground(new java.awt.Color(204, 0, 0));
         E1.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         E1.setText("|");
 
+        F1.setBackground(new java.awt.Color(204, 0, 0));
         F1.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         F1.setText("|");
 
@@ -357,201 +363,267 @@ public class SeatsSelection extends javax.swing.JFrame {
         jLabel23.setText("12");
         jLabel23.setToolTipText("");
 
+        A2.setBackground(new java.awt.Color(204, 0, 0));
         A2.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         A2.setText("|");
 
+        D2.setBackground(new java.awt.Color(204, 0, 0));
         D2.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         D2.setText("|");
 
+        E2.setBackground(new java.awt.Color(204, 0, 0));
         E2.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         E2.setText("|");
 
+        F2.setBackground(new java.awt.Color(204, 0, 0));
         F2.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         F2.setText("|");
 
+        B2.setBackground(new java.awt.Color(204, 0, 0));
         B2.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         B2.setText("|");
 
+        C2.setBackground(new java.awt.Color(204, 0, 0));
         C2.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         C2.setText("|");
 
+        D3.setBackground(new java.awt.Color(204, 0, 0));
         D3.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         D3.setText("|");
 
+        A3.setBackground(new java.awt.Color(204, 0, 0));
         A3.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         A3.setText("|");
 
+        B3.setBackground(new java.awt.Color(204, 0, 0));
         B3.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         B3.setText("|");
 
+        C3.setBackground(new java.awt.Color(204, 0, 0));
         C3.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         C3.setText("|");
 
+        F3.setBackground(new java.awt.Color(204, 0, 0));
         F3.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         F3.setText("|");
 
+        E3.setBackground(new java.awt.Color(204, 0, 0));
         E3.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         E3.setText("|");
 
+        A4.setBackground(new java.awt.Color(204, 0, 0));
         A4.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         A4.setText("|");
 
+        C4.setBackground(new java.awt.Color(204, 0, 0));
         C4.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         C4.setText("|");
 
+        B4.setBackground(new java.awt.Color(204, 0, 0));
         B4.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         B4.setText("|");
 
+        D4.setBackground(new java.awt.Color(204, 0, 0));
         D4.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         D4.setText("|");
 
+        E4.setBackground(new java.awt.Color(204, 0, 0));
         E4.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         E4.setText("|");
 
+        F4.setBackground(new java.awt.Color(204, 0, 0));
         F4.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         F4.setText("|");
 
+        A5.setBackground(new java.awt.Color(204, 0, 0));
         A5.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         A5.setText("|");
 
+        C5.setBackground(new java.awt.Color(204, 0, 0));
         C5.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         C5.setText("|");
 
+        F5.setBackground(new java.awt.Color(204, 0, 0));
         F5.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         F5.setText("|");
 
+        E5.setBackground(new java.awt.Color(204, 0, 0));
         E5.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         E5.setText("|");
 
+        D5.setBackground(new java.awt.Color(204, 0, 0));
         D5.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         D5.setText("|");
 
+        B5.setBackground(new java.awt.Color(204, 0, 0));
         B5.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         B5.setText("|");
 
+        B6.setBackground(new java.awt.Color(204, 0, 0));
         B6.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         B6.setText("|");
 
+        A6.setBackground(new java.awt.Color(204, 0, 0));
         A6.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         A6.setText("|");
 
+        E6.setBackground(new java.awt.Color(204, 0, 0));
         E6.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         E6.setText("|");
 
+        F6.setBackground(new java.awt.Color(204, 0, 0));
         F6.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         F6.setText("|");
 
+        D6.setBackground(new java.awt.Color(204, 0, 0));
         D6.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         D6.setText("|");
 
+        C6.setBackground(new java.awt.Color(204, 0, 0));
         C6.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         C6.setText("|");
 
+        C7.setBackground(new java.awt.Color(204, 0, 0));
         C7.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         C7.setText("|");
 
+        D7.setBackground(new java.awt.Color(204, 0, 0));
         D7.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         D7.setText("|");
 
+        F7.setBackground(new java.awt.Color(204, 0, 0));
         F7.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         F7.setText("|");
 
+        E7.setBackground(new java.awt.Color(204, 0, 0));
         E7.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         E7.setText("|");
 
+        A7.setBackground(new java.awt.Color(204, 0, 0));
         A7.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         A7.setText("|");
 
+        B7.setBackground(new java.awt.Color(204, 0, 0));
         B7.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         B7.setText("|");
 
+        B8.setBackground(new java.awt.Color(204, 0, 0));
         B8.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         B8.setText("|");
 
+        A8.setBackground(new java.awt.Color(204, 0, 0));
         A8.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         A8.setText("|");
 
+        E8.setBackground(new java.awt.Color(204, 0, 0));
         E8.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         E8.setText("|");
 
+        F8.setBackground(new java.awt.Color(204, 0, 0));
         F8.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         F8.setText("|");
 
+        D8.setBackground(new java.awt.Color(204, 0, 0));
         D8.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         D8.setText("|");
 
+        C8.setBackground(new java.awt.Color(204, 0, 0));
         C8.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         C8.setText("|");
 
+        F9.setBackground(new java.awt.Color(204, 0, 0));
         F9.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         F9.setText("|");
 
+        E9.setBackground(new java.awt.Color(204, 0, 0));
         E9.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         E9.setText("|");
 
+        B9.setBackground(new java.awt.Color(204, 0, 0));
         B9.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         B9.setText("|");
 
+        A9.setBackground(new java.awt.Color(204, 0, 0));
         A9.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         A9.setText("|");
 
+        C9.setBackground(new java.awt.Color(204, 0, 0));
         C9.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         C9.setText("|");
 
+        D9.setBackground(new java.awt.Color(204, 0, 0));
         D9.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         D9.setText("|");
 
+        D10.setBackground(new java.awt.Color(204, 0, 0));
         D10.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         D10.setText("|");
 
+        C10.setBackground(new java.awt.Color(204, 0, 0));
         C10.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         C10.setText("|");
 
+        A10.setBackground(new java.awt.Color(204, 0, 0));
         A10.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         A10.setText("|");
 
+        B10.setBackground(new java.awt.Color(204, 0, 0));
         B10.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         B10.setText("|");
 
+        E10.setBackground(new java.awt.Color(204, 0, 0));
         E10.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         E10.setText("|");
 
+        F10.setBackground(new java.awt.Color(204, 0, 0));
         F10.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         F10.setText("|");
 
+        A11.setBackground(new java.awt.Color(204, 0, 0));
         A11.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         A11.setText("|");
 
+        C11.setBackground(new java.awt.Color(204, 0, 0));
         C11.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         C11.setText("|");
 
+        D11.setBackground(new java.awt.Color(204, 0, 0));
         D11.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         D11.setText("|");
 
+        F11.setBackground(new java.awt.Color(204, 0, 0));
         F11.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         F11.setText("|");
 
+        E11.setBackground(new java.awt.Color(204, 0, 0));
         E11.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         E11.setText("|");
 
+        B11.setBackground(new java.awt.Color(204, 0, 0));
         B11.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         B11.setText("|");
 
+        B12.setBackground(new java.awt.Color(204, 0, 0));
         B12.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         B12.setText("|");
 
+        E12.setBackground(new java.awt.Color(204, 0, 0));
         E12.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         E12.setText("|");
 
+        F12.setBackground(new java.awt.Color(204, 0, 0));
         F12.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         F12.setText("|");
 
+        D12.setBackground(new java.awt.Color(204, 0, 0));
         D12.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         D12.setText("|");
 
+        C12.setBackground(new java.awt.Color(204, 0, 0));
         C12.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         C12.setText("|");
 
+        A12.setBackground(new java.awt.Color(204, 0, 0));
         A12.setFont(new java.awt.Font("Times New Roman", 0, 8)); // NOI18N
         A12.setText("|");
 

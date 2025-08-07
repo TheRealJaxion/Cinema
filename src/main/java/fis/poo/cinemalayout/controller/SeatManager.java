@@ -109,7 +109,7 @@ public class SeatManager {
             if(fn != null){
                 sts.displayMN.setText(mv.getNameM());
                 String hall;
-                if(fn.getHall() == 'N'){
+                if(fn.getHall() == 'H'){
                     hall = "Hall";
                 } else{
                     hall = "IMAX";
@@ -162,6 +162,7 @@ public class SeatManager {
                 }
             } else if(sr == sts.cancelB1){
                 clear();
+                fr1.setVisible(true);
                 sts.setVisible(false);
                 fr1.setLocationRelativeTo(null);
             } else{
