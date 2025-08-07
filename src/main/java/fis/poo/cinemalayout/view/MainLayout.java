@@ -85,9 +85,7 @@ public class MainLayout extends javax.swing.JFrame {
         FinalSel.setAlwaysOnTop(true);
         FinalSel.setAutoRequestFocus(false);
         FinalSel.setFocusable(false);
-        FinalSel.setMaximumSize(new java.awt.Dimension(390, 550));
         FinalSel.setMinimumSize(new java.awt.Dimension(390, 550));
-        FinalSel.setPreferredSize(new java.awt.Dimension(390, 550));
         FinalSel.setResizable(false);
 
         jPanel4.setBackground(new java.awt.Color(0, 0, 0));

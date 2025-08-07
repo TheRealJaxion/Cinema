@@ -8,6 +8,7 @@ import java.awt.Component;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 import javax.imageio.ImageIO;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -20,8 +21,9 @@ public class ImageManager {
     String imgType = "png";
     
     public void functImg(Component parent, File imgSelPath) {
-        String mainPath = "C:\\Users\\jordy\\Documents\\NetBeansProjects\\CinemaLayout\\src\\main\\resources\\funcl\\"; 
-        String fileName = JOptionPane.showInputDialog(parent, "Please, type the image name.");
+        URL url = getClass().getResource("/funcl/");
+        String mainPath = url.toString();
+        String fileName = JOptionPane.showInputDialog(parent, "Please, type the image name as: img1, img2, ...");
         
         try {
 
@@ -48,8 +50,9 @@ public class ImageManager {
     }    
     
     public void mainImg(Component parent, File imgSelPath) {
-        String mainPath = "C:\\Users\\jordy\\Documents\\NetBeansProjects\\CinemaLayout\\src\\main\\resources\\mainl\\"; 
-        String fileName = JOptionPane.showInputDialog(parent, "Please, type the image name.");
+        URL url = getClass().getResource("/mainl/");
+        String mainPath = url.toString(); 
+        String fileName = JOptionPane.showInputDialog(parent, "Please, type the image name as: img1, img2, ...");
         try {
 
             BufferedImage img = ImageIO.read(imgSelPath);

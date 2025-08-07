@@ -98,7 +98,7 @@ public class Controller implements ActionListener{
                 adm.model.addRow(ob);
             }
         }
-        if(cn.movies(null).size() == 4){
+        if(cn.movies(null)!= null){
             
             this.cb = new CJCBController(csh);
             
@@ -107,15 +107,11 @@ public class Controller implements ActionListener{
                 this.ml.movieT2.setText(movies.get(1).getNameM());
                 this.ml.movieT3.setText(movies.get(2).getNameM());
                 this.ml.movieT4.setText(movies.get(3).getNameM());
-                File im1 = new File("C:\\Users\\jordy\\Documents\\NetBeansProjects\\CinemaLayout\\src\\main\\resources\\mainl\\img1.png");
-                File im2 = new File("C:\\Users\\jordy\\Documents\\NetBeansProjects\\CinemaLayout\\src\\main\\resources\\mainl\\img2.png");
-                File im3 = new File("C:\\Users\\jordy\\Documents\\NetBeansProjects\\CinemaLayout\\src\\main\\resources\\mainl\\img3.png");
-                File im4 = new File("C:\\Users\\jordy\\Documents\\NetBeansProjects\\CinemaLayout\\src\\main\\resources\\mainl\\img4.png");
 
-                ImageIcon ic1 = new ImageIcon(im1.getAbsolutePath());
-                ImageIcon ic2 = new ImageIcon(im2.getAbsolutePath());
-                ImageIcon ic3 = new ImageIcon(im3.getAbsolutePath());
-                ImageIcon ic4 = new ImageIcon(im4.getAbsolutePath());
+                ImageIcon ic1 = new ImageIcon(getClass().getResource("/mainl/img1.png"));
+                ImageIcon ic2 = new ImageIcon(getClass().getResource("/mainl/img2.png"));
+                ImageIcon ic3 = new ImageIcon(getClass().getResource("/mainl/img3.png"));
+                ImageIcon ic4 = new ImageIcon(getClass().getResource("/mainl/img4.png"));
 
                 this.ml.movie1B.setIcon(ic1);
                 this.ml.movie2B.setIcon(ic2);
@@ -134,7 +130,12 @@ public class Controller implements ActionListener{
    
                 ml.setVisible(true);
                 ml.setLocationRelativeTo(null);
+            }else{
+                JOptionPane.showMessageDialog(null, "There are not enough movies to load! You'll ve redirected to Login Panel", "Warning!", JOptionPane.ERROR_MESSAGE);
+                lgn.setVisible(true);
+                lgn.setLocationRelativeTo(null);
             }
+            
         } else{
             System.out.println("empty");
             JOptionPane.showMessageDialog(ml, "Movies are not loaded yet, you'll be redirected to login panel.", "Policinema", JOptionPane.ERROR_MESSAGE);
@@ -580,9 +581,8 @@ public class Controller implements ActionListener{
             if(ev.getSource() == ml.movie1B){
 
                 if(!movies.isEmpty()){
-                    String path = "C:\\Users\\jordy\\Documents\\NetBeansProjects\\CinemaLayout\\src\\main\\resources\\funcl\\img1.png";
                     mv = movies.get(0); 
-                    ImageIcon img = new ImageIcon(path);
+                    ImageIcon img = new ImageIcon(getClass().getResource("/funcl/img1.png"));
                     ml.movieTitle.setText(mv.getNameM());
                     ml.movieImg.setIcon(img);
                     ml.durationT.setText(Integer.toString(mv.getDuration())+ml.durationT.getText());
@@ -603,9 +603,8 @@ public class Controller implements ActionListener{
                 }    
             } else if(ev.getSource() == ml.movie2B){
                 if(!movies.isEmpty()){
-                    String path = "C:\\Users\\jordy\\Documents\\NetBeansProjects\\CinemaLayout\\src\\main\\resources\\funcl\\img2.png";
                     mv = movies.get(1); 
-                    ImageIcon img = new ImageIcon(path);
+                    ImageIcon img = new ImageIcon(getClass().getResource("/funcl/img2.png"));
                     ml.movieTitle.setText(mv.getNameM());
                     ml.movieImg.setIcon(img);
                     ml.durationT.setText(Integer.toString(mv.getDuration())+ml.durationT.getText());
@@ -626,9 +625,8 @@ public class Controller implements ActionListener{
                 }  
             } else if(ev.getSource() == ml.movie3B){
                 if(!movies.isEmpty()){
-                    String path = "C:\\Users\\jordy\\Documents\\NetBeansProjects\\CinemaLayout\\src\\main\\resources\\funcl\\img3.png";
                     mv = movies.get(2); 
-                    ImageIcon img = new ImageIcon(path);
+                    ImageIcon img = new ImageIcon(getClass().getResource("/funcl/img3.png"));
                     ml.movieTitle.setText(mv.getNameM());   
                     ml.movieImg.setIcon(img);
                     ml.durationT.setText(Integer.toString(mv.getDuration())+ml.durationT.getText());
@@ -649,9 +647,8 @@ public class Controller implements ActionListener{
                 } 
             } else if(ev.getSource() == ml.movie4B){
                 if(!movies.isEmpty()){
-                    String path = "C:\\Users\\jordy\\Documents\\NetBeansProjects\\CinemaLayout\\src\\main\\resources\\funcl\\img4.png";
                     mv = movies.get(3); 
-                    ImageIcon img = new ImageIcon(path);
+                    ImageIcon img = new ImageIcon(getClass().getResource("/funcl/img4.png"));
                     ml.movieTitle.setText(mv.getNameM());
                     ml.movieImg.setIcon(img);
                     ml.durationT.setText(Integer.toString(mv.getDuration())+ml.durationT.getText());
