@@ -586,6 +586,7 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="lognB" min="-2" pref="100" max="-2" attributes="0"/>
                               <Component id="signB" min="-2" pref="100" max="-2" attributes="0"/>
+                              <Component id="backB" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
@@ -609,6 +610,8 @@
                   <Component id="signB" min="-2" pref="34" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
                   <Component id="lognB" min="-2" pref="34" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
+                  <Component id="backB" min="-2" pref="34" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -897,6 +900,14 @@
         <Component class="javax.swing.JButton" name="lognB">
           <Properties>
             <Property name="text" type="java.lang.String" value="Log In"/>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+          </AuxValues>
+        </Component>
+        <Component class="javax.swing.JButton" name="backB">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Back"/>
           </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>

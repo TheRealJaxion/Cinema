@@ -84,6 +84,7 @@ public class Controller implements ActionListener{
             bt.addActionListener(this);
         }
         lgn.signB.addActionListener(this);
+        lgn.backB.addActionListener(this);
         lgn.lognB.addActionListener(this);
         lgn.cnclB.addActionListener(this);
         lgn.hiddenB.addActionListener(this);
@@ -124,6 +125,8 @@ public class Controller implements ActionListener{
                 this.ml.signB.addActionListener(this); 
                 this.ml.seatSelB.addActionListener(this);
                 this.ml.movie1B.addActionListener(this);
+                this.ml.payB.addActionListener(this);
+                this.ml.cancelB.addActionListener(this);
                 this.ml.movie2B.addActionListener(this);
                 this.ml.movie3B.addActionListener(this);
                 this.ml.movie4B.addActionListener(this);
@@ -518,7 +521,7 @@ public class Controller implements ActionListener{
                 lgn.maiIn.setLocationRelativeTo(null);
             } else if(sr==lgn.hiddenB){
                 String pss = JOptionPane.showInputDialog(lgn, "Enter the secret Password:"); 
-                if(pss.equals(secret)){
+                if(pss.equals(secret) && pss!= null){
                     lgn.setVisible(false);
                     hdn.setVisible(true);
                     hdn.setLocationRelativeTo(null);                    
@@ -526,6 +529,11 @@ public class Controller implements ActionListener{
                     JOptionPane.showMessageDialog(lgn, "INVALID PASSWORD!", "ALERT", JOptionPane.ERROR_MESSAGE);
                     lgn.setVisible(false);
                 }
+            } else if(sr == lgn.backB){
+                lgn.clear(lgn.fields());
+                lgn.setVisible(false);
+                ml.setVisible(true);
+                ml.setLocationRelativeTo(null);
             }
         }
         
@@ -549,7 +557,7 @@ public class Controller implements ActionListener{
             if(sr == lgn.loginB){
                 String uN = lgn.userIn.getText();
                 String pW = lgn.psw.getText();
-                if(vrf.verifier(lgn.maiIn, "client", uN, pW)){
+                if(pW != null && vrf.verifier(lgn.maiIn, "client", uN, pW)){
                     JOptionPane.showMessageDialog(lgn.maiIn, "Welcome Back!", "Policinema", JOptionPane.OK_OPTION);
                     cln = (pm.clients(lgn.maiIn).get(vrf.getPosition())); 
                     ml.signB.hide();

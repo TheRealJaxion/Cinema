@@ -117,6 +117,7 @@ public class Loginoptions extends javax.swing.JFrame {
         textA = new javax.swing.JLabel();
         signB = new javax.swing.JButton();
         lognB = new javax.swing.JButton();
+        backB = new javax.swing.JButton();
 
         signinF.setAlwaysOnTop(true);
         signinF.setAutoRequestFocus(false);
@@ -293,9 +294,7 @@ public class Loginoptions extends javax.swing.JFrame {
 
         maiIn.setAlwaysOnTop(true);
         maiIn.setAutoRequestFocus(false);
-        maiIn.setMaximumSize(new java.awt.Dimension(355, 475));
         maiIn.setMinimumSize(new java.awt.Dimension(355, 475));
-        maiIn.setPreferredSize(new java.awt.Dimension(355, 475));
         maiIn.setResizable(false);
 
         jPanel17.setBackground(new java.awt.Color(0, 0, 0));
@@ -599,6 +598,8 @@ public class Loginoptions extends javax.swing.JFrame {
 
         lognB.setText("Log In");
 
+        backB.setText("Back");
+
         javax.swing.GroupLayout panelILayout = new javax.swing.GroupLayout(panelI);
         panelI.setLayout(panelILayout);
         panelILayout.setHorizontalGroup(
@@ -610,7 +611,8 @@ public class Loginoptions extends javax.swing.JFrame {
                         .addGap(129, 129, 129)
                         .addGroup(panelILayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lognB, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(signB, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(signB, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(backB, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(panelILayout.createSequentialGroup()
                         .addGap(120, 120, 120)
                         .addComponent(textA)))
@@ -628,6 +630,8 @@ public class Loginoptions extends javax.swing.JFrame {
                 .addComponent(signB, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(40, 40, 40)
                 .addComponent(lognB, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(43, 43, 43)
+                .addComponent(backB, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -637,7 +641,7 @@ public class Loginoptions extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, 0)
-                .addComponent(panelI, javax.swing.GroupLayout.DEFAULT_SIZE, 506, Short.MAX_VALUE)
+                .addComponent(panelI, javax.swing.GroupLayout.PREFERRED_SIZE, 506, Short.MAX_VALUE)
                 .addGap(0, 0, 0))
         );
         layout.setVerticalGroup(
@@ -683,6 +687,7 @@ public class Loginoptions extends javax.swing.JFrame {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JButton backB;
     public javax.swing.JButton cnclB;
     private javax.swing.JLabel font;
     public javax.swing.JButton hiddenB;
