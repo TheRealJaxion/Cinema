@@ -91,7 +91,7 @@ public class Controller implements ActionListener{
         lgn.loginB.addActionListener(this);
         lgn.signin.addActionListener(this);
         movies = cn.movies(null);
-        if(!movies.isEmpty()){
+        if(!movies.isEmpty() && movies.size() == 4){
             for(int i=0; i<cn.movies(null).size(); i++){
                 Movie movie = cn.movies(null).get(i);
                 Object[] ob = {movie.getNameM(), movie.getDuration(), movie.getRestriction()};
@@ -107,7 +107,7 @@ public class Controller implements ActionListener{
                 this.ml.movieT2.setText(movies.get(1).getNameM());
                 this.ml.movieT3.setText(movies.get(2).getNameM());
                 this.ml.movieT4.setText(movies.get(3).getNameM());
-
+                
                 ImageIcon ic1 = new ImageIcon(getClass().getResource("/mainl/img1.png"));
                 ImageIcon ic2 = new ImageIcon(getClass().getResource("/mainl/img2.png"));
                 ImageIcon ic3 = new ImageIcon(getClass().getResource("/mainl/img3.png"));
@@ -522,7 +522,8 @@ public class Controller implements ActionListener{
                 lgn.maiIn.setLocationRelativeTo(null);
             } else if(sr==lgn.hiddenB){
                 String pss = JOptionPane.showInputDialog(lgn, "Enter the secret Password:"); 
-                if(pss.equals(secret) && pss!= null){
+                
+                if(pss.equals(secret)){
                     lgn.setVisible(false);
                     hdn.setVisible(true);
                     hdn.setLocationRelativeTo(null);                    

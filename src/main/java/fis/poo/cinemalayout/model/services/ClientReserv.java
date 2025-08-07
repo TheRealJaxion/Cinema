@@ -7,14 +7,9 @@ package fis.poo.cinemalayout.model.services;
 import fis.poo.cinemalayout.controller.SeatManager;
 import fis.poo.cinemalayout.model.entities.Function;
 import fis.poo.cinemalayout.model.entities.Movie;
-import fis.poo.cinemalayout.model.entities.Recipe;
 import fis.poo.cinemalayout.model.entities.Reservation;
-import fis.poo.cinemalayout.view.MainLayout;
 import java.awt.Component;
-import java.awt.event.ActionListener;
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
-import javax.swing.Timer;
 
 /**
  *
@@ -29,10 +24,6 @@ public class ClientReserv extends MarkReservation{
     @Override
     public Reservation markSeats(Component fr1) {
         return smn.getRsrv();
-    }
-    
-    public ActionListener getAct(){
-        return smn.getSsc();
     }
 
     public boolean status(){

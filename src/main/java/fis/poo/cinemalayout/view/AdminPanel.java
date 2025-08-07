@@ -1133,7 +1133,7 @@ public class AdminPanel extends javax.swing.JFrame {
     private void mDKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_mDKeyTyped
         // TODO add your handling code here:
         char c = evt.getKeyChar(); 
-        if(!Character.isDigit(c) || c != '.'){
+        if(!Character.isDigit(c)){
             evt.consume();
         }
     }//GEN-LAST:event_mDKeyTyped
@@ -1141,7 +1141,7 @@ public class AdminPanel extends javax.swing.JFrame {
     private void pprom1TKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pprom1TKeyTyped
         // TODO add your handling code here:
         char c = evt.getKeyChar();
-        if(!Character.isDigit(c)|| c != '.'){
+        if(!Character.isDigit(c)&& c != '.'){
             evt.consume();
         }
     }//GEN-LAST:event_pprom1TKeyTyped
@@ -1149,7 +1149,7 @@ public class AdminPanel extends javax.swing.JFrame {
     private void pprom2TKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pprom2TKeyTyped
         // TODO add your handling code here:
         char c = evt.getKeyChar();
-        if(!Character.isDigit(c)|| c != '.'){
+        if(!Character.isDigit(c)&& c != '.'){
             evt.consume();
         }
     }//GEN-LAST:event_pprom2TKeyTyped
@@ -1157,7 +1157,7 @@ public class AdminPanel extends javax.swing.JFrame {
     private void pprom3TKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pprom3TKeyTyped
         // TODO add your handling code here:
         char c = evt.getKeyChar();
-        if(!Character.isDigit(c)|| c != '.'){
+        if(!Character.isDigit(c)&& c != '.'){
             evt.consume();
         }
     }//GEN-LAST:event_pprom3TKeyTyped
@@ -1165,7 +1165,7 @@ public class AdminPanel extends javax.swing.JFrame {
     private void pprom4TKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pprom4TKeyTyped
         // TODO add your handling code here:
         char c = evt.getKeyChar();
-        if(!Character.isDigit(c)|| c != '.'){
+        if(!Character.isDigit(c)&& c != '.'){
             evt.consume();
         }
     }//GEN-LAST:event_pprom4TKeyTyped
@@ -1173,7 +1173,7 @@ public class AdminPanel extends javax.swing.JFrame {
     private void priceHKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_priceHKeyTyped
         // TODO add your handling code here:
         char c = evt.getKeyChar();
-        if(!Character.isDigit(c)|| c != '.'){
+        if(!Character.isDigit(c)&& c != '.'){
             evt.consume();
         }
     }//GEN-LAST:event_priceHKeyTyped
@@ -1181,7 +1181,7 @@ public class AdminPanel extends javax.swing.JFrame {
     private void priceIKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_priceIKeyTyped
         // TODO add your handling code here:
         char c = evt.getKeyChar();
-        if(!Character.isDigit(c)|| c != '.'){
+        if(!Character.isDigit(c)&& c != '.'){
             evt.consume();
         }
     }//GEN-LAST:event_priceIKeyTyped
@@ -1189,7 +1189,7 @@ public class AdminPanel extends javax.swing.JFrame {
     private void taxFKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_taxFKeyTyped
         // TODO add your handling code here:
         char c = evt.getKeyChar();
-        if(!Character.isDigit(c)|| c != '.'){
+        if(!Character.isDigit(c)&&c != '.'){
             evt.consume();
         }
     }//GEN-LAST:event_taxFKeyTyped
