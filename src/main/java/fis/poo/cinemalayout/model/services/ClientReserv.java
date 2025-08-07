@@ -4,11 +4,17 @@
  */
 package fis.poo.cinemalayout.model.services;
 
-
-import fis.poo.cinemalayout.controller.SSController;
 import fis.poo.cinemalayout.controller.SeatManager;
 import fis.poo.cinemalayout.model.entities.Function;
+import fis.poo.cinemalayout.model.entities.Movie;
+import fis.poo.cinemalayout.model.entities.Recipe;
 import fis.poo.cinemalayout.model.entities.Reservation;
+import fis.poo.cinemalayout.view.MainLayout;
+import java.awt.Component;
+import java.awt.event.ActionListener;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.Timer;
 
 /**
  *
@@ -16,16 +22,21 @@ import fis.poo.cinemalayout.model.entities.Reservation;
  */
 public class ClientReserv extends MarkReservation{
     
-    public ClientReserv(Function fn, SSController ssc, Reservation rs) {
-        super(fn, ssc, rs);
+    public ClientReserv(Movie mv, Function fn, SeatManager smn, JFrame fr1, JFrame fr2) {
+        super(mv, fn, smn, fr1, fr2, "Client");
+    }
+    
+    @Override
+    public Reservation markSeats(Component fr1) {
+        return smn.getRsrv();
+    }
+    
+    public ActionListener getAct(){
+        return smn.getSsc();
     }
 
-    @Override
-    public void markSeats() {
-        rs.setSeats(ssc.getCounter());
-        ssc.setCounter(0);
+    public boolean status(){
+        return smn.isHasEnded();
     }
-    
-    
     
 }

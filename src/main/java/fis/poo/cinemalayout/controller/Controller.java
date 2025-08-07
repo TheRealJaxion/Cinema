@@ -30,6 +30,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.Timer;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
@@ -45,8 +46,8 @@ public class Controller implements ActionListener{
     private MainLayout ml = new MainLayout();
     private AJCBController jcb = new AJCBController(adm);
     private SeatManager smn;
-    private SSController ssc;
     private CJCBController cb;
+    private Timer tm;
     private Verificator vrf = new Verificator();
     private PersonManager pm = new PersonManager();
     private CinemaManager cn = new CinemaManager(); 
@@ -57,13 +58,13 @@ public class Controller implements ActionListener{
     private ArrayList<Cashier> cashiers = new ArrayList<>();
     private ArrayList<Client> clients = new ArrayList<>();
     private ArrayList<Movie> movies = new ArrayList<>();
-    private Recipe rcp; 
+    private Recipe rcp;
     private ClientReserv clnr;
     private CashierReserv crs;
     private Client cln;
     private Cashier cshr;
     private String secret = "RR1717160533";
-    private boolean isLoged = false;
+    private boolean isLogged = false;
     private ArrayList<SeatManager> smg = new ArrayList<>();
 
     public Controller(Client cln, Cashier cshr) {
@@ -445,7 +446,6 @@ public class Controller implements ActionListener{
 
                     for(Function fns : functions){
                         if(fns.getFunctionId().equals(csh.functionCB.getSelectedItem())){
-                            System.out.println("found!");
                             cfn = fns;
                             break;
                         }
@@ -453,27 +453,18 @@ public class Controller implements ActionListener{
                     
                     
                     
-                    if(smg.isEmpty() || !seatVerf(cfn.getFunctionId())){
-                        rsr = new Reservation(cfn, 0);
+                    if(smg.isEmpty() || !seatVerf(cmov.getNameM()+" "+cfn.getFunctionId())){
                         cpos = 0;
-                        SeatManager sm = new SeatManager();
-                        sm.setFr(csh);
-                        sm.setPerson("Cashier");
-                        sm.setFn(cfn);
-                        sm.setMv(cmov);
+                        SeatManager sm = new SeatManager(cfn, cmov, csh, csh, "Cashier");
+                        crs = new CashierReserv(cmov, cfn, sm, csh);
                         smg.add(sm);
-                        sm.init();
                         
                     }else{
                         
                         for(int i=0; i<smg.size(); i++){
-                            if(cfn.getFunctionId().equals(smg.get(i).getSmID())){
-                                rsr = new Reservation(cfn, 0);
+                            if((cmov.getNameM()+" "+cfn.getFunctionId()).equals(smg.get(i).getSmID())){
                                 cpos = i;
-                                smg.get(i).setMv(cmov);
-                                smg.get(i).setFr(csh);
-                                smg.get(i).setPerson("Cashier");
-                                smg.get(i).init();
+                                crs = new CashierReserv(cmov, cfn, smg.get(i), csh);
                                 
                                 break;
                             }
@@ -486,8 +477,7 @@ public class Controller implements ActionListener{
                 }    
                 
             } else if(sr == csh.addB){
-                rsr.setSeats(smg.get(cpos).getCount());
-                System.out.println(rsr.getSeats());
+                rsr = crs.markSeats(csh);
                 if(csh.isEmpty() || rsr.getSeats() == 0){
                     JOptionPane.showMessageDialog(csh, "Invalid Statements!", "Cashier Panel", JOptionPane.ERROR_MESSAGE);
                     csh.clear();
@@ -495,7 +485,6 @@ public class Controller implements ActionListener{
                     rcp = new Recipe(rsr);
                     rcp.setClientId(csh.clientID.getText());
                     rcp.setClientName(csh.clientNames.getText());
-                    rcp.setRes(rsr);
                     csh.gDisplay.setText(rcp.displayRecipe());
                 }
             }
@@ -507,7 +496,7 @@ public class Controller implements ActionListener{
             }
 
             if(sr == csh.payB){
-
+                JOptionPane.showMessageDialog(csh.payB, "Still Working on it!", "Cashier Panel", JOptionPane.OK_OPTION);
             }
         
             if(sr == csh.logOut){
@@ -564,7 +553,7 @@ public class Controller implements ActionListener{
                     JOptionPane.showMessageDialog(lgn.maiIn, "Welcome Back!", "Policinema", JOptionPane.OK_OPTION);
                     cln = (pm.clients(lgn.maiIn).get(vrf.getPosition())); 
                     ml.signB.hide();
-                    isLoged = true;
+                    isLogged = true;
                     lgn.maiIn.setVisible(false);
                     lgn.setVisible(false);
                     ml.setVisible(true);
@@ -632,7 +621,7 @@ public class Controller implements ActionListener{
                     String path = "C:\\Users\\jordy\\Documents\\NetBeansProjects\\CinemaLayout\\src\\main\\resources\\funcl\\img3.png";
                     mv = movies.get(2); 
                     ImageIcon img = new ImageIcon(path);
-                    ml.movieTitle.setText(mv.getNameM());
+                    ml.movieTitle.setText(mv.getNameM());   
                     ml.movieImg.setIcon(img);
                     ml.durationT.setText(Integer.toString(mv.getDuration())+ml.durationT.getText());
                     ml.restrictionT.setText(mv.getRestriction());
@@ -689,16 +678,13 @@ public class Controller implements ActionListener{
                 ml.setVisible(true);
                 ml.setLocationRelativeTo(null);
             } else if(ev.getSource() == ml.seatSelB){
-                System.out.println("readed");
-                if(isLoged){
+                if(isLogged){
                    Movie mMov = null;
                    Function mFun = null;
                    
                    for(Movie mv : cn.movies(ml)){
-                       System.out.println("searching..");
                        if(mv.getNameM().equals(ml.movieTitle.getText())){
                            mMov = mv;
-                           System.out.println(mMov.getNameM());
                            break;
                        }
                    }
@@ -709,49 +695,66 @@ public class Controller implements ActionListener{
                        }
                    }
                    
-                   if(smg.isEmpty() || !seatVerf(mFun.getFunctionId())){
-                        rsr = new Reservation(mFun, 0);
-                        cpos = 0;
-                        SeatManager sm = new SeatManager();
-                        sm.setFr(ml.FinalSel);
-                        sm.setPerson("Client");
-                        sm.setFn(mFun);
-                        sm.setMv(mMov);
-                        smg.add(sm);
-                        sm.init();
+                if(smg.isEmpty() || !seatVerf(mMov.getNameM()+" "+mFun.getFunctionId())){
+                    cpos = 0;
+                    SeatManager sm = new SeatManager(mFun, mMov, ml.MovieDisp, ml.FinalSel, "Client");
+                    clnr = new ClientReserv(mMov, mFun, sm, ml.MovieDisp, ml.FinalSel);
+                    ml.MovieDisp.setVisible(false);
+                
+                    tm = new Timer(100, e -> {
+                        if(clnr.status()) { 
+                            tm.stop(); 
+                            rsr = clnr.markSeats(null);
+
+                            
+                            rcp = new Recipe(rsr);
+                            ml.displayFS.setText(rcp.displayRecipe());
+                            ml.FinalSel.setVisible(true);
+                            ml.setLocationRelativeTo(null);
                         
-                    }else{
+                    }
+                });
+                
+                    smg.add(sm);
+                    tm.start();
+                
+                } else {
+                    for(int i=0; i<smg.size(); i++){
+                        if((mMov.getNameM()+" "+mFun.getFunctionId()).equals(smg.get(i).getSmID())){
+                            cpos = i;
+                            clnr = new ClientReserv(mMov, mFun, smg.get(i), ml.MovieDisp, ml.FinalSel);
+                            ml.MovieDisp.setVisible(false);
+                                tm = new Timer(100, e -> {
+                                    if(clnr.status()) {
+                                        tm.stop();
+                                        
+                                        rsr = clnr.markSeats(null);
+                                        rcp = new Recipe(rsr);
+                                        ml.displayFS.setText(rcp.displayRecipe());
+                                        ml.FinalSel.setVisible(true);
+                                        ml.setLocationRelativeTo(null);
+                                    }
+                                });
                         
-                        for(int i=0; i<smg.size(); i++){
-                            if(mFun.getFunctionId().equals(smg.get(i).getSmID())){
-                                rsr = new Reservation(mFun, 0);
-                                cpos = i;
-                                smg.get(i).setMv(mMov);
-                                smg.get(i).setFr(ml.FinalSel);
-                                smg.get(i).setPerson("Cashier");
-                                smg.get(i).init();
-                                
+                                tm.start();
                                 break;
                             }
                         }
-                    
+                
+                        
                     }
-
-                ml.MovieDisp.setVisible(false);
-                rsr.setSeats(smg.get(cpos).getCount());
-                System.out.println(smg.get(cpos).getCount());
-                rcp.setRes(rsr);
-                } else{
+                } else {
                     JOptionPane.showMessageDialog(ml.MovieDisp, "You must have been logged in first.", "Policinema", JOptionPane.OK_OPTION);
                 }
             }
         }
-        
         if(ml.FinalSel.isActive()){
-            rsr.setSeats(smg.get(cpos).getCount());
-            System.out.println(smg.get(cpos).getCount());
-            rcp.setRes(rsr);
-            ml.displayFS.setText(rcp.displayRecipe());
+            if(sr == ml.payB){
+                JOptionPane.showMessageDialog(ml.FinalSel, "Still Working on it!", "Policinema", JOptionPane.OK_OPTION);
+            } else if(sr == ml.cancelB){
+                ml.FinalSel.setVisible(false);
+            }
+        
         }
     }
     

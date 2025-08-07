@@ -25,8 +25,6 @@ public class Recipe {
         pgt = new PayGateway(prp, res);
     }
 
-    
-    
     public void setClientName(String clientName) {
         this.clientName = clientName;
     }

@@ -4,27 +4,30 @@
  */
 package fis.poo.cinemalayout.model.services;
 
-import fis.poo.cinemalayout.controller.SSController;
 import fis.poo.cinemalayout.controller.SeatManager;
 import fis.poo.cinemalayout.model.entities.Function;
+import fis.poo.cinemalayout.model.entities.Movie;
 import fis.poo.cinemalayout.model.entities.Reservation;
+import java.awt.Component;
+import javax.swing.JFrame;
 
 /**
  *
  * @author jordy
  */
 public abstract class MarkReservation {
+    protected Reservation rsrv;
+    protected Movie mv;
     protected Function fn;
-    //protected SeatManager smn;
-    protected SSController ssc;
-    protected Reservation rs;
+    protected SeatManager smn;
+    protected String person;
 
-    public MarkReservation(Function fn, SSController ssc, Reservation rs) {
+    public MarkReservation(Movie mv, Function fn, SeatManager smn, JFrame fr1, JFrame fr2, String person) {
+        this.smn = smn;
+        this.mv = mv;
         this.fn = fn;
-        this.ssc = ssc;
-        this.rs = rs;
+        this.smn = smn;
     }
     
-    public abstract void markSeats(); 
-    
+    public abstract Reservation markSeats(Component fr); 
 }
